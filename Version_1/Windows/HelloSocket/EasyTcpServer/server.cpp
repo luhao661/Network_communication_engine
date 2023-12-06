@@ -38,7 +38,8 @@ int main()
 	// 在实际使用中，AF_INET 与 PF_INET 可以互换使用，
 	// 而且在大多数情况下，它们是相等的。
 	
-	//一定要进行初始化
+	//地址信息初始化
+	//sin结构体一定要进行初始化，原因见《TCP/IP网络编程读书笔记》
 	sockaddr_in sin = {};
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(9190);
@@ -68,6 +69,7 @@ int main()
 	sockaddr_in cin = {};
 	int cin_addr_size = sizeof(cin);
 
+	//用循环，来支持多个同样IP地址的客户端接入
 	while (1)
 	{
 		// 4 accept 等待接受客户端连接
