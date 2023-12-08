@@ -1,3 +1,5 @@
-﻿  server.cpp
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server.cpp(87,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+﻿  server_1.1.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.1.cpp(99,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.1.cpp(104,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.1.cpp(109,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
   EasyTcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpServer.exe
