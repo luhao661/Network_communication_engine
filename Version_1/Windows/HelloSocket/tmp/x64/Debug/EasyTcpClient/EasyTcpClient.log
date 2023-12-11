@@ -1,5 +1,6 @@
-﻿  client_1.1.cpp
+﻿  client_1.0.cpp
+  client_1.1.cpp
   client_1.2.cpp
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\client_1.2.cpp(95,45): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  client_1.3.cpp
   正在生成代码...
   EasyTcpClient.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpClient.exe
