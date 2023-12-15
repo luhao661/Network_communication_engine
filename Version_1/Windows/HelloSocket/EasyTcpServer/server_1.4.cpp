@@ -23,11 +23,16 @@ using namespace std;
 
 enum
 {
-	CMD_LOGIN, CMD_LOGOUT,CMD_ERROR
+	CMD_LOGIN, CMD_LOGIN_RESULT,
+	CMD_LOGOUT, CMD_LOGOUT_RESULT,
+	CMD_ERROR
 };
 
+//***注***
+//不再将包头和包体分开用结构体声明
+//而是通过继承，只传一次结构体（或类对象）就同时得到包头与包体
 
-//网络数据报文的包头
+#if 0
 struct DataHead
 {
 	short datalength;
@@ -53,6 +58,60 @@ struct LogInResult
 
 struct LogOutResult
 {
+	int result;
+};
+#endif
+
+struct DataHead
+{
+	short datalength;
+	short cmd;
+};
+
+struct LogIn:public DataHead
+{
+	LogIn()
+	{
+		datalength = sizeof(LogIn);
+		cmd = CMD_LOGIN;
+	}
+
+	char username[20];
+	char password[32];
+};
+
+struct LogInResult :public DataHead
+{
+	LogInResult()
+	{
+		datalength = sizeof(LogInResult);
+		cmd = CMD_LOGIN_RESULT;
+		result = 0;
+	}
+
+	int result;
+};
+
+struct LogOut :public DataHead
+{
+	LogOut()
+	{
+		datalength = sizeof(LogOut);
+		cmd = CMD_LOGOUT;
+	}
+
+	char username[20];
+};
+
+struct LogOutResult :public DataHead
+{
+	LogOutResult()
+	{
+		datalength = sizeof(LogOutResult);
+		cmd = CMD_LOGOUT_RESULT;
+		result = 0;
+	}
+
 	int result;
 };
 
@@ -128,21 +187,30 @@ int main()
 			break;
 		}
 
-		cout << "数据长度：" << dh.datalength<<" 收到命令：" << dh.cmd <<endl;
-
 		// 6 处理请求
 		switch (dh.cmd)
 		{
 		case CMD_LOGIN:
 		{
 			LogIn login{};
-			recv(client_sock, (char*)&login, sizeof(LogIn), 0);
+			//***注***
+			//错误写法1：
+			//recv(client_sock, (char*)&login, sizeof(LogIn), 0);
+			//原因：服务端首先接收一个DataHead类型的数据，而剩下的数据仅仅只还有
+			//两个字符数组所占的空间长度，但此处接收一个LogIn类型的数据的话，长度为
+			//DataHead类型的数据长度加上两个字符数组所占的空间长度的总和
+			//错误写法2：
+			//recv(client_sock, (char*)&login, sizeof(LogIn)-sizeof(DataHead), 0);
+			//原因：LogIn对象也要进行【数据偏移】，才能对应上传来的数据
+			recv(client_sock, (char*)&login+sizeof(DataHead), sizeof(LogIn) - sizeof(DataHead), 0);
 
 			//忽略判断用户密码是否正确的过程
 
+			cout << "收到命令：CMD_LOGIN" << " 数据长度："<<login.datalength << endl;
+			cout << "用户名：" << login.username<< "登入" << endl;
+
 			//7 发送报文
-			LogInResult res{ 1 };
-			send(client_sock, (const char*)&dh, sizeof(DataHead), 0);
+			LogInResult res{};
 			send(client_sock, (const char*)&res, sizeof(LogInResult), 0);
 		}
 		break;
@@ -150,19 +218,19 @@ int main()
 		case CMD_LOGOUT:
 		{
 			LogOut logout{};
-			recv(client_sock, (char*)&logout, sizeof(LogOut), 0);
+			recv(client_sock, (char*)&logout + sizeof(DataHead), sizeof(LogOut)-sizeof(DataHead), 0);
 
-			LogOutResult res{ 1 };
-			send(client_sock, (const char*)&dh, sizeof(DataHead), 0);
+			cout << "收到命令：CMD_LOGOUT" << " 数据长度：" << logout.datalength << endl;
+			cout << "用户名：" << logout.username <<"登出" << endl;
+
+			LogOutResult res{};
 			send(client_sock, (const char*)&res, sizeof(LogOutResult), 0);
 		}
 		break;
 
 		default:
 		{
-			dh.cmd = CMD_ERROR;
-			dh.datalength = 0;
-			send(client_sock, (const char*)&dh, sizeof(DataHead), 0);
+			cout << "Error!" << endl;
 		}
 		}
 	}
