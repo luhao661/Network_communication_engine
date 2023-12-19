@@ -155,12 +155,12 @@ int main()
 	while (1)
 	{
 		//设置5秒的超时时间
-		timeout.tv_sec = 5;
+		timeout.tv_sec = 3;
 		timeout.tv_usec = 0;
 		//或
 		//struct timeval timeout = { 5,0 };
 
-		//伯克利socket	
+		//伯克利socket	 BSD socket
 
 		// 1 创建fd_set结构体将要监视的套接字句柄集中到一起，以监视这些套接字句柄
 		fd_set fdRead;//关注 是否存在待读取数据
@@ -189,15 +189,17 @@ int main()
 		FD_SET(serv_sock,&fdExp);
 
 		// 4 将客户端套接字句柄添加到fdRead集合
-		//这样做的目的是为了将这些已连接的客户端套接字加入到 fdRead 集合中进行监视，
+		// 这样做的目的是为了将这些已连接的客户端套接字加入到 fdRead 集合中进行监视，
 		// 以便在调用 select() 函数时，能够监视这些套接字的读取操作。
 		// 这意味着如果有任何已连接的客户端发送数据，select() 函数将返回并通知程序，
 		// 使得程序可以在套接字可读的情况下进行相应的处理
-		//【但是本代码没有针对这些已连接客户端套接字的数据读取事件进行检查】
 		for (int n = (int)vec_client.size() - 1; n >=0 ; --n)
 		{
 			FD_SET(vec_client[n],&fdRead);
 		}
+
+		cout << "fdRead.fd_count = " << fdRead.fd_count << endl;
+
 
 		// 5 使用select函数
 		// 对于第一个参数，int nfds，是指fd_set集合中所有套接字句柄的范围，
@@ -221,6 +223,7 @@ int main()
 		{
 			//从fdRead集合中删除该句柄
 			//在后续的 I/O 多路复用操作中不再监听或检查该句柄的状态变化
+			//（不写也没关系）
 			FD_CLR(serv_sock,&fdRead);
 
 			SOCKET client_sock = INVALID_SOCKET;
@@ -231,23 +234,38 @@ int main()
 			client_sock = accept(serv_sock, (sockaddr*)&client_adr, &client_adr_size);
 			if (client_sock == INVALID_SOCKET)
 				cout << "错误，接受到无效客户端SOCKET";
-
-			//inet_ntoa()将网络字节序的整数型 IP 地址转换为字符串形式
-			cout << "新客户端加入：IP = " << inet_ntoa(client_adr.sin_addr) << endl;
-
-			vec_client.push_back(client_sock);
-
-			//通知所有客户端有新用户加入
-			for (int n = (int)vec_client.size() - 1; n >= 0; --n)
+			else
 			{
-				NewUserJoin newuserjoin;
-				send(vec_client[n],(const char*)&newuserjoin,sizeof(NewUserJoin),0);
+				//inet_ntoa()将网络字节序的整数型 IP 地址转换为字符串形式
+				cout << "新客户端加入：IP = " << inet_ntoa(client_adr.sin_addr)
+					<< "  <socket=" << client_sock << ">" << endl;
+
+				//通知该客户端之前的所有客户端有新用户加入
+				for (int n = (int)vec_client.size() - 1; n >= 0; --n)
+				{
+					NewUserJoin newuserjoin;
+					send(vec_client[n], (const char*)&newuserjoin, sizeof(NewUserJoin), 0);
+				}
+
+				vec_client.push_back(client_sock);
 			}
 		}
 
+		//***注***
+		//如果 select() 返回后没有任何套接字处于待读取状态，fdRead.fd_count 将为 0
+		//所以两处的fdRead.fd_count的值，前者会是1  2  或更大，而后者通常只会是0或者1
+		//（通常就是指多个客户端不是同时向服务端发送数据）
+		cout << "fdRead.fd_count = " << fdRead.fd_count << endl;
+
+		//处理已连接的客户端套接字句柄
 		//循环遍历 fdRead 集合中的套接字句柄，然后通过调用 Process() 函数来处理这些句柄
 		for (int n = 0; n < fdRead.fd_count; ++n)
 		{
+			//以下写法为什么在处理第二个客户端时出现无法捕获状态变化的问题
+			//if(FD_ISSET(vec_client[n], &fdRead))  {...}
+			//因为新的已连接的客户端套接字句柄加入是在容器的尾部，而且这样写无法确定
+			//是哪个客户端与服务端进行了数据传输
+
 			if (Process(fdRead.fd_array[n]) == -1)
 			{
 				//如果某个客户端出现问题或断开连接，就将其从已连接客户端的列表中删除。
@@ -255,6 +273,7 @@ int main()
 				if (it != vec_client.end())
 					vec_client.erase(it);
 			}
+			
 		}
 	}
 
@@ -275,6 +294,7 @@ int main()
 
 	return 0;
 }
+
 int Process(SOCKET client_sock)
 {
 	DataHead dh = {};
