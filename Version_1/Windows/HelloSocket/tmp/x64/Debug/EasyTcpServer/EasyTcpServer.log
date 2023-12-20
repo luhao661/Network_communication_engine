@@ -1,6 +1,6 @@
-﻿  server_1.0.cpp
-  server_1.1.cpp
-  server_1.2.cpp
-  server_1.3.cpp
-  正在生成代码...
+﻿  server_1.5.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.5.cpp(202,33): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.5.cpp(256,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.5.cpp(275,13): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\server_1.5.cpp(353): warning C4715: “Process”: 不是所有的控件路径都返回值
   EasyTcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpServer.exe
