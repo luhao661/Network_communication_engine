@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <iostream>
 
 //解决windows.h和winsock2.h下宏定义冲突
@@ -140,7 +140,16 @@ int main()
 	//用于在计算机内部进行自我通信和测试网络功能。
 	//当计算机尝试连接到127.0.0.1时，它实际上是在尝试与自己的网络接口进行通信。
 	//或写为
+#if 1
 	serv_adr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+#elif 0
+	//通过cmd查到Linux虚拟机的IP地址为192.168.175.1
+	//因此连接Linux服务端就需要修改为
+	serv_adr.sin_addr.s_addr = inet_addr("192.168.175.1");
+#else
+	//通过cmd查到Mac虚拟机的IP地址为192.168.175.1
+	serv_adr.sin_addr.s_addr = inet_addr("192.168.175.133");
+#endif
 
 	// 2 连接服务器 connect
 	if (connect(client_sock, (sockaddr*)&serv_adr, sizeof(serv_adr)) == SOCKET_ERROR)

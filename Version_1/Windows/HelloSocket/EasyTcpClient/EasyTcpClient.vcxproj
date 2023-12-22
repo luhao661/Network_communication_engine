@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Linux\dev\client_1.5_multi-platform.cpp" />
     <ClCompile Include="client_1.0.cpp" />
     <ClCompile Include="client_1.1.cpp" />
     <ClCompile Include="client_1.2.cpp" />
