@@ -147,10 +147,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Linux\dev\client_1.5_multi-platform.cpp" />
     <ClCompile Include="client_1.0.cpp" />
     <ClCompile Include="client_1.1.cpp" />
     <ClCompile Include="client_1.2.cpp" />
     <ClCompile Include="client_1.3.cpp" />
+    <ClCompile Include="client_1.4.cpp" />
+    <ClCompile Include="client_1.5.cpp" />
+    <ClCompile Include="client_1.6.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EasyTcpClient_1.0.hpp" />
+    <ClInclude Include="MessageHeader.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
