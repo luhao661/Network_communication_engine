@@ -206,12 +206,10 @@ int main()
 		FD_SET(serv_sock,&fdWrite);
 		FD_SET(serv_sock,&fdExp);
 
-		//Windows下不需要，因为
-
-
 		//创建maxSocket来存储所有客户端加入后的套接字的最大值
 		SOCKET maxSocket=serv_sock;
 		//***注***
+		//Windows下不需要，因为
 		//在 Windows 下使用 select()，实际上是依赖其他参数的设置来实现对文件描述符的监视，
 		//如第二个参数 fdset，它指向一个 fd_set 结构体，其中包含要监视的文件描述符集合，
 		//而不是依赖 nfds 参数即第一个参数来确定监视的文件描述符数量

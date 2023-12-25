@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <iostream>
 
 #ifdef   _WIN32
@@ -159,11 +159,11 @@ int main()
 #if 0
 	serv_adr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
 #elif 1
-	//通过cmd查到Linux虚拟机的IP地址为192.168.175.1
+	//通过cmd查到Linux虚拟机的IP地址为192.168.175.132
 	//因此连接Linux服务端就需要修改为
 	serv_adr.sin_addr.s_addr = inet_addr("192.168.175.132");
 #else
-	//通过cmd查到Mac虚拟机的IP地址为192.168.175.1
+	//通过cmd查到Mac虚拟机的IP地址为192.168.175.133
 	serv_adr.sin_addr.s_addr = inet_addr("192.168.175.133");
 #endif
 

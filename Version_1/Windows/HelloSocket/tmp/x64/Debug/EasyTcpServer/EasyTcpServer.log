@@ -1,6 +1,6 @@
 ﻿  server_1.5_multiplatform.cpp
-D:\CODE\Network_communication_engine\Version_1\Linux\dev\server_1.5_multiplatform.cpp(237,33): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-D:\CODE\Network_communication_engine\Version_1\Linux\dev\server_1.5_multiplatform.cpp(330,13): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Linux\dev\server_1.5_multiplatform.cpp(235,33): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Linux\dev\server_1.5_multiplatform.cpp(328,13): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   server_1.0.cpp
   server_1.1.cpp
   server_1.2.cpp

@@ -147,7 +147,7 @@ int main()
 	//因此连接Linux服务端就需要修改为
 	serv_adr.sin_addr.s_addr = inet_addr("192.168.175.1");
 #else
-	//通过cmd查到Mac虚拟机的IP地址为192.168.175.1
+	//通过cmd查到Mac虚拟机的IP地址为192.168.175.133
 	serv_adr.sin_addr.s_addr = inet_addr("192.168.175.133");
 #endif
 
