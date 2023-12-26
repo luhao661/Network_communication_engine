@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include <iostream>
 
 //解决windows.h和winsock2.h下宏定义冲突
@@ -127,13 +127,7 @@ int main()
 	sockaddr_in serv_adr = {};
 	serv_adr.sin_family = AF_INET;
 	serv_adr.sin_port = htons(9190);
-	//serv_adr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
-	//127.0.0.1是IPv4地址空间中的一个特殊保留地址，
-	//也称为回环地址或本地回环地址。
-	//它通常被用作本地主机上的环回接口，
-	//用于在计算机内部进行自我通信和测试网络功能。
-	//当计算机尝试连接到127.0.0.1时，它实际上是在尝试与自己的网络接口进行通信。
-	//或写为
+	//可以用常数 INADDR_ANY 来获取服务器端的 IP 地址
 	serv_adr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
 
 	//  bind 绑定用于接受客户端连接的服务端网络端口
