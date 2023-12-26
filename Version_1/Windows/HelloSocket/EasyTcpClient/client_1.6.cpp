@@ -20,8 +20,9 @@ int main()
 	WSAStartup(ver, &dat);
 #endif
 
-	EasyTcpClient client;
-	client.initSocket();
+	EasyTcpClient client1,client2;
+	client1.initSocket();
+	client2.initSocket();
 
 #if 1
 	const char ip[] = "127.0.0.1";
@@ -32,14 +33,18 @@ int main()
 	//通过cmd查到Mac虚拟机的IP地址为192.168.175.133
 	const char ip[] = "192.168.175.133";
 #endif
-	client.Connect(ip,9190);
+	//注意虚拟机打开后，其IP地址可能会改变
+
+	//创建两个客户端socket，来连接两个服务器
+	client1.Connect(ip,9190);
+	client2.Connect(ip,9191);
 
 
 	// 3 输入请求命令（利用线程）
 	//启动线程
 	//***注***
 	//Mac端不支持传引用
-	thread t1(cmdThread, &client);//格式：函数名  参数
+	thread t1(cmdThread, &client1);//格式：函数名  参数
 	//从 thread 对象分离执行线程，允许执行且独立地持续。
 	//一旦该线程退出，则释放任何分配的资源。
 
@@ -48,6 +53,9 @@ int main()
 	//主线程不再需要关心该线程的状态或结束时机。
 	//如：在分离后，不再能够对 t 进行 t1.join()
 	t1.detach();
+
+	thread t2(cmdThread, &client2);
+	t2.detach();
 
 	//若不使用t1.detach();
 	//主线程的while循环用g_bRun来作为判断终止的条件
@@ -58,12 +66,13 @@ int main()
 	//主线程结束时不会直接影响到已分离的线程。
 	//主线程的结束不会导致已分离线程的提前终止，已分离的线程将继续在后台独立运行。
 
-	while (client.isRun())
+	while (client1.isRun() || client2.isRun())
 	{
-		client.OnRun();
+		client1.OnRun(), client2.OnRun();
 	}
 
-	client.Close();
+	client1.Close();
+	client2.Close();
 
 
 	//防止打开EasyTcpClient.exe后一闪而过

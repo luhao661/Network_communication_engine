@@ -48,18 +48,48 @@ private:
 
 public:
 
-	EasyTcpClient()
-	{
-		m_client_sock = INVALID_SOCKET;
-	}
+	EasyTcpClient();
 
 	//在多态情况下避免局部销毁对象（《Effective C++》P41）
-	virtual ~EasyTcpClient()
+	virtual ~EasyTcpClient();
+
+	void initSocket();
+
+	int Connect(const char* ip, unsigned short port);
+
+	void Close();
+
+	//是否在正常工作中
+	bool isRun()
 	{
-		Close();
+		return m_client_sock != INVALID_SOCKET;
 	}
 
-	void initSocket()
+	//处理网络数据
+	//查询是否有待读取的数据
+	bool OnRun();
+
+	//接收数据
+	//处理粘包 拆分包
+	int RecvData();
+
+	//响应网络消息
+	void OnNetMsg(DataHead* pHead);
+
+	//发送数据
+	int SendData(DataHead* pHead);
+};
+
+EasyTcpClient::EasyTcpClient()
+{
+	m_client_sock = INVALID_SOCKET;
+}
+EasyTcpClient::~EasyTcpClient()
+{
+	Close();
+}
+void EasyTcpClient::initSocket()
+{
 	{
 #ifdef _WIN32
 		//初始化
@@ -75,7 +105,7 @@ public:
 		//那就关闭了，再重新创建一个
 		if (m_client_sock != INVALID_SOCKET)
 		{
-			cout << "<socket="<<m_client_sock<<">关闭旧连接\n";
+			cout << "<socket=" << m_client_sock << ">关闭旧连接\n";
 			Close();
 		}
 
@@ -85,195 +115,192 @@ public:
 		if (m_client_sock == INVALID_SOCKET)
 			cout << "建立socket失败\n";
 		else
-			cout << "建立socket成功...\n";
+			cout << "建立socket=<"<< m_client_sock <<">成功...\n";
 	}
 
-	int Connect(const char* ip, unsigned short port)
+}
+int EasyTcpClient::Connect(const char* ip, unsigned short port)
+{
+	//如果套接字还没被创建
+	if (m_client_sock == INVALID_SOCKET)
 	{
-		//如果套接字还没被创建
-		if (m_client_sock == INVALID_SOCKET)
-		{
-			initSocket();
-		}
-		//***注***
-		// 在网络编程中，AF_INET 用于指定地址族（Address Family）为 IPv4，
-		// 而 PF_INET 则用于指定协议族为 IPv4。
-		// 在实际使用中，AF_INET 与 PF_INET 可以互换使用，
-		// 而且在大多数情况下，它们是相等的。
+		initSocket();
+	}
+	//***注***
+	// 在网络编程中，AF_INET 用于指定地址族（Address Family）为 IPv4，
+	// 而 PF_INET 则用于指定协议族为 IPv4。
+	// 在实际使用中，AF_INET 与 PF_INET 可以互换使用，
+	// 而且在大多数情况下，它们是相等的。
 
-		//***注***
-		//初始化值为【目标服务器端套接字】的 IP 和端口信息。
-		//一定要进行初始化，原因见《TCP/IP网络编程读书笔记》
-		sockaddr_in serv_adr = {};
-		serv_adr.sin_family = AF_INET;
-		serv_adr.sin_port = htons(port);
-		//serv_adr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
-		//127.0.0.1是IPv4地址空间中的一个特殊保留地址，
-		//也称为回环地址或本地回环地址。
-		//它通常被用作本地主机上的环回接口，
-		//用于在计算机内部进行自我通信和测试网络功能。
-		//当计算机尝试连接到127.0.0.1时，它实际上是在尝试与自己的网络接口进行通信。
-		//或写为
+	//***注***
+	//初始化值为【目标服务器端套接字】的 IP 和端口信息。
+	//一定要进行初始化，原因见《TCP/IP网络编程读书笔记》
+	sockaddr_in serv_adr = {};
+	serv_adr.sin_family = AF_INET;
+	serv_adr.sin_port = htons(port);
+	//serv_adr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+	//127.0.0.1是IPv4地址空间中的一个特殊保留地址，
+	//也称为回环地址或本地回环地址。
+	//它通常被用作本地主机上的环回接口，
+	//用于在计算机内部进行自我通信和测试网络功能。
+	//当计算机尝试连接到127.0.0.1时，它实际上是在尝试与自己的网络接口进行通信。
+	//或写为
 
 #ifdef _WIN32
-		serv_adr.sin_addr.S_un.S_addr = inet_addr(ip);
+	serv_adr.sin_addr.S_un.S_addr = inet_addr(ip);
 #else
-		serv_adr.sin_addr.s_addr = inet_addr(ip);
+	serv_adr.sin_addr.s_addr = inet_addr(ip);
 #endif
 
-		// 2 连接服务器 connect
-		if (connect(m_client_sock, (sockaddr*)&serv_adr, sizeof(serv_adr)) == SOCKET_ERROR)
-			cout << "connect() ERROR\n";
-		else
-			cout << "连接成功...\n";
-		//***注***
-		//客户端套接字在调用connect()时绑定（也叫分配）了客户端地址
+	// 2 连接服务器 connect
+	int res = connect(m_client_sock, (sockaddr*)&serv_adr, sizeof(serv_adr));
+	if (res == SOCKET_ERROR)
+		cout << "<socket=" << m_client_sock <<  ">连接服务器<"
+		<< ip << " : " << port << ">失败...\n";
+	else
+		cout << "<socket=" << m_client_sock << ">连接服务器<"
+		<<ip<<" : "<<port<<">成功...\n";
+	//***注***
+	//客户端套接字在调用connect()时绑定（也叫分配）了客户端地址
 
-		return 0;
-	}
+	return res;
+}
 
-	void Close()
+void EasyTcpClient::Close()
+{
+	//如果主动关闭客户端套接字，那么析构函数不需要再关闭一次连接
+	if (m_client_sock != INVALID_SOCKET)
 	{
-		//如果主动关闭客户端套接字，那么析构函数不需要再关闭一次连接
-		if (m_client_sock != INVALID_SOCKET)
-		{
 #ifdef _WIN32
-			// 7 关闭套节字closesocket
-			closesocket(m_client_sock);
+		// 7 关闭套节字closesocket
+		closesocket(m_client_sock);
 
-			//注销
-			WSACleanup();
+		//注销
+		WSACleanup();
 
 #else
-			close(m_client_sock);
+		close(m_client_sock);
 #endif
-			//避免重复关闭
-			m_client_sock = INVALID_SOCKET;
-		}
+		//避免重复关闭
+		m_client_sock = INVALID_SOCKET;
 	}
+}
 
-	//是否在正常工作中
-	bool isRun()
+bool EasyTcpClient::OnRun()
+{
+	if (!isRun())
+		return false;
+
+	fd_set fdRead;
+
+	FD_ZERO(&fdRead);
+
+	FD_SET(m_client_sock, &fdRead);
+
+	struct timeval timeout = { 3,0 };
+
+	int fd_num = select(m_client_sock + 1, &fdRead, 0, 0, &timeout);
+	if (fd_num == -1)
 	{
-		return m_client_sock != INVALID_SOCKET;
+		cout << "<socket=" << m_client_sock << ">select任务结束_1" << endl;
+		//防止检测到返回值-1后还仍在持续运行OnRun()
+		Close();
+		return false;
 	}
-
-	//处理网络数据
-	//查询是否有待读取的数据
-	bool OnRun()
+	else if (fd_num == 0)
 	{
-		if (!isRun())
-			return false;
-
-		fd_set fdRead;
-
-		FD_ZERO(&fdRead);
-
-		FD_SET(m_client_sock, &fdRead);
-
-		struct timeval timeout = { 3,0 };
-
-		int fd_num = select(m_client_sock + 1, &fdRead, 0, 0, &timeout);
-		if (fd_num == -1)
-		{
-			cout << "<socket="<<m_client_sock<<">select任务结束_1" << endl;
-			return false;
-		}
-		else if (fd_num == 0)
-		{
-			//cout << "空闲时间处理其他业务" << endl;
-		}
-
-		if (FD_ISSET(m_client_sock, &fdRead))
-		{
-			FD_CLR(m_client_sock, &fdRead);
-
-			if (-1 == RecvData())
-			{
-				cout << "<socket=INVALID_SOCKET"  << ">select任务结束_2" << endl;
-			}
-		}
-
-		return true;
+		//cout << "空闲时间处理其他业务" << endl;
 	}
 
-	//接收数据
-	//处理粘包 拆分包
-	int RecvData()
+	if (FD_ISSET(m_client_sock, &fdRead))
 	{
-		char RecvBuff[4096] = {};
+		FD_CLR(m_client_sock, &fdRead);
 
-		//先接收包头
-		int len = (int)recv(m_client_sock, (char*)&RecvBuff, sizeof(DataHead), 0);
-		if (len <= 0)
+		if (-1 == RecvData())
 		{
-			cout << "与服务器断开连接，任务结束" << endl;
-			return -1;
+			cout << "<socket=INVALID_SOCKET" << ">select任务结束_2" << endl;
 		}
-
-		//DataHead* pHead = (DataHead*)RecvBuff;
-		DataHead* pHead = reinterpret_cast<DataHead*>(RecvBuff);
-
-		//再根据数据包长度，继续接收数据
-		recv(m_client_sock, (char*)RecvBuff + sizeof(DataHead),
-			pHead->datalength - sizeof(DataHead), 0);
-
-		//***理解***
-		//一个指向RecvBuff存储空间的指针转换为 DataHead* 类型的指针
-		//这种转换被称为重新解释转换
-		//那么后面的switch语句块
-		//LogInResult* loginresult =reinterpret_cast<LogInResult*>(pHead)
-		//同理将DataHead* 类型的指针解释为LogInResult*类型的指针
-		//得以访问datalength数据成员
-
-		OnNetMsg(pHead);
-
-		return 0;
 	}
 
-	//响应网络消息
-	void OnNetMsg(DataHead* pHead)
+	return true;
+}
+
+int EasyTcpClient::RecvData()
+{
+	char RecvBuff[4096] = {};
+
+	//先接收包头
+	int len = (int)recv(m_client_sock, (char*)&RecvBuff, sizeof(DataHead), 0);
+	if (len <= 0)
 	{
-		switch (pHead->cmd)
-		{
-			case CMD_LOGIN_RESULT:
-			{
-				LogInResult* loginresult =reinterpret_cast<LogInResult*>(pHead);
-
-				cout << "收到服务端消息：CMD_LOGIN_RESULT"
-					<< " 数据长度：" << loginresult->datalength << endl;
-			}
-			break;
-
-			case CMD_LOGOUT_RESULT:
-			{
-				LogOutResult* logoutresult = reinterpret_cast<LogOutResult*>(pHead);
-
-				cout << "收到服务端消息：CMD_LOGOUT_RESULT"
-					<< " 数据长度：" << logoutresult->datalength << endl;
-			}
-			break;
-
-			case CMD_NEW_USER_JOIN:
-			{	
-				NewUserJoin* newuserjoin = reinterpret_cast<NewUserJoin*>(pHead);
-				cout << "\n收到服务端消息：CMD_NEW_USER_JOIN"
-					<< " 数据长度：" << newuserjoin->datalength << endl;
-			}
-			break;
-		}
-
+		cout << "<socket=" << m_client_sock << 
+			">与服务器断开连接，任务结束" << endl;
+		return -1;
 	}
 
-	//发送数据
-	int SendData(DataHead* pHead)
+	//DataHead* pHead = (DataHead*)RecvBuff;
+	DataHead* pHead = reinterpret_cast<DataHead*>(RecvBuff);
+
+	//再根据数据包长度，继续接收数据
+	recv(m_client_sock, (char*)RecvBuff + sizeof(DataHead),
+		pHead->datalength - sizeof(DataHead), 0);
+
+	//***理解***
+	//一个指向RecvBuff存储空间的指针转换为 DataHead* 类型的指针
+	//这种转换被称为重新解释转换
+	//那么后面的switch语句块
+	//LogInResult* loginresult =reinterpret_cast<LogInResult*>(pHead)
+	//同理将DataHead* 类型的指针解释为LogInResult*类型的指针
+	//得以访问datalength数据成员
+
+	OnNetMsg(pHead);
+
+	return 0;
+}
+
+void EasyTcpClient::OnNetMsg(DataHead* pHead)
+{
+	switch (pHead->cmd)
 	{
-		if (isRun() && pHead)
-		{
-			return send(m_client_sock,(const char*)pHead,pHead->datalength,0);
-		}
+	case CMD_LOGIN_RESULT:
+	{
+		LogInResult* loginresult = reinterpret_cast<LogInResult*>(pHead);
 
-		return SOCKET_ERROR;
+		cout << "<socket=" << m_client_sock << 
+			">收到服务端消息：CMD_LOGIN_RESULT"
+			<< " 数据长度：" << loginresult->datalength << endl;
+	}
+	break;
+
+	case CMD_LOGOUT_RESULT:
+	{
+		LogOutResult* logoutresult = reinterpret_cast<LogOutResult*>(pHead);
+
+		cout << "<socket=" << m_client_sock << 
+			">收到服务端消息：CMD_LOGOUT_RESULT"
+			<< " 数据长度：" << logoutresult->datalength << endl;
+	}
+	break;
+
+	case CMD_NEW_USER_JOIN:
+	{
+		NewUserJoin* newuserjoin = reinterpret_cast<NewUserJoin*>(pHead);
+		cout << "\n<socket=" << m_client_sock << ">收到服务端消息：CMD_NEW_USER_JOIN"
+			<< " 数据长度：" << newuserjoin->datalength << endl;
+	}
+	break;
 	}
 
-};
+}
+
+int EasyTcpClient::SendData(DataHead* pHead)
+{
+	if (isRun() && pHead)
+	{
+		return send(m_client_sock, (const char*)pHead, pHead->datalength, 0);
+	}
+
+	return SOCKET_ERROR;
+}
+
+

@@ -1,13 +1,5 @@
-﻿  client_1.5_multi-platform.cpp
-  client_1.0.cpp
-  client_1.1.cpp
-  client_1.2.cpp
-  client_1.3.cpp
-  client_1.4.cpp
-  client_1.5.cpp
-  client_1.6.cpp
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.0.hpp(176,37): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+﻿  client_1.6.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.0.hpp(202,36): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
   (编译源文件“client_1.6.cpp”)
   
-  正在生成代码...
   EasyTcpClient.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpClient.exe
