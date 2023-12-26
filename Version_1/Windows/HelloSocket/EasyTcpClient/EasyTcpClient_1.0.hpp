@@ -47,7 +47,6 @@ private:
 	SOCKET m_client_sock;
 
 public:
-
 	EasyTcpClient();
 
 	//在多态情况下避免局部销毁对象（《Effective C++》P41）
@@ -115,7 +114,7 @@ void EasyTcpClient::initSocket()
 		if (m_client_sock == INVALID_SOCKET)
 			cout << "建立socket失败\n";
 		else
-			cout << "建立socket成功...\n";
+			cout << "建立socket=<"<< m_client_sock <<">成功...\n";
 	}
 
 }
@@ -153,14 +152,17 @@ int EasyTcpClient::Connect(const char* ip, unsigned short port)
 #endif
 
 	// 2 连接服务器 connect
-	if (connect(m_client_sock, (sockaddr*)&serv_adr, sizeof(serv_adr)) == SOCKET_ERROR)
-		cout << "connect() ERROR\n";
+	int res = connect(m_client_sock, (sockaddr*)&serv_adr, sizeof(serv_adr));
+	if (res == SOCKET_ERROR)
+		cout << "<socket=" << m_client_sock <<  ">连接服务器<"
+		<< ip << " : " << port << ">失败...\n";
 	else
-		cout << "连接成功...\n";
+		cout << "<socket=" << m_client_sock << ">连接服务器<"
+		<<ip<<" : "<<port<<">成功...\n";
 	//***注***
 	//客户端套接字在调用connect()时绑定（也叫分配）了客户端地址
 
-	return 0;
+	return res;
 }
 
 void EasyTcpClient::Close()
@@ -200,6 +202,8 @@ bool EasyTcpClient::OnRun()
 	if (fd_num == -1)
 	{
 		cout << "<socket=" << m_client_sock << ">select任务结束_1" << endl;
+		//防止检测到返回值-1后还仍在持续运行OnRun()
+		Close();
 		return false;
 	}
 	else if (fd_num == 0)
@@ -228,12 +232,14 @@ int EasyTcpClient::RecvData()
 	int len = (int)recv(m_client_sock, (char*)&RecvBuff, sizeof(DataHead), 0);
 	if (len <= 0)
 	{
-		cout << "与服务器断开连接，任务结束" << endl;
+		cout << "<socket=" << m_client_sock << 
+			">与服务器断开连接，任务结束" << endl;
 		return -1;
 	}
 
-	//DataHead* pHead = (DataHead*)RecvBuff;
 	DataHead* pHead = reinterpret_cast<DataHead*>(RecvBuff);
+	//或写为
+	//DataHead* pHead = (DataHead*)RecvBuff;
 
 	//再根据数据包长度，继续接收数据
 	recv(m_client_sock, (char*)RecvBuff + sizeof(DataHead),
@@ -260,7 +266,8 @@ void EasyTcpClient::OnNetMsg(DataHead* pHead)
 	{
 		LogInResult* loginresult = reinterpret_cast<LogInResult*>(pHead);
 
-		cout << "收到服务端消息：CMD_LOGIN_RESULT"
+		cout << "<socket=" << m_client_sock << 
+			">收到服务端消息：CMD_LOGIN_RESULT"
 			<< " 数据长度：" << loginresult->datalength << endl;
 	}
 	break;
@@ -269,7 +276,8 @@ void EasyTcpClient::OnNetMsg(DataHead* pHead)
 	{
 		LogOutResult* logoutresult = reinterpret_cast<LogOutResult*>(pHead);
 
-		cout << "收到服务端消息：CMD_LOGOUT_RESULT"
+		cout << "<socket=" << m_client_sock << 
+			">收到服务端消息：CMD_LOGOUT_RESULT"
 			<< " 数据长度：" << logoutresult->datalength << endl;
 	}
 	break;
@@ -277,7 +285,8 @@ void EasyTcpClient::OnNetMsg(DataHead* pHead)
 	case CMD_NEW_USER_JOIN:
 	{
 		NewUserJoin* newuserjoin = reinterpret_cast<NewUserJoin*>(pHead);
-		cout << "\n收到服务端消息：CMD_NEW_USER_JOIN"
+		cout << "\n<socket=" << m_client_sock <<
+			">收到服务端消息：CMD_NEW_USER_JOIN"
 			<< " 数据长度：" << newuserjoin->datalength << endl;
 	}
 	break;
