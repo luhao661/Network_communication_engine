@@ -47,7 +47,6 @@ private:
 	SOCKET m_client_sock;
 
 public:
-
 	EasyTcpClient();
 
 	//在多态情况下避免局部销毁对象（《Effective C++》P41）
@@ -55,9 +54,9 @@ public:
 
 	void initSocket();
 
-	int Connect(const char* ip, unsigned short port);
-
 	void Close();
+
+	int Connect(const char* ip, unsigned short port);
 
 	//是否在正常工作中
 	bool isRun()
@@ -84,41 +83,41 @@ EasyTcpClient::EasyTcpClient()
 {
 	m_client_sock = INVALID_SOCKET;
 }
+
 EasyTcpClient::~EasyTcpClient()
 {
 	Close();
 }
-void EasyTcpClient::initSocket()
-{
-	{
-#ifdef _WIN32
-		//初始化
 
-		//创建版本号
-		WORD ver = MAKEWORD(2, 2);
-		//创建Windows Sockets API数据
-		WSADATA dat;
-		WSAStartup(ver, &dat);
+void EasyTcpClient::initSocket()
+{	
+#ifdef _WIN32
+	//初始化
+
+	//创建版本号
+	WORD ver = MAKEWORD(2, 2);
+	//创建Windows Sockets API数据
+	WSADATA dat;
+	WSAStartup(ver, &dat);
 #endif
 
-		//如果当前对象的套接字已经创建了，不允许重复创建套接字
-		//那就关闭了，再重新创建一个
-		if (m_client_sock != INVALID_SOCKET)
-		{
-			cout << "<socket=" << m_client_sock << ">关闭旧连接\n";
-			Close();
-		}
-
-		// 1 建立一个socket
-		m_client_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-		if (m_client_sock == INVALID_SOCKET)
-			cout << "建立socket失败\n";
-		else
-			cout << "建立socket=<"<< m_client_sock <<">成功...\n";
+	//如果当前对象的套接字已经创建了，不允许重复创建套接字
+	//那就关闭了，再重新创建一个
+	if (m_client_sock != INVALID_SOCKET)
+	{
+		cout << "<socket=" << m_client_sock << ">关闭旧连接\n";
+		Close();
 	}
 
+	// 1 建立一个socket
+	m_client_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if (m_client_sock == INVALID_SOCKET)
+		cout << "建立socket失败\n";
+	else
+		cout << "建立socket=<" << m_client_sock << ">成功...\n";
 }
+
 int EasyTcpClient::Connect(const char* ip, unsigned short port)
 {
 	//如果套接字还没被创建
@@ -238,8 +237,9 @@ int EasyTcpClient::RecvData()
 		return -1;
 	}
 
-	//DataHead* pHead = (DataHead*)RecvBuff;
 	DataHead* pHead = reinterpret_cast<DataHead*>(RecvBuff);
+	//或写为
+	//DataHead* pHead = (DataHead*)RecvBuff;
 
 	//再根据数据包长度，继续接收数据
 	recv(m_client_sock, (char*)RecvBuff + sizeof(DataHead),
@@ -262,33 +262,41 @@ void EasyTcpClient::OnNetMsg(DataHead* pHead)
 {
 	switch (pHead->cmd)
 	{
-	case CMD_LOGIN_RESULT:
-	{
-		LogInResult* loginresult = reinterpret_cast<LogInResult*>(pHead);
+		case CMD_LOGIN_RESULT:
+		{
+			LogInResult* loginresult = reinterpret_cast<LogInResult*>(pHead);
 
-		cout << "<socket=" << m_client_sock << 
-			">收到服务端消息：CMD_LOGIN_RESULT"
-			<< " 数据长度：" << loginresult->datalength << endl;
-	}
-	break;
+			cout << "<socket=" << m_client_sock << 
+				">收到服务端消息：CMD_LOGIN_RESULT"
+				<< " 数据长度：" << loginresult->datalength << endl;
+		}
+		break;
 
-	case CMD_LOGOUT_RESULT:
-	{
-		LogOutResult* logoutresult = reinterpret_cast<LogOutResult*>(pHead);
+		case CMD_LOGOUT_RESULT:
+		{
+			LogOutResult* logoutresult = reinterpret_cast<LogOutResult*>(pHead);
 
-		cout << "<socket=" << m_client_sock << 
-			">收到服务端消息：CMD_LOGOUT_RESULT"
-			<< " 数据长度：" << logoutresult->datalength << endl;
-	}
-	break;
+			cout << "<socket=" << m_client_sock << 
+				">收到服务端消息：CMD_LOGOUT_RESULT"
+				<< " 数据长度：" << logoutresult->datalength << endl;
+		}
+		break;
 
-	case CMD_NEW_USER_JOIN:
-	{
-		NewUserJoin* newuserjoin = reinterpret_cast<NewUserJoin*>(pHead);
-		cout << "\n<socket=" << m_client_sock << ">收到服务端消息：CMD_NEW_USER_JOIN"
-			<< " 数据长度：" << newuserjoin->datalength << endl;
-	}
-	break;
+		case CMD_NEW_USER_JOIN:
+		{
+			NewUserJoin* newuserjoin = reinterpret_cast<NewUserJoin*>(pHead);
+			cout << "\n<socket=" << m_client_sock <<
+				">收到服务端消息：CMD_NEW_USER_JOIN"
+				<< " 数据长度：" << newuserjoin->datalength << endl;
+		}
+		break;
+
+		default:
+		{
+			cout << "\n<socket=" << m_client_sock <<
+				">收到服务端消息：CMD_ERROR"
+				<< " 数据长度：" << pHead->datalength << endl;
+		}
 	}
 
 }

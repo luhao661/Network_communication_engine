@@ -10,19 +10,9 @@ void cmdThread(EasyTcpClient* client);
 
 int main()
 {
-#ifdef _WIN32
-	//初始化
-
-	//创建版本号
-	WORD ver = MAKEWORD(2, 2);
-	//创建Windows Sockets API数据
-	WSADATA dat;
-	WSAStartup(ver, &dat);
-#endif
-
 	EasyTcpClient client1,client2;
 	client1.initSocket();
-	client2.initSocket();
+	//client2.initSocket();
 
 #if 1
 	const char ip[] = "127.0.0.1";
@@ -37,7 +27,7 @@ int main()
 
 	//创建两个客户端socket，来连接两个服务器
 	client1.Connect(ip,9190);
-	client2.Connect(ip,9191);
+	//client2.Connect(ip,9191);
 
 
 	// 3 输入请求命令（利用线程）
@@ -54,8 +44,8 @@ int main()
 	//如：在分离后，不再能够对 t 进行 t1.join()
 	t1.detach();
 
-	thread t2(cmdThread, &client2);
-	t2.detach();
+	//thread t2(cmdThread, &client2);
+	//t2.detach();
 
 	//若不使用t1.detach();
 	//主线程的while循环用g_bRun来作为判断终止的条件
@@ -66,13 +56,13 @@ int main()
 	//主线程结束时不会直接影响到已分离的线程。
 	//主线程的结束不会导致已分离线程的提前终止，已分离的线程将继续在后台独立运行。
 
-	while (client1.isRun() || client2.isRun())
+	while (client1.isRun() /*|| client2.isRun()*/)
 	{
-		client1.OnRun(), client2.OnRun();
+		client1.OnRun()/*, client2.OnRun()*/;
 	}
 
 	client1.Close();
-	client2.Close();
+	//client2.Close();
 
 
 	//防止打开EasyTcpClient.exe后一闪而过
