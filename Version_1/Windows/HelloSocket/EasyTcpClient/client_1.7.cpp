@@ -1,16 +1,16 @@
-#if 0
-#include "EasyTcpClient_1.0.hpp"
-#include <thread>
+#if 1
+#include "EasyTcpClient_1.1.hpp"
+//#include <thread>
 
 //不再创建一个全局的变量，提示线程是否正在运行
 //bool g_bRun = true;
 //而是在cmdThread()中通过关闭套接字，从而影响isRun()方法的返回值
 
-void cmdThread(EasyTcpClient* client);
+//void cmdThread(EasyTcpClient* client);
 
 int main()
 {
-	EasyTcpClient client1,client2;
+	EasyTcpClient client1, client2;
 	client1.initSocket();
 	//client2.initSocket();
 
@@ -26,7 +26,7 @@ int main()
 	//注意虚拟机打开后，其IP地址可能会改变
 
 	//创建两个客户端socket，来连接两个服务器
-	client1.Connect(ip,9190);
+	client1.Connect(ip, 9190);
 	//client2.Connect(ip,9191);
 
 
@@ -34,7 +34,7 @@ int main()
 	//启动线程
 	//***注***
 	//Mac端不支持传引用
-	thread t1(cmdThread, &client1);//格式：函数名  参数
+	//thread t1(cmdThread, &client1);//格式：函数名  参数
 	//从 thread 对象分离执行线程，允许执行且独立地持续。
 	//一旦该线程退出，则释放任何分配的资源。
 
@@ -42,7 +42,7 @@ int main()
 	//此后，主线程和分离的线程之间将相互独立运行，主线程不再等待分离的线程执行完成。
 	//主线程不再需要关心该线程的状态或结束时机。
 	//如：在分离后，不再能够对 t 进行 t1.join()
-	t1.detach();
+	//t1.detach();
 
 	//thread t2(cmdThread, &client2);
 	//t2.detach();
@@ -56,9 +56,20 @@ int main()
 	//主线程结束时不会直接影响到已分离的线程。
 	//主线程的结束不会导致已分离线程的提前终止，已分离的线程将继续在后台独立运行。
 
+	LogIn login{};
+
+#ifdef _WIN32
+	strncpy_s(login.username, 20, "Luhao", 6);
+	strncpy_s(login.password, 32, "123456", 7);
+#else
+	strncpy(login.username, "Luhao", 6);
+	strncpy(login.password, "123456", 7);
+#endif
+
 	while (client1.isRun() /*|| client2.isRun()*/)
 	{
 		client1.OnRun()/*, client2.OnRun()*/;
+		client1.SendData(&login);
 	}
 
 	client1.Close();
@@ -73,6 +84,7 @@ int main()
 	return 0;
 }
 
+/*
 //命令线程
 void cmdThread(EasyTcpClient* client)
 {
@@ -120,7 +132,7 @@ void cmdThread(EasyTcpClient* client)
 			//此处的client_sock，应该是客户端创建的用于连接服务器的套接字。
 			//所以，这行代码是在客户端发送消息 cmdBuf 到已连接的服务器。
 			//即：在客户端，client_sock 是 指向 服务器的套接字
-			
+
 			//send(client.m_client_sock, (char*)&login, sizeof(LogIn), 0); 
 			//可以直接写：
 			client->SendData(&login);
@@ -159,4 +171,5 @@ void cmdThread(EasyTcpClient* client)
 // 而另一个线程则负责处理这些接收到的数据。
 // 这样，在一个线程等待网络数据的同时，其他线程可以继续执行而不会受到阻塞的影响，
 // 从而提高了整个应用程序的响应速度
+*/
 #endif
