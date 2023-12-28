@@ -1,38 +1,38 @@
 #pragma once
 
 #ifdef _WIN32
-	//解决windows.h和winsock2.h下宏定义冲突
-	#define WIN32_LEAN_AND_MEAN
-	//使inet_ntoa()可用
-	#define _WINSOCK_DEPRECATED_NO_WARNINGS
+//解决windows.h和winsock2.h下宏定义冲突
+#define WIN32_LEAN_AND_MEAN
+//使inet_ntoa()可用
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 
-	//包含windows下的API
-	#include <windows.h>
-	//包含windows下的socket的API
-	#include <winsock2.h>
+//包含windows下的API
+#include <windows.h>
+//包含windows下的socket的API
+#include <winsock2.h>
 
-	//无法解析的外部符号 imp WSAStartup，函数 main 中引用了该符号
-	//解决：要添加静态链接库文件
-	//#pragma comment(lib,"ws2_32.lib")
-	//#pragma comment(lib, "library_name")
-	//#pragma 是一个编译器指令，用于向编译器传达特定的指令或控制信息
-	//在编译时指示链接器引入特定的库文件。
-	//方法二：在项目的属性->链接器->输入->附加依赖项->添加ws2_32.lib
+//无法解析的外部符号 imp WSAStartup，函数 main 中引用了该符号
+//解决：要添加静态链接库文件
+//#pragma comment(lib,"ws2_32.lib")
+//#pragma comment(lib, "library_name")
+//#pragma 是一个编译器指令，用于向编译器传达特定的指令或控制信息
+//在编译时指示链接器引入特定的库文件。
+//方法二：在项目的属性->链接器->输入->附加依赖项->添加ws2_32.lib
 #else
-	//UNIX 下标准C语言头文件
-	#include <unistd.h>
-	#include <arpa/inet.h>
-	#include <string.h>
+//UNIX 下标准C语言头文件
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <string.h>
 
-	//将SOCKET类型宏定义为int类型
-	//因为Linux下套接字文件描述符就是int类型
-	#define SOCKET int
-	//继续定义Linux下没有的宏定义
-	#define INVALID_SOCKET  (SOCKET)(~0)
-	#define SOCKET_ERROR            (-1)
+//将SOCKET类型宏定义为int类型
+//因为Linux下套接字文件描述符就是int类型
+#define SOCKET int
+//继续定义Linux下没有的宏定义
+#define INVALID_SOCKET  (SOCKET)(~0)
+#define SOCKET_ERROR            (-1)
 #endif
 
-#include "MessageHeader_1.0.hpp"
+#include "MessageHeader_1.1.hpp"
 #include <iostream>
 #include <vector>
 
@@ -89,7 +89,7 @@ public:
 
 EasyTcpServer::EasyTcpServer()
 {
-	m_client_sock = m_serv_sock=INVALID_SOCKET;
+	m_client_sock = m_serv_sock = INVALID_SOCKET;
 }
 
 EasyTcpServer:: ~EasyTcpServer()
@@ -180,9 +180,9 @@ int EasyTcpServer::Bind(const char* ip, unsigned short port)
 	serv_adr.sin_family = AF_INET;
 	serv_adr.sin_port = htons(port);
 
-	if (ip==nullptr)
+	if (ip == nullptr)
 	{
-	//可以用常数 INADDR_ANY 来获取服务器端的 IP 地址
+		//可以用常数 INADDR_ANY 来获取服务器端的 IP 地址
 #ifdef _WIN32
 		serv_adr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
 #else
@@ -202,9 +202,9 @@ int EasyTcpServer::Bind(const char* ip, unsigned short port)
 	//Mac环境下将bind调用限定为使用全局命名空间中的函数
 	int res = ::bind(m_serv_sock, (sockaddr*)&serv_adr, sizeof(serv_adr));
 	if (res == SOCKET_ERROR)
-		cout << "bind() ERROR，绑定网络端口<"<<port<<">失败...\n";
+		cout << "bind() ERROR，绑定网络端口<" << port << ">失败...\n";
 	else
-		cout << "绑定网络端口<"<<port<<">成功...\n";
+		cout << "绑定网络端口<" << port << ">成功...\n";
 
 	return res;
 }
@@ -214,10 +214,10 @@ int EasyTcpServer::Listen(int backlog)
 	//  listen 监听网络端口
 	int res = listen(m_serv_sock, backlog);
 
-	if ( res == SOCKET_ERROR)
-		cout << "listen() ERROR，socket=<"<< m_serv_sock <<">监听网络端口失败\n";
+	if (res == SOCKET_ERROR)
+		cout << "listen() ERROR，socket=<" << m_serv_sock << ">监听网络端口失败\n";
 	else
-		cout << "socket=<"<< m_serv_sock <<">监听网络端口成功...\n";
+		cout << "socket=<" << m_serv_sock << ">监听网络端口成功...\n";
 
 	return res;
 }
@@ -235,11 +235,11 @@ SOCKET EasyTcpServer::Accept()
 #endif
 
 	if (m_client_sock == INVALID_SOCKET)
-		cout << "socket=<"<<m_serv_sock<<">错误，接受到无效客户端SOCKET";
+		cout << "socket=<" << m_serv_sock << ">错误，接受到无效客户端SOCKET";
 	else
 	{
 		//inet_ntoa()将网络字节序的整数型 IP 地址转换为字符串形式
-		cout << "socket=<" << m_serv_sock << ">新客户端加入：IP = " 
+		cout << "socket=<" << m_serv_sock << ">新客户端加入：IP = "
 			<< inet_ntoa(client_adr.sin_addr)
 			<< "  socket=<" << m_client_sock << ">" << endl;
 
@@ -382,7 +382,7 @@ int EasyTcpServer::RecvData(SOCKET client_sock)
 
 	DataHead* pHead = reinterpret_cast<DataHead*>(RecvBuff);
 
-	recv(client_sock, (char*)&RecvBuff + sizeof(DataHead), 
+	recv(client_sock, (char*)&RecvBuff + sizeof(DataHead),
 		pHead->datalength - sizeof(DataHead), 0);
 
 	OnNetMsg(client_sock, pHead);
@@ -396,49 +396,49 @@ void EasyTcpServer::OnNetMsg(SOCKET client_sock, DataHead* pHead)
 	//  处理请求
 	switch (pHead->cmd)
 	{
-		case CMD_LOGIN:
-		{
-			LogIn* login=reinterpret_cast<LogIn*>(pHead);
-			
-			//忽略判断用户密码是否正确的过程
+	case CMD_LOGIN:
+	{
+		LogIn* login = reinterpret_cast<LogIn*>(pHead);
 
-			cout << "收到客户端<socket=" << client_sock << ">命令：CMD_LOGIN"
-				<< " 数据长度：" << login->datalength << endl;
-			cout << "用户名：" << login->username << "登入" << endl;
+		//忽略判断用户密码是否正确的过程
 
-			// 发送报文
-			LogInResult res{};
-			//send(client_sock, (const char*)&res, sizeof(LogInResult), 0);
-			//可以改写成
-			SendData(client_sock ,&res);
-		}
-		break;
+		cout << "收到客户端<socket=" << client_sock << ">命令：CMD_LOGIN"
+			<< " 数据长度：" << login->datalength << endl;
+		cout << "用户名：" << login->username << "登入" << endl;
 
-		case CMD_LOGOUT:
-		{
-			LogOut* logout = reinterpret_cast<LogOut*>(pHead);
+		// 发送报文
+		LogInResult res{};
+		//send(client_sock, (const char*)&res, sizeof(LogInResult), 0);
+		//可以改写成
+		SendData(client_sock, &res);
+	}
+	break;
 
-			cout << "收到客户端<socket=" << client_sock << ">命令：CMD_LOGOUT"
-				<< " 数据长度：" << logout->datalength << endl;
-			cout << "用户名：" << logout->username << "登出" << endl;
+	case CMD_LOGOUT:
+	{
+		LogOut* logout = reinterpret_cast<LogOut*>(pHead);
 
-			LogOutResult res{};
-			send(client_sock, (const char*)&res, sizeof(LogOutResult), 0);
-		}
-		break;
+		cout << "收到客户端<socket=" << client_sock << ">命令：CMD_LOGOUT"
+			<< " 数据长度：" << logout->datalength << endl;
+		cout << "用户名：" << logout->username << "登出" << endl;
 
-		default:
-		{
-			DataHead head = {sizeof(DataHead),CMD_ERROR};
-			send(client_sock, (const char*)&head, sizeof(DataHead), 0);
+		LogOutResult res{};
+		send(client_sock, (const char*)&res, sizeof(LogOutResult), 0);
+	}
+	break;
 
-			cout << "Error!" << endl;
-		}
+	default:
+	{
+		DataHead head = { sizeof(DataHead),CMD_ERROR };
+		send(client_sock, (const char*)&head, sizeof(DataHead), 0);
+
+		cout << "Error!" << endl;
+	}
 	}
 }
 
 //给指定客户端发送数据
-int EasyTcpServer::SendData(SOCKET client_sock,DataHead* pHead)
+int EasyTcpServer::SendData(SOCKET client_sock, DataHead* pHead)
 {
 	if (isRun() && pHead)
 	{
