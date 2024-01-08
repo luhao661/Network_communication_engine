@@ -32,7 +32,7 @@
 	#define SOCKET_ERROR            (-1)
 #endif
 
-#include "MessageHeader.hpp"
+#include "MessageHeader_1.0.hpp"
 #include <iostream>
 #include <vector>
 

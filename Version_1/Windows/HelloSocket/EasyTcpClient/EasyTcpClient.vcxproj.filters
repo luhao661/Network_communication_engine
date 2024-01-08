@@ -39,12 +39,27 @@
     <ClCompile Include="client_1.6.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="client_1.7.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="client_1.8.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpClient_1.0.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MessageHeader.hpp">
+    <ClInclude Include="MessageHeader_1.0.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpClient_1.1.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageHeader_1.1.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpClient_1.2.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
