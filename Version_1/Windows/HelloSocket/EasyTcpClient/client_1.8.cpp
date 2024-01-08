@@ -1,5 +1,5 @@
-#if 0
-#include "EasyTcpClient_1.1.hpp"
+#if 1
+#include "EasyTcpClient_1.2.hpp"
 //#include <thread>
 
 //不再创建一个全局的变量，提示线程是否正在运行
@@ -115,7 +115,7 @@ void cmdThread(EasyTcpClient* client)
 		{
 			//***错误写法***
 			//没有与之匹配的构造函数
-			//LogIn login{ "Luhao","123456" }; 
+			//LogIn login{ "Luhao","123456" };
 			//因为LogIn现在是派生类了，不再是简单的单独的类，否则可以这么写
 
 			LogIn login{};
@@ -133,7 +133,7 @@ void cmdThread(EasyTcpClient* client)
 			//所以，这行代码是在客户端发送消息 cmdBuf 到已连接的服务器。
 			//即：在客户端，client_sock 是 指向 服务器的套接字
 
-			//send(client.m_client_sock, (char*)&login, sizeof(LogIn), 0); 
+			//send(client.m_client_sock, (char*)&login, sizeof(LogIn), 0);
 			//可以直接写：
 			client->SendData(&login);
 			//***注***
@@ -145,7 +145,7 @@ void cmdThread(EasyTcpClient* client)
 
 			LogOut logout{};
 
-#ifdef _WIN32	
+#ifdef _WIN32
 			strncpy_s(logout.username, 20, "Luhao", 6);
 #else
 			strncpy(logout.username, "Luhao", 6);
