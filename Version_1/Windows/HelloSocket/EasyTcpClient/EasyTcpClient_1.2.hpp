@@ -38,9 +38,12 @@
 
 #include <iostream>
 #include "MessageHeader_1.1.hpp"
+
 using namespace std;
 
+#ifndef RECV_BUFFER_SIZE
 #define RECV_BUFFER_SIZE 10240
+#endif
 
 class EasyTcpClient
 {
@@ -221,7 +224,7 @@ bool EasyTcpClient::OnRun()
 		//cout << "空闲时间处理其他业务" << endl;
 	}
 
-	cout << "fd_num=" << fd_num << ", cnt=" << cnt++ << endl;
+	//cout << "fd_num=" << fd_num << ", cnt=" << cnt++ << endl;
 
 	if (FD_ISSET(m_client_sock, &fdRead))
 	{
@@ -256,6 +259,8 @@ int EasyTcpClient::RecvData()
 	//用while循环，解决【粘包】
 	while (m_lastPos >= sizeof(DataHead))
 	{
+		//指向m_MsgBuf的指针解释为DataHead*类型的指针，
+		//用于访问DataHead的数据成员
 		DataHead* pHead = reinterpret_cast<DataHead*>(m_MsgBuf);
 		//判断消息缓冲区的数据长度是否大于消息长度
 		//解决【少包】的问题
@@ -290,27 +295,6 @@ int EasyTcpClient::RecvData()
 			break;
 	}
 
-	cout << "收到数据的长度len=" << len << endl;
-	/*
-	DataHead* pHead = reinterpret_cast<DataHead*>(RecvBuff);
-	//或写为
-	//DataHead* pHead = (DataHead*)RecvBuff;
-
-	//再根据数据包长度，继续接收数据
-	recv(m_client_sock, (char*)RecvBuff + sizeof(DataHead),
-		pHead->datalength - sizeof(DataHead), 0);
-
-	//***理解***
-	//一个指向RecvBuff存储空间的指针转换为 DataHead* 类型的指针
-	//这种转换被称为重新解释转换
-	//那么后面的switch语句块
-	//LogInResult* loginresult =reinterpret_cast<LogInResult*>(pHead)
-	//同理将DataHead* 类型的指针解释为LogInResult*类型的指针
-	//得以访问datalength数据成员
-
-	OnNetMsg(pHead);
-	*/
-
 	return 0;
 }
 
@@ -322,9 +306,9 @@ void EasyTcpClient::OnNetMsg(DataHead* pHead)
 	{
 		LogInResult* loginresult = reinterpret_cast<LogInResult*>(pHead);
 
-		cout << "<socket=" << m_client_sock <<
-			">收到服务端消息：CMD_LOGIN_RESULT"
-			<< " 数据长度：" << loginresult->datalength << endl;
+		//cout << "<socket=" << m_client_sock <<
+		//	">收到服务端消息：CMD_LOGIN_RESULT"
+		//	<< " 数据长度：" << loginresult->datalength << endl;
 	}
 	break;
 

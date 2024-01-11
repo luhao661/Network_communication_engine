@@ -1,18 +1,30 @@
 #if 1
 #include "EasyTcpClient_1.2.hpp"
-//#include <thread>
-
-//不再创建一个全局的变量，提示线程是否正在运行
-//bool g_bRun = true;
-//而是在cmdThread()中通过关闭套接字，从而影响isRun()方法的返回值
-
-//void cmdThread(EasyTcpClient* client);
+#include <thread>
+bool g_bRun = true;
+void cmdThread(void);
 
 int main()
 {
-	EasyTcpClient client1, client2;
-	client1.initSocket();
+	//由于EasyTcpClient类占用内存空间很大
+	//所以放到堆中较好
+	//EasyTcpClient* client1=new EasyTcpClient ;
+
+	//EasyTcpClient* ClientArray = new EasyTcpClient[FD_SETSIZE-1]();
+
+	const int Num_clients = FD_SETSIZE - 1;
+	
+	shared_ptr < EasyTcpClient >ClientArray  
+		(new EasyTcpClient[Num_clients],default_delete<EasyTcpClient[]>());
+
+	//client1->initSocket();
 	//client2.initSocket();
+
+	for (int i = 0; i < Num_clients; ++i)
+	{
+		(ClientArray.get()[i]).initSocket();
+	}
+
 
 #if 1
 	const char ip[] = "127.0.0.1";
@@ -26,9 +38,13 @@ int main()
 	//注意虚拟机打开后，其IP地址可能会改变
 
 	//创建两个客户端socket，来连接两个服务器
-	client1.Connect(ip, 9190);
+	//client1->Connect(ip, 9190);
 	//client2.Connect(ip,9191);
 
+	for (int i = 0; i < Num_clients; ++i)
+	{
+		(ClientArray.get()[i]).Connect(ip,9190);
+	}
 
 	// 3 输入请求命令（利用线程）
 	//启动线程
@@ -46,6 +62,8 @@ int main()
 
 	//thread t2(cmdThread, &client2);
 	//t2.detach();
+	thread t1(cmdThread);//格式：函数名  参数
+	t1.detach();
 
 	//若不使用t1.detach();
 	//主线程的while循环用g_bRun来作为判断终止的条件
@@ -66,15 +84,25 @@ int main()
 	strncpy(login.password, "123456", 7);
 #endif
 
-	while (client1.isRun() /*|| client2.isRun()*/)
+
+	while (g_bRun /*|| client2.isRun()*/)
 	{
-		client1.OnRun()/*, client2.OnRun()*/;
-		client1.SendData(&login);
+		for (int i = 0; i < Num_clients; ++i)
+		{
+			ClientArray.get()[i].OnRun();
+			(ClientArray.get()[i]).SendData(&login);
+		}
 	}
 
-	client1.Close();
+	//client1->Close();
 	//client2.Close();
 
+	for (int i = 0; i < Num_clients; ++i)
+	{
+		(ClientArray.get()[i]).Close();
+	}
+
+	//delete client1;
 
 	//防止打开EasyTcpClient.exe后一闪而过
 	//getchar();
@@ -82,6 +110,29 @@ int main()
 	cout << "客户端已退出，任务结束。\n";
 
 	return 0;
+}
+
+void cmdThread(void)
+{
+	char cmdBuf[256]{};
+
+	//cin 和 scanf 都是阻塞式函数，
+	// 而main()中的select()非阻塞，这样会造成运行逻辑冲突，所以要使用多线程
+
+	while (1)
+	{
+		cin.getline(cmdBuf, 256);
+
+		// 处理请求
+		if (!strcmp(cmdBuf, "exit"))
+		{
+			cout << "收到退出命令，退出cmdThread线程\n";
+			g_bRun = false;
+			break;
+		}
+		else
+			cout << "未识别的命令，请重新输入！\n";
+	}
 }
 
 /*

@@ -156,10 +156,12 @@
     <ClCompile Include="server_1.5.cpp" />
     <ClCompile Include="server_1.6.cpp" />
     <ClCompile Include="server_1.7.cpp" />
+    <ClCompile Include="server_1.8.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpServer_1.0.hpp" />
     <ClInclude Include="EasyTcpServer_1.1.hpp" />
+    <ClInclude Include="EasyTcpServer_1.2.hpp" />
     <ClInclude Include="MessageHeader_1.0.hpp" />
     <ClInclude Include="MessageHeader_1.1.hpp" />
   </ItemGroup>

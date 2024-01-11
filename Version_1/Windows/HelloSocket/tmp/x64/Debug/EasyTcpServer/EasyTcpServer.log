@@ -7,11 +7,12 @@
   server_1.5.cpp
   server_1.6.cpp
   server_1.7.cpp
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.1.hpp(143,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  (编译源文件“server_1.7.cpp”)
+  server_1.8.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.2.hpp(214,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“server_1.8.cpp”)
   
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.1.hpp(329,32): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-  (编译源文件“server_1.7.cpp”)
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.2.hpp(402,32): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“server_1.8.cpp”)
   
   正在生成代码...
   EasyTcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpServer.exe

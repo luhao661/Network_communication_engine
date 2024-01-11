@@ -232,8 +232,6 @@ char RecvBuff[409600] = {};// 400 KB
 
 int EasyTcpClient::RecvData()
 {
-
-	//先接收包头
 	int len = (int)recv(m_client_sock, (char*)&RecvBuff, 409600, 0);
 	if (len <= 0)
 	{
