@@ -157,13 +157,18 @@
     <ClCompile Include="server_1.6.cpp" />
     <ClCompile Include="server_1.7.cpp" />
     <ClCompile Include="server_1.8.cpp" />
+    <ClCompile Include="server_1.9.cpp" />
+    <ClCompile Include="server_2.0.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpServer_1.0.hpp" />
     <ClInclude Include="EasyTcpServer_1.1.hpp" />
     <ClInclude Include="EasyTcpServer_1.2.hpp" />
+    <ClInclude Include="EasyTcpServer_1.3.hpp" />
+    <ClInclude Include="EasyTcpServer_1.4.hpp" />
     <ClInclude Include="MessageHeader_1.0.hpp" />
     <ClInclude Include="MessageHeader_1.1.hpp" />
+    <ClInclude Include="Timestamp.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

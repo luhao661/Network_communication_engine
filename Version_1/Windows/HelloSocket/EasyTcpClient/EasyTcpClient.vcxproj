@@ -157,11 +157,14 @@
     <ClCompile Include="client_1.6.cpp" />
     <ClCompile Include="client_1.7.cpp" />
     <ClCompile Include="client_1.8.cpp" />
+    <ClCompile Include="client_1.9.cpp" />
+    <ClCompile Include="client_2.0.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpClient_1.0.hpp" />
     <ClInclude Include="EasyTcpClient_1.1.hpp" />
     <ClInclude Include="EasyTcpClient_1.2.hpp" />
+    <ClInclude Include="EasyTcpClient_1.3.hpp" />
     <ClInclude Include="MessageHeader_1.0.hpp" />
     <ClInclude Include="MessageHeader_1.1.hpp" />
   </ItemGroup>

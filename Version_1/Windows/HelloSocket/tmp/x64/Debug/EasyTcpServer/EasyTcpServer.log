@@ -8,11 +8,41 @@
   server_1.6.cpp
   server_1.7.cpp
   server_1.8.cpp
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.2.hpp(214,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  (编译源文件“server_1.8.cpp”)
+  server_1.9.cpp
+  server_2.0.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(215,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“server_2.0.cpp”)
   
-D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.2.hpp(402,32): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-  (编译源文件“server_1.8.cpp”)
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“server_2.0.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+  (编译源文件“server_2.0.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 4 拥有了类型“unsigned __int64”
+  (编译源文件“server_2.0.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(323,10):
+  请考虑在格式字符串中使用“%zd”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(409,32): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“server_2.0.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(578,1): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“unsigned __int64”
+  (编译源文件“server_2.0.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(578,1):
+  请考虑在格式字符串中使用“%zd”
   
   正在生成代码...
   EasyTcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpServer.exe

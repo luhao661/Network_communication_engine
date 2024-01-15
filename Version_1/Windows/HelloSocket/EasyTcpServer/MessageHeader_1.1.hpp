@@ -14,6 +14,12 @@ enum
 
 struct DataHead
 {
+	DataHead()
+	{
+		datalength = sizeof(DataHead);
+		cmd = CMD_ERROR;
+	}
+
 	short datalength;
 	short cmd;
 };
@@ -22,12 +28,13 @@ struct LogIn :public DataHead
 {
 	LogIn()
 	{
-		datalength = sizeof(LogIn);
+		datalength = sizeof(LogIn);//1000¸ö×Ö½Ú
 		cmd = CMD_LOGIN;
 	}
 
-	char username[20];
+	char username[32];
 	char password[32];
+	char data[932];
 };
 
 struct LogInResult :public DataHead
@@ -40,7 +47,7 @@ struct LogInResult :public DataHead
 	}
 
 	int result;
-	char data[1024];
+	char data[992];
 };
 
 struct LogOut :public DataHead
