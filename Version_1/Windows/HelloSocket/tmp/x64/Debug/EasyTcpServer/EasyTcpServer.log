@@ -1,15 +1,4 @@
-﻿  server_1.5_multiplatform.cpp
-  server_1.0.cpp
-  server_1.1.cpp
-  server_1.2.cpp
-  server_1.3.cpp
-  server_1.4.cpp
-  server_1.5.cpp
-  server_1.6.cpp
-  server_1.7.cpp
-  server_1.8.cpp
-  server_1.9.cpp
-  server_2.0.cpp
+﻿  server_2.0.cpp
 D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(215,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   (编译源文件“server_2.0.cpp”)
   
@@ -44,5 +33,4 @@ D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer
   D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpServer\EasyTcpServer_1.4.hpp(578,1):
   请考虑在格式字符串中使用“%zd”
   
-  正在生成代码...
   EasyTcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpServer.exe
