@@ -1,17 +1,9 @@
 ﻿  client_1.5_multi-platform.cpp
   client_1.0.cpp
   client_1.1.cpp
-  client_1.2.cpp
-  client_1.3.cpp
-  client_1.4.cpp
-  client_1.5.cpp
-  client_1.6.cpp
-  client_1.7.cpp
-  client_1.8.cpp
-  client_1.9.cpp
-  client_2.0.cpp
+  client_1.11.cpp
 D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.3.hpp(175,10): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
-  (编译源文件“client_2.0.cpp”)
+  (编译源文件“client_1.11.cpp”)
   D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.3.hpp(175,10):
   请考虑在格式字符串中使用“%lld”
   D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.3.hpp(175,10):
@@ -20,7 +12,16 @@ D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient
   请考虑在格式字符串中使用“%I64d”
   
 D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.3.hpp(220,36): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-  (编译源文件“client_2.0.cpp”)
+  (编译源文件“client_1.11.cpp”)
   
+  client_1.2.cpp
+  client_1.3.cpp
+  client_1.4.cpp
+  client_1.5.cpp
+  client_1.6.cpp
+  client_1.7.cpp
+  client_1.8.cpp
+  client_1.9.cpp
+  client_1.10.cpp
   正在生成代码...
   EasyTcpClient.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpClient.exe

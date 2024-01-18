@@ -1,0 +1,369 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "未初始化变量 LogIn::username。始终初始化成员变量(type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/MessageHeader_1.1.hpp"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "LogIn::{ctor}",
+                  "decoratedName": "??0LogIn@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "LogIn::username"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "未初始化变量 LogIn::password。始终初始化成员变量(type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/MessageHeader_1.1.hpp"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "LogIn::{ctor}",
+                  "decoratedName": "??0LogIn@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "LogIn::password"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "未初始化变量 LogIn::data。始终初始化成员变量(type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/MessageHeader_1.1.hpp"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "LogIn::{ctor}",
+                  "decoratedName": "??0LogIn@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "LogIn::data"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "未初始化变量 LogInResult::data。始终初始化成员变量(type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/MessageHeader_1.1.hpp"
+                },
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "LogInResult::{ctor}",
+                  "decoratedName": "??0LogInResult@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "LogInResult::data"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "未初始化变量 LogOut::username。始终初始化成员变量(type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/MessageHeader_1.1.hpp"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 2
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "LogOut::{ctor}",
+                  "decoratedName": "??0LogOut@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "LogOut::username"
+          }
+        },
+        {
+          "ruleId": "C6031",
+          "message": {
+            "text": "返回值被忽略: “WSAStartup”。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+                },
+                "region": {
+                  "startLine": 181,
+                  "startColumn": 2,
+                  "endLine": 181,
+                  "endColumn": 19
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EasyTcpServer::initSocket",
+                  "decoratedName": "?initSocket@EasyTcpServer@@QEAA_KXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6328",
+          "message": {
+            "text": "大小不匹配: 已将“unsigned __int64”作为 _Param_(2) 传递，但需要使用“int”来调用“printf”。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+                },
+                "region": {
+                  "startLine": 323,
+                  "startColumn": 9
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EasyTcpServer::Accept",
+                  "decoratedName": "?Accept@EasyTcpServer@@QEAA_KXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6328",
+          "message": {
+            "text": "大小不匹配: 已将“unsigned __int64”作为 _Param_(4) 传递，但需要使用“int”来调用“printf”。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+                },
+                "region": {
+                  "startLine": 323,
+                  "startColumn": 9
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EasyTcpServer::Accept",
+                  "decoratedName": "?Accept@EasyTcpServer@@QEAA_KXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6328",
+          "message": {
+            "text": "大小不匹配: 已将“unsigned __int64”作为 _Param_(5) 传递，但需要使用“int”来调用“printf”。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+                },
+                "region": {
+                  "startLine": 323,
+                  "startColumn": 9
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EasyTcpServer::Accept",
+                  "decoratedName": "?Accept@EasyTcpServer@@QEAA_KXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6262",
+          "message": {
+            "text": "函数使用堆叠的 \"24680\" 字节。请考虑将一些数据移动到堆。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+                },
+                "region": {
+                  "startLine": 340,
+                  "startColumn": 21
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EasyTcpServer::OnRun",
+                  "decoratedName": "?OnRun@EasyTcpServer@@QEAA_NXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6328",
+          "message": {
+            "text": "大小不匹配: 已将“unsigned __int64”作为 _Param_(4) 传递，但需要使用“int”来调用“printf”。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+                },
+                "region": {
+                  "startLine": 577,
+                  "startColumn": 9
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "EasyTcpServer::OnNetMsg",
+                  "decoratedName": "?OnNetMsg@EasyTcpServer@@QEAAX_KPEAUDataHead@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.38.33134.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/MessageHeader_1.1.hpp"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "27a26e9401d55b54406e3561bd430cc59c39381503156fd67201f81b9fbb4987"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/CODE/Network_communication_engine/Version_1/Windows/HelloSocket/EasyTcpServer/EasyTcpServer_1.4.hpp"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "ebc366c729a2d3af2c3f1a74892639d3ee81a73073b087713ef9d632157c8eb1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/code/network_communication_engine/version_1/windows/hellosocket/easytcpserver/server_1.10.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "602cea540e9283d1d33787da72ee83b54f5a306c3063a00effc41d5ce4c06dfc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/code/network_communication_engine/version_1/windows/hellosocket/easytcpserver/timestamp.hpp"
+          },
+          "hashes": {
+            "sha-256": "2827ab2075daddbf70acf36ebfa109f4feb1be4d43a1d0b2d92aa814a5368728"
+          }
+        }
+      ]
+    }
+  ]
+}

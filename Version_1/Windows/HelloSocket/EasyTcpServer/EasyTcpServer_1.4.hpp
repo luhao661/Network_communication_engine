@@ -6,7 +6,7 @@
 //使inet_ntoa()可用
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 
-#define FD_SETSIZE 1024
+#define FD_SETSIZE 4024
 
 //包含windows下的API
 #include <windows.h>

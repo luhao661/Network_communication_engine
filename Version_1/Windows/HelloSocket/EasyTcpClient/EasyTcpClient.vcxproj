@@ -150,6 +150,7 @@
     <ClCompile Include="..\..\..\Linux\dev\client_1.5_multi-platform.cpp" />
     <ClCompile Include="client_1.0.cpp" />
     <ClCompile Include="client_1.1.cpp" />
+    <ClCompile Include="client_1.11.cpp" />
     <ClCompile Include="client_1.2.cpp" />
     <ClCompile Include="client_1.3.cpp" />
     <ClCompile Include="client_1.4.cpp" />
@@ -158,7 +159,7 @@
     <ClCompile Include="client_1.7.cpp" />
     <ClCompile Include="client_1.8.cpp" />
     <ClCompile Include="client_1.9.cpp" />
-    <ClCompile Include="client_2.0.cpp" />
+    <ClCompile Include="client_1.10.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpClient_1.0.hpp" />

@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include "EasyTcpClient_1.3.hpp"
 #include <thread>
 bool g_bRun = true;
@@ -12,7 +12,7 @@ int main()
 
 	//EasyTcpClient* ClientArray = new EasyTcpClient[FD_SETSIZE-1]();
 
-	const int Num_clients = 10;
+	const int Num_clients = 1000;
 
 	shared_ptr < EasyTcpClient >ClientArray
 	(new EasyTcpClient[Num_clients], default_delete<EasyTcpClient[]>());

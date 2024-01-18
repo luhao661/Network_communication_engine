@@ -1,0 +1,2 @@
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Debug\EasyTcpServer.exe.lastcodeanalysissucceeded
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\tmp\x64\Debug\EasyTcpServer\NativeCodeAnalysis.read.1.tlog

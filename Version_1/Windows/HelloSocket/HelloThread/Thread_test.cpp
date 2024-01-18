@@ -20,7 +20,6 @@ int main()
 		pThread[i]->detach();
 	}
 
-
 	//t.join();
 
 	for (int n = 0; n < 5; ++n)
@@ -66,6 +65,7 @@ int main()
 #endif
 
 
+//锁
 #if 0
 #include <iostream>
 #include <thread>
@@ -108,7 +108,8 @@ int main()
 #endif
 
 
-#if 1
+//锁消耗
+#if 0
 #include <iostream>
 #include <thread>
 #include <mutex>//锁
@@ -125,6 +126,123 @@ void f1(int number)
 		m.lock();//临界区域——开始
 		++g_bSum;
 		m.unlock();//临界区域——结束
+	}
+}
+
+int main()
+{
+	//thread t(f1,5);
+
+	thread* pThread[3];
+	for (int i = 0; i < 3; ++i)
+	{
+		pThread[i] = new thread(f1, i);
+	}
+
+	Timestamp timestamp;
+	for (int i = 0; i < 3; ++i)
+	{
+		pThread[i]->join();
+	}
+
+	//for (int n = 0; n < 5; ++n)
+	//	cout << "Hello, this is main thread." << endl;
+
+	cout << timestamp.getElapsedTimeInMillisecond() << endl;
+	cout << g_bSum << endl;
+
+	g_bSum = 0;
+	timestamp.update();
+	for (int i = 0; i < 90000000; ++i)
+		++g_bSum;
+
+	cout << timestamp.getElapsedTimeInMillisecond() << endl;
+	cout << g_bSum << endl;
+
+	return 0;
+}
+#endif
+
+
+//自解锁
+#if 0
+#include <iostream>
+#include <thread>
+#include <mutex>//锁
+#include "Timestamp.hpp"
+using namespace std;
+
+mutex m;
+int g_bSum;
+
+void f1(int number)
+{
+	for (int n = 0; n < 30000000; ++n)
+	{
+		//自解锁
+		lock_guard<mutex>lg(m);
+		++g_bSum;
+	}
+}
+
+int main()
+{
+	//thread t(f1,5);
+
+	thread* pThread[3];
+	for (int i = 0; i < 3; ++i)
+	{
+		pThread[i] = new thread(f1, i);
+	}
+
+	Timestamp timestamp;
+	for (int i = 0; i < 3; ++i)
+	{
+		pThread[i]->join();
+	}
+
+	//for (int n = 0; n < 5; ++n)
+	//	cout << "Hello, this is main thread." << endl;
+
+	cout << timestamp.getElapsedTimeInMillisecond() << endl;
+	cout << g_bSum << endl;
+
+	g_bSum = 0;
+	timestamp.update();
+	for (int i = 0; i < 90000000; ++i)
+		++g_bSum;
+
+	cout << timestamp.getElapsedTimeInMillisecond() << endl;
+	cout << g_bSum << endl;
+
+	return 0;
+}
+#endif
+
+
+//原子操作
+#if 1
+#include <iostream>
+#include <thread>
+#include <mutex>//锁
+#include <atomic>
+#include "Timestamp.hpp"
+using namespace std;
+
+mutex m;
+//int g_bSum;
+
+atomic_int g_bSum;
+//或写为
+//atomic<int> g_bSum;
+
+void f1(int number)
+{
+	for (int n = 0; n < 30000000; ++n)
+	{
+		//自解锁
+		//lock_guard<mutex>lg(m);
+		++g_bSum;
 	}
 }
 

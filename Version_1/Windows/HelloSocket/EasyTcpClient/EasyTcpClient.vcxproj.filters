@@ -48,7 +48,10 @@
     <ClCompile Include="client_1.9.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="client_2.0.cpp">
+    <ClCompile Include="client_1.10.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="client_1.11.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
