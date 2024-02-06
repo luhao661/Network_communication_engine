@@ -1,0 +1,29 @@
+﻿  client_1.5_multi-platform.cpp
+  client_1.0.cpp
+  client_1.1.cpp
+  client_1.11.cpp
+  client_1.12.cpp
+  client_1.13.cpp
+  client_1.14.cpp
+  client_1.15.cpp
+  client_1.16.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.6.hpp(227,36): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“client_1.16.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\EasyTcpClient\EasyTcpClient_1.6.hpp(379,11): warning C4244: “return”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“client_1.16.cpp”)
+  
+  client_1.2.cpp
+  client_1.3.cpp
+  client_1.4.cpp
+  client_1.5.cpp
+  client_1.6.cpp
+  client_1.7.cpp
+  client_1.8.cpp
+  client_1.9.cpp
+  client_1.10.cpp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 199 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  EasyTcpClient.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HelloSocket\bin\x64\Release\EasyTcpClient.exe

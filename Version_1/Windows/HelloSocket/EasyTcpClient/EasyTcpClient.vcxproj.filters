@@ -54,6 +54,21 @@
     <ClCompile Include="client_1.11.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="client_1.12.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="client_1.13.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="client_1.14.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="client_1.15.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="client_1.16.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpClient_1.0.hpp">
@@ -72,6 +87,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="EasyTcpClient_1.3.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageHeader_1.2.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpClient_1.4.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpClient_1.5.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpClient_1.6.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

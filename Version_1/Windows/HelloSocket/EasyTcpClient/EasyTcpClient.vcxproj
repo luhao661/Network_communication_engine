@@ -151,6 +151,11 @@
     <ClCompile Include="client_1.0.cpp" />
     <ClCompile Include="client_1.1.cpp" />
     <ClCompile Include="client_1.11.cpp" />
+    <ClCompile Include="client_1.12.cpp" />
+    <ClCompile Include="client_1.13.cpp" />
+    <ClCompile Include="client_1.14.cpp" />
+    <ClCompile Include="client_1.15.cpp" />
+    <ClCompile Include="client_1.16.cpp" />
     <ClCompile Include="client_1.2.cpp" />
     <ClCompile Include="client_1.3.cpp" />
     <ClCompile Include="client_1.4.cpp" />
@@ -166,8 +171,12 @@
     <ClInclude Include="EasyTcpClient_1.1.hpp" />
     <ClInclude Include="EasyTcpClient_1.2.hpp" />
     <ClInclude Include="EasyTcpClient_1.3.hpp" />
+    <ClInclude Include="EasyTcpClient_1.4.hpp" />
+    <ClInclude Include="EasyTcpClient_1.5.hpp" />
+    <ClInclude Include="EasyTcpClient_1.6.hpp" />
     <ClInclude Include="MessageHeader_1.0.hpp" />
     <ClInclude Include="MessageHeader_1.1.hpp" />
+    <ClInclude Include="MessageHeader_1.2.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

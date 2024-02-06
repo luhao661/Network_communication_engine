@@ -5,8 +5,8 @@
 #define WIN32_LEAN_AND_MEAN
 //使inet_ntoa()可用
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
-
-#define FD_SETSIZE 4024
+ 
+#define FD_SETSIZE 1024
 
 //包含windows下的API
 #include <windows.h>
@@ -271,7 +271,7 @@ int EasyTcpServer::Bind(const char* ip, unsigned short port)
 #endif
 	}
 
-	//  bind 绑定用于接受客户端连接的服务端网络端口
+	//bind 绑定用于接受客户端连接的服务端网络端口
 	//Mac环境下将bind调用限定为使用全局命名空间中的函数
 	int res = ::bind(m_serv_sock, (sockaddr*)&serv_adr, sizeof(serv_adr));
 	if (res == SOCKET_ERROR)
@@ -511,7 +511,7 @@ int EasyTcpServer::RecvData(ClientSocket* pClientSocket)
 #if 0
 int EasyTcpServer::RecvData(ClientSocket* pClientSocket)
 {
-	//  接收客户端数据存到【服务端的】自定义接收缓冲区m_Recv
+	//接收客户端数据存到【服务端的】自定义接收缓冲区m_Recv
 	int len = (int)recv(pClientSocket->Get_m_client_sock(),
 		m_Recv, RECV_BUFFER_SIZE, 0);
 

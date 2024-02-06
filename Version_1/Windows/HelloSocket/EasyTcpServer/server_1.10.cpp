@@ -1,4 +1,4 @@
-#if 1
+#if 0
 #include "EasyTcpServer_1.4.hpp"
 #include <thread>
 bool g_bRun = true;

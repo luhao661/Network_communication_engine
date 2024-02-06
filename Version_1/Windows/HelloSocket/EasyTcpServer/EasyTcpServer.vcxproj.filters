@@ -51,6 +51,36 @@
     <ClCompile Include="server_1.10.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="EasyTcpServer_1.5.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="server_1.11.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="server_1.12.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyTcpServer_1.6.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="server_1.13.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyTcpServer_1.7.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyTcpServer_1.8.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="server_1.14.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="server_1.15.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyTcpServer_1.9.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EasyTcpServer_1.0.hpp">
@@ -75,6 +105,24 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="EasyTcpServer_1.4.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpServer_1.5.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageHeader_1.2.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpServer_1.6.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpServer_1.7.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpServer_1.8.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EasyTcpServer_1.9.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

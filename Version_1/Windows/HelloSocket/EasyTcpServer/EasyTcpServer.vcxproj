@@ -148,8 +148,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Linux\dev\server_1.5_multiplatform.cpp" />
+    <ClCompile Include="EasyTcpServer_1.5.cpp" />
+    <ClCompile Include="EasyTcpServer_1.6.cpp" />
+    <ClCompile Include="EasyTcpServer_1.7.cpp" />
+    <ClCompile Include="EasyTcpServer_1.8.cpp" />
+    <ClCompile Include="EasyTcpServer_1.9.cpp" />
     <ClCompile Include="server_1.0.cpp" />
     <ClCompile Include="server_1.1.cpp" />
+    <ClCompile Include="server_1.11.cpp" />
+    <ClCompile Include="server_1.12.cpp" />
+    <ClCompile Include="server_1.13.cpp" />
+    <ClCompile Include="server_1.14.cpp" />
+    <ClCompile Include="server_1.15.cpp" />
     <ClCompile Include="server_1.2.cpp" />
     <ClCompile Include="server_1.3.cpp" />
     <ClCompile Include="server_1.4.cpp" />
@@ -166,8 +176,14 @@
     <ClInclude Include="EasyTcpServer_1.2.hpp" />
     <ClInclude Include="EasyTcpServer_1.3.hpp" />
     <ClInclude Include="EasyTcpServer_1.4.hpp" />
+    <ClInclude Include="EasyTcpServer_1.5.hpp" />
+    <ClInclude Include="EasyTcpServer_1.6.hpp" />
+    <ClInclude Include="EasyTcpServer_1.7.hpp" />
+    <ClInclude Include="EasyTcpServer_1.8.hpp" />
+    <ClInclude Include="EasyTcpServer_1.9.hpp" />
     <ClInclude Include="MessageHeader_1.0.hpp" />
     <ClInclude Include="MessageHeader_1.1.hpp" />
+    <ClInclude Include="MessageHeader_1.2.hpp" />
     <ClInclude Include="Timestamp.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
