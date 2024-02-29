@@ -1,0 +1,981 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.15.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.15.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.9.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.9.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.9.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.9.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.8.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.8.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\MessageHeader_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.16.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.16.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\MessageHeader_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.6.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.6.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.15.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.15.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.14.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.14.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.13.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.13.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.7.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.7.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.6.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.6.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.5.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.5.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\MessageHeader_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.14.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.14.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.7.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.7.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.6.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.6.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.5.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.5.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FB7DC03-A5F3-4F9A-B051-316160AA08DC}|HelloThread\\HelloThread.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\HelloThread\\Thread_test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6FB7DC03-A5F3-4F9A-B051-316160AA08DC}|HelloThread\\HelloThread.vcxproj|solutionrelative:HelloThread\\Thread_test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.12.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.12.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.11.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.11.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.13.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.13.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.9.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.9.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.10.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.10.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.9.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.9.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.10.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.10.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.11.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.11.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.12.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.12.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.6.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.6.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\MessageHeader_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.7.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.7.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:2:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FB7DC03-A5F3-4F9A-B051-316160AA08DC}|HelloThread\\HelloThread.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\HelloThread\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6FB7DC03-A5F3-4F9A-B051-316160AA08DC}|HelloThread\\HelloThread.vcxproj|solutionrelative:HelloThread\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.7.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.7.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.6.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.6.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:1:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\EasyTcpClient_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\EasyTcpServer_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{76B3255E-6CFD-4C44-BD19-56EAE48ADB22}|EasyTcpServer\\EasyTcpServer.vcxproj|solutionrelative:EasyTcpServer\\server_1.4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CD7C3206-2B45-4D2F-9745-A5983D094BD0}|EasyTcpClient\\EasyTcpClient.vcxproj|solutionrelative:EasyTcpClient\\client_1.4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 104,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MessageHeader_1.2.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.2.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\MessageHeader_1.2.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.2.hpp",
+              "RelativeToolTip": "EasyTcpClient\\MessageHeader_1.2.hpp",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAowFUAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-28T08:27:27.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MessageHeader_1.2.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.2.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\MessageHeader_1.2.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.2.hpp",
+              "RelativeToolTip": "EasyTcpServer\\MessageHeader_1.2.hpp",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAowEUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-25T14:41:39.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Timestamp.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\HelloThread\\Timestamp.hpp",
+              "RelativeDocumentMoniker": "HelloThread\\Timestamp.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\HelloThread\\Timestamp.hpp",
+              "RelativeToolTip": "HelloThread\\Timestamp.hpp",
+              "ViewState": "AQIAAAYAAAAAAAAAAABVwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-16T09:20:08.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Timestamp.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\Timestamp.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\Timestamp.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\Timestamp.hpp",
+              "RelativeToolTip": "EasyTcpServer\\Timestamp.hpp",
+              "ViewState": "AQIAABoAAAAAAAAAAAAowCIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-15T02:50:19.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MessageHeader_1.1.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.1.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\MessageHeader_1.1.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.1.hpp",
+              "RelativeToolTip": "EasyTcpServer\\MessageHeader_1.1.hpp",
+              "ViewState": "AQIAABYAAAAAAAAAAAA3wB4AAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-28T09:53:21.138Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "MessageHeader_1.1.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.1.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\MessageHeader_1.1.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.1.hpp",
+              "RelativeToolTip": "EasyTcpClient\\MessageHeader_1.1.hpp",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-28T09:53:10.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "MessageHeader_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.0.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\MessageHeader_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\MessageHeader_1.0.hpp",
+              "RelativeToolTip": "EasyTcpServer\\MessageHeader_1.0.hpp",
+              "ViewState": "AQIAACIAAAAAAAAAAAA0wCcAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-26T08:35:39.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "MessageHeader_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.0.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\MessageHeader_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\MessageHeader_1.0.hpp",
+              "RelativeToolTip": "EasyTcpClient\\MessageHeader_1.0.hpp",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAABwAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-22T08:56:23.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "EasyTcpServer_1.1.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.1.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.1.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.1.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.1.hpp",
+              "ViewState": "AQIAAGMBAAAAAAAAAAAowHgBAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-28T09:39:05.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "EasyTcpServer_1.2.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAD4vwQAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-09T08:44:26.05Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 244,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EasyTcpServer_1.9.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.9.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.9.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.9.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.9.hpp",
+              "ViewState": "AQIAACwBAAAAAAAAAAAzwDABAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-06T07:39:48.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EasyTcpClient_1.6.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.6.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.6.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.6.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.6.hpp",
+              "ViewState": "AQIAAG0BAAAAAAAAAAAzwHUBAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-03T07:19:17.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EasyTcpServer_1.8.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.8.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.8.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.8.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.8.hpp",
+              "ViewState": "AQIAACsBAAAAAAAAAAAAACsBAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-02T07:36:43.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EasyTcpServer_1.7.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.7.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.7.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.7.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.7.hpp",
+              "ViewState": "AQIAAB0BAAAAAAAAAAAiwCIBAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-30T08:13:21.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EasyTcpServer_1.6.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.6.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.6.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.6.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.6.hpp",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAiwFgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-25T14:41:33.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "EasyTcpClient_1.5.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.5.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.5.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.5.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.5.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAF4BAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-29T09:29:55.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "EasyTcpClient_1.4.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.4.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.4.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.4.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.4.hpp",
+              "ViewState": "AQIAAFYBAAAAAAAAAAAAAGMBAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-28T08:35:35.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EasyTcpServer_1.5.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.5.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.5.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.5.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.5.hpp",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAANAAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-25T14:41:03.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Thread_test.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\HelloThread\\Thread_test.cpp",
+              "RelativeDocumentMoniker": "HelloThread\\Thread_test.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\HelloThread\\Thread_test.cpp",
+              "RelativeToolTip": "HelloThread\\Thread_test.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABkAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-16T07:38:52.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "EasyTcpServer_1.4.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.4.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.4.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.4.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.4.hpp",
+              "ViewState": "AQIAAP8BAAAAAAAAAAA6wHEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-15T03:13:57.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "EasyTcpClient_1.3.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.3.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.3.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.3.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.3.hpp",
+              "ViewState": "AQIAAFcBAAAAAAAAAAAAwFsBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-13T07:21:34.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "EasyTcpServer_1.3.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.3.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.3.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.3.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.3.hpp",
+              "ViewState": "AQIAAFoCAAAAAAAAAABVwDcCAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-13T07:14:28.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "EasyTcpServer_1.2.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.2.hpp",
+              "ViewState": "AQIAAD8BAAAAAAAAAIA1wEwBAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-10T02:20:00.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "EasyTcpClient_1.1.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.1.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.1.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.1.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.1.hpp",
+              "ViewState": "AQIAAJcAAAAAAAAAAABMwAgAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-28T09:38:02.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "EasyTcpServer_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.0.hpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.0.hpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.0.hpp",
+              "ViewState": "AQIAAFEBAAAAAAAAAABVwGEBAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-27T08:35:00.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "EasyTcpClient_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.0.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.0.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.0.hpp",
+              "ViewState": "AQIAALAAAAAAAAAAAABVwLYAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2023-12-26T02:05:58.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "EasyTcpClient_1.2.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.2.hpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\EasyTcpClient_1.2.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\EasyTcpClient_1.2.hpp",
+              "RelativeToolTip": "EasyTcpClient\\EasyTcpClient_1.2.hpp",
+              "ViewState": "AQIAAEcBAAAAAAAAAAA1wE0BAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-01-08T06:49:40.008Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 184,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EasyTcpServer_1.9.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.9.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.9.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.9.cpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.9.cpp",
+              "ViewState": "AQIAANgCAAAAAAAAAAAkwNwCAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-06T07:39:36.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "server_1.15.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.15.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.15.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.15.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.15.cpp",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAkwHMAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-06T07:09:19.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "client_1.16.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.16.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.16.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.16.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.16.cpp",
+              "ViewState": "AQIAANMAAAAAAAAAAAAkwNMAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-03T07:18:57.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "client_1.15.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.15.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.15.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.15.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.15.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-02T08:56:33.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EasyTcpServer_1.8.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.8.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.8.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.8.cpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.8.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-02T07:36:55.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "server_1.14.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.14.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.14.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.14.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.14.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-02T07:38:00.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EasyTcpServer_1.7.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.7.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.7.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.7.cpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.7.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-30T08:14:11.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EasyTcpServer_1.6.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.6.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.6.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.6.cpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.6.cpp",
+              "ViewState": "AQIAAEUDAAAAAAAAAAAAAEwDAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-25T14:42:25.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "server_1.13.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.13.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.13.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.13.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.13.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-30T08:13:46.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "client_1.14.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.14.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.14.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.14.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.14.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-29T13:17:40.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "EasyTcpServer_1.5.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.5.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\EasyTcpServer_1.5.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\EasyTcpServer_1.5.cpp",
+              "RelativeToolTip": "EasyTcpServer\\EasyTcpServer_1.5.cpp",
+              "ViewState": "AQIAAPIBAAAAAAAAAAAAAPQBAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-29T09:42:19.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "client_1.13.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.13.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.13.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.13.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.13.cpp",
+              "ViewState": "AQIAALUAAAAAAAAAAAAAAMoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-28T08:37:18.39Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "server_1.12.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.12.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.12.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.12.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.12.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-25T14:41:23.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "client_1.12.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.12.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.12.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.12.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.12.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-25T14:42:02.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "server_1.11.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.11.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.11.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.11.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.11.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-23T07:32:14.902Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "client_1.11.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.11.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.11.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.11.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.11.cpp",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAlwLoAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-18T06:54:59.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "client_1.10.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.10.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.10.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.10.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.10.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-15T03:32:21.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "server_1.10.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.10.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.10.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.10.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.10.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-15T03:28:42.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "server_1.9.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.9.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.9.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.9.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.9.cpp",
+              "ViewState": "AQIAABwAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-13T07:16:41.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "client_1.9.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.9.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.9.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.9.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.9.cpp",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAFcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-13T07:17:41.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "server_1.8.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.8.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.8.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.8.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.8.cpp",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-09T08:43:40.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "client_1.8.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.8.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.8.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.8.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.8.cpp",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAAAIcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-01-08T06:48:53.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "server_1.7.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.7.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.7.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.7.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.7.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-28T09:36:23.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "client_1.7.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.7.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.7.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.7.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.7.cpp",
+              "ViewState": "AQIAAJEAAAAAAAAAAABMwAUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-28T09:36:06.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "server_1.6.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.6.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.6.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.6.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.6.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-26T08:44:58.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "client_1.6.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.6.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.6.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.6.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.6.cpp",
+              "ViewState": "AQIAAIsAAAAAAAAAAABMwJQAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-25T06:33:52.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "client_1.5.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.5.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.5.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.5.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.5.cpp",
+              "ViewState": "AQIAAPkAAAAAAAAAAAAAALUAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-15T03:30:50.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "server_1.5.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.5.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.5.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.5.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.5.cpp",
+              "ViewState": "AQIAAPMAAAAAAAAAAAAAAP4AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-13T08:22:43.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "server_1.4.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.4.cpp",
+              "RelativeDocumentMoniker": "EasyTcpServer\\server_1.4.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpServer\\server_1.4.cpp",
+              "RelativeToolTip": "EasyTcpServer\\server_1.4.cpp",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAywI8AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-11T09:21:50.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "client_1.4.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.4.cpp",
+              "RelativeDocumentMoniker": "EasyTcpClient\\client_1.4.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HelloSocket\\EasyTcpClient\\client_1.4.cpp",
+              "RelativeToolTip": "EasyTcpClient\\client_1.4.cpp",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAAAKMAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2023-12-11T09:49:55.006Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

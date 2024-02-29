@@ -1,0 +1,324 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\TcpClient_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|solutionrelative:TcpClient\\TcpClient_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\server_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\server_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\client_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|solutionrelative:TcpClient\\client_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\TcpServer_1.2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\server_1.0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\server_1.0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\TcpServer_1.1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\client_1.0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|solutionrelative:TcpClient\\client_1.0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\TcpClient_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|solutionrelative:TcpClient\\TcpClient_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\TcpServer_1.0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\TcpServer_1.2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|solutionrelative:TcpClient\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\TcpServer_1.1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\Timestamp.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D921D4B2-7992-4C9D-A807-84CE888FE117}|TcpServer\\TcpServer.vcxproj|solutionrelative:TcpServer\\TcpServer_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{BA9AA122-EDF8-44E7-8B55-5B979B66CCCD}|TcpClient\\TcpClient.vcxproj|solutionrelative:TcpClient\\MessageHeader_1.0.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 107,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{4a9b7e51-aa16-11d0-a8c5-00a0c921a4d2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MessageHeader_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\MessageHeader_1.0.hpp",
+              "RelativeDocumentMoniker": "TcpClient\\MessageHeader_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\MessageHeader_1.0.hpp",
+              "RelativeToolTip": "TcpClient\\MessageHeader_1.0.hpp",
+              "ViewState": "AQIAADoAAAAAAAAAAAAUwD8AAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-20T06:55:56.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TcpClient_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\TcpClient_1.0.hpp",
+              "RelativeDocumentMoniker": "TcpClient\\TcpClient_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\TcpClient_1.0.hpp",
+              "RelativeToolTip": "TcpClient\\TcpClient_1.0.hpp",
+              "ViewState": "AQIAAGABAAAAAAAAAAA7wGQBAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-20T06:57:03.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MessageHeader_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\MessageHeader_1.0.hpp",
+              "RelativeDocumentMoniker": "TcpServer\\MessageHeader_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\MessageHeader_1.0.hpp",
+              "RelativeToolTip": "TcpServer\\MessageHeader_1.0.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-20T07:04:25.6Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 178,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TcpServer_1.2.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.2.hpp",
+              "RelativeDocumentMoniker": "TcpServer\\TcpServer_1.2.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.2.hpp",
+              "RelativeToolTip": "TcpServer\\TcpServer_1.2.hpp",
+              "ViewState": "AQIAABEBAAAAAAAAAAAmwBsBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-21T08:24:13.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TcpServer_1.0.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.0.hpp",
+              "RelativeDocumentMoniker": "TcpServer\\TcpServer_1.0.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.0.hpp",
+              "RelativeToolTip": "TcpServer\\TcpServer_1.0.hpp",
+              "ViewState": "AQIAACQBAAAAAAAAAAAUwCgBAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-20T07:04:43.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TcpServer_1.1.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.1.hpp",
+              "RelativeDocumentMoniker": "TcpServer\\TcpServer_1.1.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.1.hpp",
+              "RelativeToolTip": "TcpServer\\TcpServer_1.1.hpp",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAmwHsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-20T07:46:37.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TcpClient_1.1.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\TcpClient_1.1.hpp",
+              "RelativeDocumentMoniker": "TcpClient\\TcpClient_1.1.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\TcpClient_1.1.hpp",
+              "RelativeToolTip": "TcpClient\\TcpClient_1.1.hpp",
+              "ViewState": "AQIAAJYAAAAAAAAAAAAmwKUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-22T08:44:59.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Timestamp.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\Timestamp.hpp",
+              "RelativeDocumentMoniker": "TcpClient\\Timestamp.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\Timestamp.hpp",
+              "RelativeToolTip": "TcpClient\\Timestamp.hpp",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-22T08:59:44.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Timestamp.hpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\Timestamp.hpp",
+              "RelativeDocumentMoniker": "TcpServer\\Timestamp.hpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\Timestamp.hpp",
+              "RelativeToolTip": "TcpServer\\Timestamp.hpp",
+              "ViewState": "AQIAABIAAAAAAAAAAAA7wBYAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-02-20T07:06:11.782Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 202,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TcpServer_1.0.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.0.cpp",
+              "RelativeDocumentMoniker": "TcpServer\\TcpServer_1.0.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.0.cpp",
+              "RelativeToolTip": "TcpServer\\TcpServer_1.0.cpp",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-20T07:07:47.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TcpServer_1.1.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.1.cpp",
+              "RelativeDocumentMoniker": "TcpServer\\TcpServer_1.1.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.1.cpp",
+              "RelativeToolTip": "TcpServer\\TcpServer_1.1.cpp",
+              "ViewState": "AQIAALEAAAAAAAAAAAAAALsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-20T07:42:08.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TcpServer_1.2.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.2.cpp",
+              "RelativeDocumentMoniker": "TcpServer\\TcpServer_1.2.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\TcpServer_1.2.cpp",
+              "RelativeToolTip": "TcpServer\\TcpServer_1.2.cpp",
+              "ViewState": "AQIAAIoCAAAAAAAAAAAmwHgCAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-21T08:24:30.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "server_1.0.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\server_1.0.cpp",
+              "RelativeDocumentMoniker": "TcpServer\\server_1.0.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\server_1.0.cpp",
+              "RelativeToolTip": "TcpServer\\server_1.0.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-20T07:05:14.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "server_1.1.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\server_1.1.cpp",
+              "RelativeDocumentMoniker": "TcpServer\\server_1.1.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpServer\\server_1.1.cpp",
+              "RelativeToolTip": "TcpServer\\server_1.1.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-22T08:20:11.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "client_1.0.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\client_1.0.cpp",
+              "RelativeDocumentMoniker": "TcpClient\\client_1.0.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\client_1.0.cpp",
+              "RelativeToolTip": "TcpClient\\client_1.0.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-20T06:59:21.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "client_1.1.cpp",
+              "DocumentMoniker": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\client_1.1.cpp",
+              "RelativeDocumentMoniker": "TcpClient\\client_1.1.cpp",
+              "ToolTip": "D:\\CODE\\Network_communication_engine\\Version_1\\Windows\\HighPerformance\\TcpClient\\client_1.1.cpp",
+              "RelativeToolTip": "TcpClient\\client_1.1.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-02-22T08:44:18.471Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

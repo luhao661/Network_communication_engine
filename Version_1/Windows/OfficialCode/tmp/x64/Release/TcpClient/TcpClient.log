@@ -1,0 +1,75 @@
+﻿  client.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(47,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(47,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(47,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(47,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(80,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(80,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(80,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(80,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(72,31): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  (编译源文件“client.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(115,27): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“client.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(118,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(118,12):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(118,12):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(118,12):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(128,13): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(128,13):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(128,13):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(128,13):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(163,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(163,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(163,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(163,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(221,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(221,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(221,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(221,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(226,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“client.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(226,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(226,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\TcpClient\EasyTcpClient.hpp(226,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 132 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  TcpClient.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\OfficialCode\bin\x64\Release\TcpClient.exe

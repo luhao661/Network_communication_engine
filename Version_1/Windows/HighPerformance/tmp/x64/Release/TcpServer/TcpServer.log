@@ -1,0 +1,22 @@
+﻿  server_1.0.cpp
+  server_1.1.cpp
+  TcpServer_1.0.cpp
+  TcpServer_1.1.cpp
+  TcpServer_1.2.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(219,35): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(256,21): warning C4018: “<”: 有符号/无符号不匹配
+D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(584,1): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(584,1):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(584,1):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(584,1):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(668,34): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\TcpServer\TcpServer_1.2.cpp(304): warning C4715: “CellServer::OnRun”: 不是所有的控件路径都返回值
+  All 428 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  TcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\HighPerformance\bin\x64\Release\TcpServer.exe
