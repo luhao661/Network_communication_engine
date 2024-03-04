@@ -52,6 +52,7 @@
 #include <functional>//mem_fn
 #include <atomic>//原子操作
 #include <map>
+#include "CellTask.hpp"
 
 using namespace std;
 
@@ -105,6 +106,8 @@ public:
 	int SendData(DataHead* pHead);
 };
 
+//前向声明
+class CellServer;
 
 //网络事件接口
 //CellServer类的vec_client的元素数量减少时，通知EasyTcpServer类
@@ -120,10 +123,34 @@ public:
 	//客户端离开事件
 	virtual void NEOnNetLeave(ClientSocket* pClient) = 0;
 
-	virtual void NEOnNetMsg(ClientSocket* client_sock, DataHead* pHead) = 0;
+	virtual void NEOnNetMsg(CellServer* pCellServer,ClientSocket* client_sock, DataHead* pHead) = 0;
 
 	//recv事件
 	virtual void NERecv(ClientSocket* client_sock) = 0;
+};
+
+
+//具体任务：网络消息发送任务
+class CellServerMsgToClientTask :public CellTask
+{
+	//要发送到的客户端
+	ClientSocket* m_pclient_sock;
+	//要发送的数据指针
+	DataHead* m_pHead;
+
+public:
+	CellServerMsgToClientTask(ClientSocket* pclient_sock, DataHead* pHead)
+	{
+		m_pclient_sock = pclient_sock;
+		m_pHead = pHead;
+	}
+
+	virtual void doTask()
+	{
+		m_pclient_sock->SendData(m_pHead);
+
+		delete m_pHead;
+	}
 };
 
 
@@ -161,6 +188,8 @@ private:
 	bool m_ClientsChange = false;
 
 	SOCKET m_maxSocket;
+
+	CellTaskServer m_CellTaskServer;
 
 public:
 	//每次运行CellServer::OnNetMsg()，m_cnt增加1
@@ -229,6 +258,15 @@ public:
 	void setEventObj(NetEvent* event)
 	{
 		m_pNetEvent = event;
+	}
+
+	//创建具体的发送任务对象CellServerMsgToClientTask
+	//并添加发送任务到CellServer类中的CellTaskServer类对象中
+	void addSendTask(ClientSocket* pclient_sock, DataHead* pHead)
+	{
+		CellServerMsgToClientTask* pCSMTCT = new CellServerMsgToClientTask(pclient_sock, pHead);
+
+		m_CellTaskServer.addTask(pCSMTCT);
 	}
 };
 
@@ -316,7 +354,7 @@ public:
 
 	virtual void NEOnNetLeave(ClientSocket* pClient);
 
-	virtual void NEOnNetMsg(ClientSocket* pclient_sock, DataHead* pHead);
+	virtual void NEOnNetMsg(CellServer* pCellServer, ClientSocket* client_sock, DataHead* pHead);
 
 	virtual void NERecv(ClientSocket* client_sock);
 

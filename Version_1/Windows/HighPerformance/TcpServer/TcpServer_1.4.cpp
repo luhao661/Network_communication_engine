@@ -1,5 +1,5 @@
 #if 1
-#include "TcpServer_1.3.hpp"
+#include "TcpServer_1.4.hpp"
 
 ClientSocket::ClientSocket(SOCKET sock)
 {
@@ -146,6 +146,9 @@ void CellServer::Start()
 	// 该指针作为参数传递给 CellServer::OnRun 成员函数，
 	// 在新线程中执行 CellServer::OnRun 时，
 	// 可以通过 this 指针访问 EasyTcpServer 对象的成员变量和方法。
+
+	//调用CellTaskServer类对象的Start()方法，不断等待任务的到来，并添加具体任务到list容器
+	m_CellTaskServer.Start();
 }
 
 bool CellServer::OnRun()
@@ -406,7 +409,7 @@ void CellServer::OnNetMsg(ClientSocket* pclient_sock, DataHead* pHead)
 	//++m_cnt;
 
 	//改用
-	m_pNetEvent->NEOnNetMsg(pclient_sock, pHead);
+	m_pNetEvent->NEOnNetMsg(this,pclient_sock, pHead);
 #if 0
 
 	//  处理请求
@@ -829,7 +832,7 @@ void EasyTcpServer::NEOnNetLeave(ClientSocket* pClient)
 }
 
 //多线程(多CellServer)操作以下函数
-void EasyTcpServer::NEOnNetMsg(ClientSocket* pclient_sock, DataHead* pHead)
+void EasyTcpServer::NEOnNetMsg(CellServer* pCellServer,ClientSocket* pclient_sock, DataHead* pHead)
 {
 	++m_MsgCnt;
 }
