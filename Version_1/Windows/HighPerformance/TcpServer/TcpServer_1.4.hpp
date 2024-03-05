@@ -189,6 +189,7 @@ private:
 
 	SOCKET m_maxSocket;
 
+	//每个CellServer对应一个CellTaskServer类对象
 	CellTaskServer m_CellTaskServer;
 
 public:
@@ -264,7 +265,17 @@ public:
 	//并添加发送任务到CellServer类中的CellTaskServer类对象中
 	void addSendTask(ClientSocket* pclient_sock, DataHead* pHead)
 	{
+		//生产任务
 		CellServerMsgToClientTask* pCSMTCT = new CellServerMsgToClientTask(pclient_sock, pHead);
+		//***注***
+		//此处存在【陷阱】
+		//动态分配的具体任务的内存空间到时候需要被释放
+		//动态分配的发送消息的内存空间也要被释放
+		
+		//频繁地进行内存的申请和释放很容易产生内存碎片
+		//也占用了较多的CPU时间消耗
+
+		//需要进行内存管理上的优化
 
 		m_CellTaskServer.addTask(pCSMTCT);
 	}
