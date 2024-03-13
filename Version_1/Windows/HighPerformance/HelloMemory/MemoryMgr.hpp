@@ -1,6 +1,10 @@
 #pragma once
 #include <stdlib.h>
 #include <assert.h>//断言库，用于辅助调试程序
+
+//最大内存块大小
+#define MAX_MEMORY_SIZE 64
+
 class MemoryAlloc;
 
 //内存块 最小单元
@@ -29,6 +33,8 @@ public:
 
 
 //内存池
+//小于等于最大内存块大小时，就能使用自建的内存池
+//初始化内存池，申请内存，释放内存
 class MemoryAlloc
 {
 private:
@@ -46,6 +52,7 @@ private:
 public:
 	MemoryAlloc():m_pBuf(nullptr),pHeader(nullptr),m_BlockSize(0), m_BlockNums(0)
 	{}
+
 	~MemoryAlloc()
 	{
 		if (m_pBuf)
@@ -70,8 +77,8 @@ public:
 
 			pReturn->bPool = false;//向系统申请的内存，所以不在我们自建的内存池中
 			pReturn->nID = -1;
-			pReturn->nRef = 0;
-			pReturn->pAlloc = this;
+			pReturn->nRef = 1;
+			pReturn->pAlloc = nullptr;
 			pReturn->pNext = nullptr;
 		}
 		else
@@ -124,6 +131,7 @@ public:
 			//pHeader指向位置后移，指向新的可被使用的内存块
 			pHeader = pHeader->pNext;
 			*/
+
 			//那么释放内存块时，当前块的下一块【可用】内存应该正由pHeader所指向
 			pMemoryBlockMsg->pNext = pHeader;
 			//pHeader回过来指向当前可被存储数据的可用内存块的内存块信息
@@ -211,18 +219,48 @@ public:
 class MemoryMgr
 {
 private:
+	//申请一个每个内存块64字节，共有10块的内存池
 	MemoryAllocator<64, 10> m_mem64_10;
 
+	//创建一个指针数组，用于映射不同内存需求情况下对应的应该使用的内存池
+	MemoryAlloc* m_pMAc[MAX_MEMORY_SIZE + 1];
+
 	MemoryMgr()
-	{}
+	{
+		//***理解***
+		//对0~64字节的内存申请进行内存块映射，使该内存申请操作可以
+		// 快速地使用m_mem64_10内存池
+		initMemoryMgr(0,64,&m_mem64_10);
+	}
+
 	~MemoryMgr()
 	{}
+
+	//内存池映射数组初始化
+	//***理解***
+	//将一定范围内的内存大小映射到对应的内存池。
+	// 它通过循环遍历指定的范围，将每个内存大小所对应的指针指向相应的内存池对象。
+	// 这样，当需要分配内存时，就可以根据需要的大小直接找到对应的内存池对象进行分配。
+	void initMemoryMgr(int nBegin, int nEnd, MemoryAlloc* pMAc)
+	{
+		for (int n = nBegin; n <= nEnd; ++n)
+		{
+			//nBegin~nEnd字节范围大小的内存申请，都可以定位到pMAc指向的内存池
+			m_pMAc[n] = pMAc;
+
+			//***好处***
+			// allocMem()中可以直接写：
+			// return m_pMAc[size]->allocMemory(size);
+			//减少了查找合适的内存池的内存块的时间
+		}
+	}
+
 public:
 
 	//使用单例模式：
 	static MemoryMgr& Instance()
 	{
-		//创建静态对象
+		//创建静态对象(使用了自定义的默认构造函数构造对象)
 		static MemoryMgr mgr;
 
 		return mgr;		
@@ -242,15 +280,54 @@ public:
 	//申请内存
 	void* allocMem(size_t size)
 	{
-		return malloc(size);
-	}
+		//如果申请的内存小于等于最大内存块大小
+		if (size <= MAX_MEMORY_SIZE)
+		{
+			return m_pMAc[size]->allocMemory(size);
+		}
+		else
+		{
+			//                                                 内存空间+内存块描述信息要占的空间
+			MemoryBlockMsg* pReturn = (MemoryBlockMsg*)malloc(size + sizeof(MemoryBlockMsg));
 
+			pReturn->bPool = false;//向系统申请的内存，所以不在我们自建的内存池中
+			pReturn->nID = -1;
+			pReturn->nRef = 1;
+			pReturn->pAlloc = nullptr;
+			pReturn->pNext = nullptr;
+
+			return (void*)pReturn;
+		}
+	}
 
 	//释放内存
-	void freeMem(void* p)
+	void freeMem(void* pMem)
 	{
-		//::free(p);//限定为使用全局命名空间中的函数，若函数名为free，则能防止循环调用
+		//减去一个偏移量后，指向当前块的【内存块描述信息】
+		// （或指向向系统申请的内存的【内存块描述信息】）
+		MemoryBlockMsg* pMemoryBlockMsg =
+			(MemoryBlockMsg*)((char*)pMem - sizeof(MemoryBlockMsg));
 
-		free(p);
+		if (pMemoryBlockMsg->bPool)
+		{
+			pMemoryBlockMsg->pAlloc->freeMemory(pMem);
+		}
+		else
+		{
+			if(--pMemoryBlockMsg->nRef==0)
+				free(pMem);
+		}
+
+		return;
 	}
+
+	//增加内存块引用计数(有共享内存块需求时做扩展方法使用)
+	void addRef(void* pMem)
+	{
+		MemoryBlockMsg* pMemoryBlockMsg =
+			(MemoryBlockMsg*)((char*)pMem - sizeof(MemoryBlockMsg));
+
+		++pMemoryBlockMsg->nRef;
+	}
+
 };
