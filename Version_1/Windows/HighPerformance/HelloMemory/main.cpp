@@ -11,8 +11,8 @@ int main()
 	char* pData2 = new char;
 	delete pData2;
 	//3.
-	char* pData3 = (char*)std::malloc(sizeof(char[128]));
-	free(pData3);
+	char* pData3 = new char[64];
+	delete [] pData3;
 
 
 	return 0;
