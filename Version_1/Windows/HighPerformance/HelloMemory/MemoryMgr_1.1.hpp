@@ -18,7 +18,7 @@
 #endif
 
 //最大内存块大小
-#define MAX_MEMORY_SIZE 64
+#define MAX_MEMORY_SIZE 1024
 
 class MemoryAlloc;
 
@@ -65,7 +65,7 @@ protected:
 	size_t m_BlockNums;
 
 public:
-	MemoryAlloc():m_pBuf(nullptr),pHeader(nullptr),m_BlockSize(0), m_BlockNums(0)
+	MemoryAlloc() :m_pBuf(nullptr), pHeader(nullptr), m_BlockSize(0), m_BlockNums(0)
 	{}
 
 	~MemoryAlloc()
@@ -83,12 +83,12 @@ public:
 		}
 
 		MemoryBlockMsg* pReturn = nullptr;
-		
+
 		//内存池的内存空间不足时
 		if (nullptr == pHeader)
-		{ 
+		{
 			//                                                 内存空间+内存块描述信息要占的空间
-			pReturn = (MemoryBlockMsg*)malloc(size+sizeof(MemoryBlockMsg));
+			pReturn = (MemoryBlockMsg*)malloc(size + sizeof(MemoryBlockMsg));
 
 			//***注***
 			// 若没有这块代码，则会出现警告：C6011:取消对NULL指针"pReturn"的引用
@@ -135,7 +135,7 @@ public:
 		//减去一个偏移量后，指向当前块的【内存块描述信息】
 		// （或指向向系统申请的内存的【内存块描述信息】）
 		MemoryBlockMsg* pMemoryBlockMsg =
-			(MemoryBlockMsg*)((char*)pMem-sizeof(MemoryBlockMsg));
+			(MemoryBlockMsg*)((char*)pMem - sizeof(MemoryBlockMsg));
 
 		xPrintf("freeMemory: %llx, id=%d\n", pMemoryBlockMsg, pMemoryBlockMsg->nID);
 
@@ -146,7 +146,7 @@ public:
 		{
 			return;//引用值大于1，说明有共享内存的情况
 		}
-		
+
 		//若要释放的内存块在内存池内
 		if (pMemoryBlockMsg->bPool)
 		{
@@ -184,7 +184,7 @@ public:
 		//计算内存池的大小
 		//错误写法：
 		//size_t BuffSize = m_BlockSize * m_BlockNums;//块大小乘以块数量
-		size_t BuffSize = (m_BlockSize+sizeof(MemoryBlockMsg)) * m_BlockNums;//块大小乘以块数量
+		size_t BuffSize = (m_BlockSize + sizeof(MemoryBlockMsg)) * m_BlockNums;//块大小乘以块数量
 		//向系统申请池的内存
 		m_pBuf = (char*)malloc(BuffSize);
 
@@ -239,7 +239,7 @@ public:
 //创建的MemoryAlloc对象无法更改m_BlockSize、m_BlockNums参数
 //使用模板元编程(TMP)
 //将工作从运行期转移到编译期，并且可以指定m_BlockSize、m_BlockNums参数
-template<size_t BlockSize,size_t BlockNums>//注意此处传的是非模板类型参数
+template<size_t BlockSize, size_t BlockNums>//注意此处传的是非模板类型参数
 class MemoryAllocator :public MemoryAlloc
 {
 public:
@@ -251,7 +251,7 @@ public:
 		//m_BlockSize = BlockSize;
 
 		//(61/8)*8+(61%8)=56+8=64
-		m_BlockSize = (BlockSize / n) * n + (BlockSize%n ? n : 0);
+		m_BlockSize = (BlockSize / n) * n + (BlockSize % n ? n : 0);
 		m_BlockNums = BlockNums;
 		//***注***
 		//若MemoryAlloc中的数据成员为private，那么该类公有继承后将无法访问m_BlockSize等数据
@@ -266,15 +266,24 @@ private:
 	//申请一个每个内存块64字节，共有10块的内存池
 	MemoryAllocator<64, 10> m_mem64_10;
 
+	MemoryAllocator<128, 10> m_mem128_10;
+	MemoryAllocator<256, 10> m_mem256_10;
+	MemoryAllocator<512, 10> m_mem512_10;
+	MemoryAllocator<1024, 10> m_mem1024_10;
+
 	//创建一个指针数组，用于映射不同内存需求情况下对应的应该使用的内存池
 	MemoryAlloc* m_pMAc[MAX_MEMORY_SIZE + 1];
 
 	MemoryMgr()
 	{
 		//***理解***
-		//对0~64字节的内存申请进行内存块映射，使该内存申请操作可以
-		// 快速地使用m_mem64_10内存池
-		initMemoryMgr(0,64,&m_mem64_10);
+		//对0~64字节的内存申请进行内存池映射，使该内存申请操作可以
+		//快速地使用m_mem64_10内存池
+		initMemoryMappingArray(0, 64, &m_mem64_10);
+		initMemoryMappingArray(65, 128, &m_mem128_10);
+		initMemoryMappingArray(129, 256, &m_mem256_10);
+		initMemoryMappingArray(257, 512, &m_mem512_10);
+		initMemoryMappingArray(513, 1024, &m_mem1024_10);
 	}
 
 	~MemoryMgr()
@@ -285,7 +294,7 @@ private:
 	//将一定范围内的内存大小映射到对应的内存池。
 	// 它通过循环遍历指定的范围，将每个内存大小所对应的指针指向相应的内存池对象。
 	// 这样，当需要分配内存时，就可以根据需要的大小直接找到对应的内存池对象进行分配。
-	void initMemoryMgr(int nBegin, int nEnd, MemoryAlloc* pMAc)
+	void initMemoryMappingArray(int nBegin, int nEnd, MemoryAlloc* pMAc)
 	{
 		for (int n = nBegin; n <= nEnd; ++n)
 		{
@@ -307,7 +316,7 @@ public:
 		//创建静态对象(使用了自定义的默认构造函数构造对象)
 		static MemoryMgr mgr;
 
-		return mgr;		
+		return mgr;
 		//《Effective C++》：条款04：确定对象被使用前已先被初始化
 		//保证你所获得的那个引用将指向一个历经初始化的对象
 	}
@@ -391,258 +400,4 @@ public:
 	}
 
 };
-#endif
-
-//
-#if 0
-#ifndef _MemoryMgr_hpp_
-#define _MemoryMgr_hpp_
-#include<stdlib.h>
-#include<assert.h>
-
-#ifdef _DEBUG
-#include<stdio.h>
-#define xPrintf(...) printf(__VA_ARGS__)
-#else
-#define xPrintf(...)
-#endif // _DEBUG
-
-
-#define MAX_MEMORY_SZIE 1024
-
-class MemoryAlloc;
-//内存块 最小单元
-class MemoryBlock
-{
-public:
-	//所属大内存块（池）
-	MemoryAlloc* pAlloc;
-	//下一块位置
-	MemoryBlock* pNext;
-	//内存块编号
-	int nID;
-	//引用次数
-	int nRef;
-	//是否在内存池中
-	bool bPool;
-private:
-	//预留
-	char c1;
-	char c2;
-	char c3;
-};
-
-//内存池
-class MemoryAlloc
-{
-public:
-	MemoryAlloc()
-	{
-		_pBuf = nullptr;
-		_pHeader = nullptr;
-		_nSzie = 0;
-		_nBlockSzie = 0;
-	}
-
-	~MemoryAlloc()
-	{
-		if (_pBuf)
-			free(_pBuf);
-	}
-
-	//申请内存
-	void* allocMemory(size_t nSize)
-	{
-		if (!_pBuf)
-		{
-			initMemory();
-		}
-
-		MemoryBlock* pReturn = nullptr;
-		if (nullptr == _pHeader)
-		{
-			pReturn = (MemoryBlock*)malloc(nSize + sizeof(MemoryBlock));
-			pReturn->bPool = false;
-			pReturn->nID = -1;
-			pReturn->nRef = 1;
-			pReturn->pAlloc = nullptr;
-			pReturn->pNext = nullptr;
-		}
-		else {
-			pReturn = _pHeader;
-			_pHeader = _pHeader->pNext;
-			assert(0 == pReturn->nRef);
-			pReturn->nRef = 1;
-		}
-		//xPrintf("allocMem: %llx, id=%d, size=%d\n", pReturn, pReturn->nID, nSize);
-		return ((char*)pReturn + sizeof(MemoryBlock));
-	}
-
-	//释放内存
-	void freeMemory(void* pMem)
-	{
-		MemoryBlock* pBlock = (MemoryBlock*)((char*)pMem - sizeof(MemoryBlock));
-		assert(1 == pBlock->nRef);
-		if (--pBlock->nRef != 0)
-		{
-			return;
-		}
-		if (pBlock->bPool)
-		{
-			pBlock->pNext = _pHeader;
-			_pHeader = pBlock;
-		}
-		else {
-			free(pBlock);
-		}
-	}
-
-	//初始化
-	void initMemory()
-	{	//断言
-		assert(nullptr == _pBuf);
-		if (_pBuf)
-			return;
-		//计算内存池的大小
-		size_t realSzie = _nSzie + sizeof(MemoryBlock);
-		size_t bufSize = realSzie * _nBlockSzie;
-		//向系统申请池的内存
-		_pBuf = (char*)malloc(bufSize);
-
-		//初始化内存池
-		_pHeader = (MemoryBlock*)_pBuf;
-		_pHeader->bPool = true;
-		_pHeader->nID = 0;
-		_pHeader->nRef = 0;
-		_pHeader->pAlloc = this;
-		_pHeader->pNext = nullptr;
-		//遍历内存块进行初始化
-		MemoryBlock* pTemp1 = _pHeader;
-
-		for (size_t n = 1; n < _nBlockSzie; n++)
-		{
-			MemoryBlock* pTemp2 = (MemoryBlock*)(_pBuf + (n * realSzie));
-			pTemp2->bPool = true;
-			pTemp2->nID = n;
-			pTemp2->nRef = 0;
-			pTemp2->pAlloc = this;
-			pTemp2->pNext = nullptr;
-			pTemp1->pNext = pTemp2;
-			pTemp1 = pTemp2;
-		}
-	}
-protected:
-	//内存池地址
-	char* _pBuf;
-	//头部内存单元
-	MemoryBlock* _pHeader;
-	//内存单元的大小
-	size_t _nSzie;
-	//内存单元的数量
-	size_t _nBlockSzie;
-};
-
-//便于在声明类成员变量时初始化MemoryAlloc的成员数据
-template<size_t nSzie, size_t nBlockSzie>
-class MemoryAlloctor :public MemoryAlloc
-{
-public:
-	MemoryAlloctor()
-	{
-		//8 4   61/8=7  61%8=5
-		const size_t n = sizeof(void*);
-		//(7*8)+8 
-		_nSzie = (nSzie / n) * n + (nSzie % n ? n : 0);
-		_nBlockSzie = nBlockSzie;
-	}
-
-};
-
-//内存管理工具
-class MemoryMgr
-{
-private:
-	MemoryMgr()
-	{
-		init_szAlloc(0, 64, &_mem64);
-		init_szAlloc(65, 128, &_mem128);
-		init_szAlloc(129, 256, &_mem256);
-		init_szAlloc(257, 512, &_mem512);
-		init_szAlloc(513, 1024, &_mem1024);
-	}
-
-	~MemoryMgr()
-	{
-
-	}
-
-public:
-	static MemoryMgr& Instance()
-	{//单例模式 静态
-		static MemoryMgr mgr;
-		return mgr;
-	}
-	//申请内存
-	void* allocMem(size_t nSize)
-	{
-		if (nSize <= MAX_MEMORY_SZIE)
-		{
-			return _szAlloc[nSize]->allocMemory(nSize);
-		}
-		else
-		{
-			MemoryBlock* pReturn = (MemoryBlock*)malloc(nSize + sizeof(MemoryBlock));
-			pReturn->bPool = false;
-			pReturn->nID = -1;
-			pReturn->nRef = 1;
-			pReturn->pAlloc = nullptr;
-			pReturn->pNext = nullptr;
-			//xPrintf("allocMem: %llx, id=%d, size=%d\n", pReturn, pReturn->nID, nSize);
-			return ((char*)pReturn + sizeof(MemoryBlock));
-		}
-
-	}
-
-	//释放内存
-	void freeMem(void* pMem)
-	{
-		MemoryBlock* pBlock = (MemoryBlock*)((char*)pMem - sizeof(MemoryBlock));
-		//xPrintf("freeMem: %llx, id=%d\n", pBlock, pBlock->nID);
-		if (pBlock->bPool)
-		{
-			pBlock->pAlloc->freeMemory(pMem);
-		}
-		else
-		{
-			if (--pBlock->nRef == 0)
-				free(pBlock);
-		}
-	}
-
-	//增加内存块的引用计数
-	void addRef(void* pMem)
-	{
-		MemoryBlock* pBlock = (MemoryBlock*)((char*)pMem - sizeof(MemoryBlock));
-		++pBlock->nRef;
-	}
-private:
-	//初始化内存池映射数组
-	void init_szAlloc(int nBegin, int nEnd, MemoryAlloc* pMemA)
-	{
-		for (int n = nBegin; n <= nEnd; n++)
-		{
-			_szAlloc[n] = pMemA;
-		}
-	}
-private:
-	MemoryAlloctor<64, 100000> _mem64;
-	MemoryAlloctor<128, 100000> _mem128;
-	MemoryAlloctor<256, 100000> _mem256;
-	MemoryAlloctor<512, 100000> _mem512;
-	MemoryAlloctor<1024, 100000> _mem1024;
-	MemoryAlloc* _szAlloc[MAX_MEMORY_SZIE + 1];
-};
-
-#endif // !_MemoryMgr_hpp_
-
 #endif
