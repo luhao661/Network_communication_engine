@@ -3,6 +3,7 @@
 #if 1
 #include <stdlib.h>
 #include <assert.h>//断言库，用于辅助调试程序
+#include<mutex>//锁
 
 //在debug模式下添加能输出调试信息的输出语句
 #ifdef _DEBUG
@@ -64,6 +65,8 @@ protected:
 	//内存单元的数量
 	size_t m_BlockNums;
 
+	std::mutex m_mutex;
+
 public:
 	MemoryAlloc() :m_pBuf(nullptr), pHeader(nullptr), m_BlockSize(0), m_BlockNums(0)
 	{}
@@ -77,6 +80,8 @@ public:
 	//在内存池中申请内存块
 	void* allocMemory(size_t size)
 	{
+		std::lock_guard<std::mutex> lg(m_mutex);
+
 		if (!m_pBuf)
 		{
 			initMemory();
@@ -132,6 +137,8 @@ public:
 	//传入的是实际使用的内存的位置
 	void freeMemory(void* pMem)
 	{
+		std::lock_guard<std::mutex> lg(m_mutex);
+
 		//减去一个偏移量后，指向当前块的【内存块描述信息】
 		// （或指向向系统申请的内存的【内存块描述信息】）
 		MemoryBlockMsg* pMemoryBlockMsg =

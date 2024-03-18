@@ -1,7 +1,7 @@
 #if 1
 #include "Allocator.h"
 #include <stdlib.h>
-#include "MemoryMgr_1.1.hpp"
+#include "MemoryMgr_1.2.hpp"
 
 void* operator new(size_t size)
 {
