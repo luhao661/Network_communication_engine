@@ -1,5 +1,17 @@
 #pragma once
 
+
+
+
+
+
+//***注***
+//TcpServer项目里的MemoryMgr_1.2.hpp  代码更完善
+
+
+
+
+
 #if 1
 #include <stdlib.h>
 #include <assert.h>//断言库，用于辅助调试程序
