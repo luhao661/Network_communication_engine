@@ -3,16 +3,16 @@
 
 #include <thread>
 #include <mutex>
-#include <list>//ÊÊºÏ¿ìËÙ°²²åºÍÒÆ³ıÔªËØ
+#include <list>//é€‚åˆå¿«é€Ÿå®‰æ’å’Œç§»é™¤å…ƒç´ 
 #include <functional>//mem_fn()
 
-//ÈÎÎñÀàĞÍ¡ª¡ª³éÏó»ùÀà
+//ä»»åŠ¡ç±»å‹â€”â€”æŠ½è±¡åŸºç±»
 class CellTask
 {
 private:
 
 public:
-	CellTask()
+	CellTask() 
 	{
 
 	}
@@ -29,18 +29,18 @@ public:
 typedef std::shared_ptr<CellTask> CellTaskPtr;
 
 
-//Ö´ĞĞÈÎÎñµÄ·şÎñÀàĞÍ
-//¸ÃÀàĞÍ×÷ÓÃÊÇ
-//²»¶ÏµÈ´ıÈÎÎñµÄµ½À´£¬²¢Ìí¼Ó¾ßÌåÈÎÎñµ½listÈİÆ÷£¨ÀàËÆÓÚEasyTcpServerÀà£©
-//²¢²»¶ÏÖ´ĞĞ¾ßÌåÈÎÎñ
+//æ‰§è¡Œä»»åŠ¡çš„æœåŠ¡ç±»å‹
+//è¯¥ç±»å‹ä½œç”¨æ˜¯
+//ä¸æ–­ç­‰å¾…ä»»åŠ¡çš„åˆ°æ¥ï¼Œå¹¶æ·»åŠ å…·ä½“ä»»åŠ¡åˆ°listå®¹å™¨ï¼ˆç±»ä¼¼äºEasyTcpServerç±»ï¼‰
+//å¹¶ä¸æ–­æ‰§è¡Œå…·ä½“ä»»åŠ¡
 class CellTaskServer
 {
 private:
-	//ÈÎÎñÊı¾İ
+	//ä»»åŠ¡æ•°æ®
 	std::list<CellTaskPtr> m_tasks;
-	//ÈÎÎñÊı¾İ»º³åÇø
+	//ä»»åŠ¡æ•°æ®ç¼“å†²åŒº
 	std::list<CellTaskPtr> m_tasks_buffer;
-	//¸Ä±äÈÎÎñÊı¾İ»º³åÇøÊ±ĞèÒª¼ÓËø
+	//æ”¹å˜ä»»åŠ¡æ•°æ®ç¼“å†²åŒºæ—¶éœ€è¦åŠ é”
 	std::mutex m_mutex;
 
 public:
@@ -50,10 +50,10 @@ public:
 	~CellTaskServer()
 	{}
 
-	//Î¬»¤Ò»¸ölistÈİÆ÷£¬´æ´¢Ìí¼ÓµÄ¾ßÌåÈÎÎñÖ¸Õë
-	//´íÎóĞ´·¨£º
+	//ç»´æŠ¤ä¸€ä¸ªlistå®¹å™¨ï¼Œå­˜å‚¨æ·»åŠ çš„å…·ä½“ä»»åŠ¡æŒ‡é’ˆ
+	//é”™è¯¯å†™æ³•ï¼š
 	//void addTask(CellServerMsgToClientTaskPtr task)
-	//ÕıÈ·Ğ´·¨£º
+	//æ­£ç¡®å†™æ³•ï¼š
 	void addTask(CellTaskPtr& task)
 	{
 		{
@@ -61,23 +61,23 @@ public:
 			m_tasks_buffer.push_back(task);
 		}
 	}
-	//Ö¸Ïò»ùÀàµÄÖ¸Õë¿ÉÒÔÖ¸ÏòÅÉÉúÀà£¬Ò²ÊÊÓÃÓÚÖÇÄÜÖ¸Õë£¬µ«Êµ²Î´«Èë¶ËÒª½øĞĞÇ¿ÖÆÀàĞÍ×ª»»
+	//æŒ‡å‘åŸºç±»çš„æŒ‡é’ˆå¯ä»¥æŒ‡å‘æ´¾ç”Ÿç±»ï¼Œä¹Ÿé€‚ç”¨äºæ™ºèƒ½æŒ‡é’ˆï¼Œä½†å®å‚ä¼ å…¥ç«¯è¦è¿›è¡Œå¼ºåˆ¶ç±»å‹è½¬æ¢
 
-	//Æô¶¯¹¤×÷Ïß³Ì
+	//å¯åŠ¨å·¥ä½œçº¿ç¨‹
 	void Start()
 	{
 		std::thread t(std::mem_fn(&CellTaskServer::OnRun), this);
 		t.detach();
 	}
 
-protected://ÉùÃ÷ÎªprotectedÊ¹CellTaskServer¶ÔÏóÎŞ·¨·ÃÎÊOnRun()
+protected://å£°æ˜ä¸ºprotectedä½¿CellTaskServerå¯¹è±¡æ— æ³•è®¿é—®OnRun()
 
-	//¹¤×÷º¯Êı
+	//å·¥ä½œå‡½æ•°
 	void OnRun()
 	{
 		while (true)
 		{
-			//´Ó»º³åÇøÖĞÈ¡³öÊı¾İ
+			//ä»ç¼“å†²åŒºä¸­å–å‡ºæ•°æ®
 			if (!m_tasks_buffer.empty())
 			{
 				std::lock_guard<std::mutex>lg(m_mutex);
@@ -85,7 +85,7 @@ protected://ÉùÃ÷ÎªprotectedÊ¹CellTaskServer¶ÔÏóÎŞ·¨·ÃÎÊOnRun()
 					m_tasks.push_back(pTask);
 				m_tasks_buffer.clear();
 			}
-			else//Èç¹ûÃ»ÓĞÊı¾İ
+			else//å¦‚æœæ²¡æœ‰æ•°æ®
 			{
 				std::chrono::milliseconds time(1);
 				std::this_thread::sleep_for(time);
@@ -93,14 +93,14 @@ protected://ÉùÃ÷ÎªprotectedÊ¹CellTaskServer¶ÔÏóÎŞ·¨·ÃÎÊOnRun()
 				continue;
 			}
 
-			//´¦ÀíÈÎÎñ(Ïû·ÑÈÎÎñ)
+			//å¤„ç†ä»»åŠ¡(æ¶ˆè´¹ä»»åŠ¡)
 			for (auto pTask : m_tasks)
 			{
 				pTask->doTask();
 				//delete pTask;
 			}
 
-			//Çå¿ÕÈÎÎñÔªËØ
+			//æ¸…ç©ºä»»åŠ¡å…ƒç´ 
 			m_tasks.clear();
 		}
 	}
