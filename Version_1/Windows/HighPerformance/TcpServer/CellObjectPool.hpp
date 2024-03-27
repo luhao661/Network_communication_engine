@@ -72,6 +72,8 @@ private:
 	//内存单元的数量
 	//size_t m_BlockNums;
 
+	std::mutex m_mutex;
+
 public:
 	CellObjectPool()
 	{
@@ -84,7 +86,7 @@ public:
 			delete[] m_pBuf;
 	}
 
-	//申请对象所要占用的内存
+	//申请对象所要占用的对象池内存
 	void* allocObjMemory(size_t size)
 	{
 		std::lock_guard<std::mutex> lg(m_mutex);
@@ -96,7 +98,7 @@ public:
 
 		NodeMsg* pReturn = nullptr;
 
-		//内存池的内存空间不足时
+		//对象池的内存空间不足时
 		if (nullptr == pHeader)
 		{
 			//                                                 内存空间+内存块描述信息要占的空间
@@ -110,17 +112,17 @@ public:
 				exit(EXIT_FAILURE);
 			}
 
-			pReturn->bPool = false;//向系统申请的内存，所以不在我们自建的内存池中
+			pReturn->bPool = false;//向自建的内存池申请的内存
 			pReturn->nID = -1;
 			pReturn->nRef = 1;
 			pReturn->pNext = nullptr;
 		}
 		else
 		{
-			//使用pHeader指向的内存块
+			//使用pHeader指向的对象池内存块
 			pReturn = pHeader;
 
-			//pHeader指向位置后移，指向新的可被使用的内存块
+			//pHeader指向位置后移，指向新的可被使用的对象池内存块
 			pHeader = pHeader->pNext;
 
 			assert(0 == pReturn->nRef);
@@ -134,17 +136,18 @@ public:
 		return ((char*)pReturn + sizeof(NodeMsg));
 	}
 
-	//释放对象所占用的内存
+	//释放对象所占用的对象池内存
 	void freeObjMemory(void* pMem)
 	{
 		//减去一个偏移量后，指向当前块的【内存块描述信息】
-		// （或指向向系统申请的内存的【内存块描述信息】）
 		NodeMsg* pNodeMsg =
 			(NodeMsg*)((char*)pMem - sizeof(NodeMsg));
 
 		assert(1 == pNodeMsg->nRef);
 
-		//若要释放的内存块在内存池内
+		xPrintf("freeObjMem: %llx, id=%d\n", pNodeMsg, pNodeMsg->nID);
+
+		//若要释放的内存块在对象池内
 		if (pNodeMsg->bPool)
 		{
 			std::lock_guard<std::mutex> lg(m_mutex);
@@ -168,7 +171,7 @@ public:
 			//pHeader回过来指向当前可被存储数据的可用内存块的内存块信息
 			pHeader = pNodeMsg;
 		}
-		else//若在内存池外
+		else//若在对象池外
 		{
 			//std::lock_guard<std::mutex> lg(m_mutex);
 
@@ -283,14 +286,14 @@ public:
 
 	//使用可变参模板，兼容不同类对象初始化时的参数类型和个数的要求
 	template<typename ...Args>
-	static classT* CreateObject(Args ...args)
+	static ClassT* CreateObject(Args ...args)
 	{
-		classT* obj = new classT(args...);
+		ClassT* obj = new ClassT(args...);
 
 		return obj;
 	}
 
-	static void DestoryObject(classT* obj)
+	static void DestoryObject(ClassT* obj)
 	{
 		delete obj;
 	}
@@ -315,7 +318,7 @@ public:
 
 //该类的使用方法：
 /*
-class ClassB :public ObjectPoolBase<ClassB>
+class ClassB :public ObjectPoolBase<ClassB,10>
 {
 private:
 	int num = 0;
