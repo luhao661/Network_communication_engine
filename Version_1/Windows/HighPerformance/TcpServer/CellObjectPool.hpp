@@ -62,7 +62,7 @@ private:
 	};
 
 	//对象池地址
-	char* m_pBuf;
+	char* m_pBuf=nullptr;//注意一定要进行初始化
 
 	//头部内存单元
 	NodeMsg* pHeader;
@@ -139,6 +139,11 @@ public:
 	//释放对象所占用的对象池内存
 	void freeObjMemory(void* pMem)
 	{
+		//***注***
+		if (pMem == nullptr)
+			return;
+		//该段要加，原因不明
+
 		//减去一个偏移量后，指向当前块的【内存块描述信息】
 		NodeMsg* pNodeMsg =
 			(NodeMsg*)((char*)pMem - sizeof(NodeMsg));
