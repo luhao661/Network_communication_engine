@@ -1,0 +1,80 @@
+﻿  server.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLTask.hpp(52,22): error C2039: "mem_fn": 不是 "std" 的成员
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\list(23,1):
+  参见“std”的声明
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLTask.hpp(52,22): error C3861: “mem_fn”: 找不到标识符
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLTask.hpp(52,16): error C2661: “std::thread::thread”: 没有重载函数接受 2 个参数
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\thread(92,28):
+  可能是“std::thread::thread(_Fn &&,_Args &&...)”
+  	D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLTask.hpp(52,16):
+  	“std::thread::thread(_Fn &&,_Args &&...)”: 无法推导“__formal”的 模板 参数
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLTask.hpp(52,16):
+  尝试匹配参数列表“(unknown-type, CellTaskServer *)”时
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(139,30): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(152,22): warning C4018: “<”: 有符号/无符号不匹配
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(253,30): error C2039: "mem_fn": 不是 "std" 的成员
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\map(24,1):
+  参见“std”的声明
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(253,30): error C3861: “mem_fn”: 找不到标识符
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(253,24): error C2440: “<function-style-cast>”: 无法从“initializer list”转换为“std::thread”
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(253,24):
+  “std::thread::thread”: 函数不接受 2 个参数
+  	D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\thread(92,28):
+  	可能是“std::thread::thread(_Fn &&,_Args &&...)”
+  	D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\CELLServer.hpp(253,24):
+  	尝试匹配参数列表“(unknown-type, CellServer *)”时
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(111,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(111,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(111,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(111,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(114,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(114,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(114,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(114,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(203,27): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(233,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+  (编译源文件“../EasyTcp调整代码结构/EasyTcpServer/server.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(233,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(233,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\EasyTcpServer.hpp(233,11):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\server.cpp(10,3): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\server.cpp(68,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“SOCKET”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\server.cpp(68,11):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\server.cpp(68,11):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\EasyTcp调整代码结构\EasyTcpServer\server.cpp(68,11):
+  请考虑在格式字符串中使用“%I64d”
+  

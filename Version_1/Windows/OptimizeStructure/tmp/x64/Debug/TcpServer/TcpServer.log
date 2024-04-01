@@ -1,0 +1,21 @@
+﻿  server.cpp
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\CellServer.hpp(285,36): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\CellServer.hpp(323,22): warning C4018: “<”: 有符号/无符号不匹配
+  (编译源文件“server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\TcpServer.hpp(234,1): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+  (编译源文件“server.cpp”)
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\TcpServer.hpp(234,1):
+  请考虑在格式字符串中使用“%lld”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\TcpServer.hpp(234,1):
+  请考虑在格式字符串中使用“%Id”
+  D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\TcpServer.hpp(234,1):
+  请考虑在格式字符串中使用“%I64d”
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\TcpServer.hpp(319,35): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  (编译源文件“server.cpp”)
+  
+D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\TcpServer\CellServer.hpp(371,1): warning C4715: “CellServer::OnRun”: 不是所有的控件路径都返回值
+  TcpServer.vcxproj -> D:\CODE\Network_communication_engine\Version_1\Windows\OptimizeStructure\bin\x64\Debug\TcpServer.exe
