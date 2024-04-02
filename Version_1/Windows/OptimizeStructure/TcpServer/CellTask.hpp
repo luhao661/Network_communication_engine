@@ -6,36 +6,19 @@
 #include <list>//适合快速安插和移除元素
 #include <functional>//mem_fn
 
-//任务类型——抽象基类
-class CellTask
-{
-private:
-
-public:
-	CellTask()
-	{
-
-	}
-
-	virtual ~CellTask()
-	{
-
-	}
-
-	virtual void doTask() = 0;
-};
-
 //执行任务的服务类型
 //该类型作用是
 //不断等待任务的到来，并添加具体任务到list容器（类似于EasyTcpServer类）
 //并不断执行具体任务
 class CellTaskServer
 {
+	typedef std::function<void()>CellTask;
+
 private:
 	//任务数据
-	std::list<CellTask*> m_tasks;
+	std::list<CellTask> m_tasks;
 	//任务数据缓冲区
-	std::list<CellTask*> m_tasks_buffer;
+	std::list<CellTask> m_tasks_buffer;
 	//改变任务数据缓冲区时需要加锁
 	std::mutex m_mutex;
 
@@ -47,7 +30,7 @@ public:
 	{}
 
 	//维护一个list容器，存储添加的具体任务指针
-	void addTask(CellTask* task)
+	void addTask(CellTask task)
 	{
 		{
 			std::lock_guard<std::mutex>lg(m_mutex);
@@ -86,10 +69,9 @@ protected://声明为protected使CellTaskServer对象无法访问OnRun()
 			}
 
 			//处理任务(消费任务)
-			for (auto pTask : m_tasks)
+			for (auto Task : m_tasks)
 			{
-				pTask->doTask();
-				delete pTask;
+				Task;
 			}
 
 			//清空任务元素

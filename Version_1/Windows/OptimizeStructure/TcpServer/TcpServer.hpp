@@ -19,7 +19,7 @@ using std::cout, std::endl;
 class EasyTcpServer : public NetEvent
 {
 private:
-	SOCKET m_serv_sock;
+	SOCKET m_serv_sock=INVALID_SOCKET;
 	//vector<ClientSocket*> vec_client;
 	vector<CellServer*> CellServers;
 

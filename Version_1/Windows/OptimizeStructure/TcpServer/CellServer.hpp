@@ -12,29 +12,6 @@ using std::mutex, std::vector, std::map, std::mem_fn, std::lock_guard;
 using std::thread;
 using std::cout,std::endl;
 
-//具体任务：网络消息发送任务
-class CellServerMsgToClientTask :public CellTask
-{
-	//要发送到的客户端
-	ClientSocket* m_pclient_sock;
-	//要发送的数据指针
-	DataHead* m_pHead;
-
-public:
-	CellServerMsgToClientTask(ClientSocket* pclient_sock, DataHead* pHead)
-	{
-		m_pclient_sock = pclient_sock;
-		m_pHead = pHead;
-	}
-
-	virtual void doTask()
-	{
-		m_pclient_sock->SendData(m_pHead);
-
-		delete m_pHead;
-	}
-};
-
 
 //作用：
 //线程添加新客户端【到缓冲客户队列】、
@@ -69,7 +46,7 @@ private:
 
 	bool m_ClientsChange = false;
 
-	SOCKET m_maxSocket;
+	SOCKET m_maxSocket=INVALID_SOCKET;
 
 	//每个CellServer对应一个CellTaskServer类对象
 	CellTaskServer m_CellTaskServer;
@@ -375,9 +352,12 @@ public:
 	//处理粘包 拆分包
 	int RecvData(ClientSocket* pClientSocket)
 	{
+		//接收客户端数据
+		char* pRecv = pClientSocket->Get_m_MsgBuf() + pClientSocket->Get_m_lastPos();
+
 		//接收客户端数据存到【服务端的】自定义接收缓冲区m_Recv
 		int len = (int)recv(pClientSocket->Get_m_client_sock(),
-			m_Recv, RECV_BUFFER_SIZE, 0);
+			pRecv, (RECV_BUFFER_SIZE)-pClientSocket->Get_m_lastPos(), 0);
 
 		m_pNetEvent->NERecv(pClientSocket);
 
@@ -390,8 +370,7 @@ public:
 
 		//将【服务端的】自定义接收缓冲区m_Recv的数据
 		//拷贝到【某个客户端对应的】消息缓冲区
-		memcpy(pClientSocket->Get_m_MsgBuf() + pClientSocket->Get_m_lastPos(),
-			m_Recv, len);
+		//memcpy(pClientSocket->Get_m_MsgBuf() + pClientSocket->Get_m_lastPos(),m_Recv, len);
 		//表示消息缓冲区的数据尾部的位置的变量m_lastPos后移
 		pClientSocket->Set_m_lastPos(pClientSocket->Get_m_lastPos() + len);
 
@@ -518,7 +497,7 @@ public:
 	void addSendTask(ClientSocket* pclient_sock, DataHead* pHead)
 	{
 		//生产任务
-		CellServerMsgToClientTask* pCSMTCT = new CellServerMsgToClientTask(pclient_sock, pHead);
+		//CellServerMsgToClientTask* pCSMTCT = new CellServerMsgToClientTask(pclient_sock, pHead);
 		//***注***
 		//此处存在【陷阱】
 		//动态分配的具体任务的内存空间到时候需要被释放
@@ -529,6 +508,13 @@ public:
 
 		//需要进行内存管理上的优化
 
-		m_CellTaskServer.addTask(pCSMTCT);
+		//m_CellTaskServer.addTask(pCSMTCT);
+
+		m_CellTaskServer.addTask(
+			[pclient_sock, pHead]() {
+				pclient_sock->SendData(pHead);
+
+				delete pHead;
+			});
 	}
 };
