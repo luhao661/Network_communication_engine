@@ -2,6 +2,9 @@
 
 #include "Cell.hpp"
 
+//客户端心跳检测死亡倒计时时间
+#define CLIENT_HEART_DEAD_TIME 5000
+
 //在服务端，由于要处理多个不同的客户端的数据
 //因此每个客户端都应有其
 //消息缓冲区还有指向消息缓冲区的数据尾部位置的变量
@@ -28,6 +31,9 @@ private:
 	char m_SendBuf[SEND_BUFFER_SIZE] = {};
 	//指向发送缓冲区的数据尾部位置
 	int m_lastSendPos = 0;
+
+	//心跳死亡计时
+	time_t m_DTHeart=0;
 
 public:
 	ClientSocket(SOCKET sock = INVALID_SOCKET)
@@ -111,4 +117,23 @@ public:
 		return ret;
 	}
 
+	void resetDTHeart()
+	{
+		m_DTHeart = 0;
+	}
+
+	//心跳检测
+	bool IsDead(time_t dt)
+	{
+		m_DTHeart += dt;
+
+		if (m_DTHeart >= CLIENT_HEART_DEAD_TIME)
+		{
+			printf("Heart dead : sock=%d, time=%d\n",m_client_sock,m_DTHeart);
+
+			return true;
+		}
+
+		return false;
+	}
 };

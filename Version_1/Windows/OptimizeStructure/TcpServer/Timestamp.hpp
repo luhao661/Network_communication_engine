@@ -4,6 +4,19 @@
 
 using namespace std::chrono;
 
+class CellTime
+{
+public:
+	//获取当前的时间戳 (毫秒)
+	static time_t getNowInMillisecond()
+	{
+		return duration_cast<milliseconds>
+			(high_resolution_clock::now().time_since_epoch()).count();
+	}
+
+};
+
+
 class Timestamp
 {
 private:

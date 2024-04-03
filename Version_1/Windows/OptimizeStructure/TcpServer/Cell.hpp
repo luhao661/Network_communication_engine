@@ -49,6 +49,7 @@
 #include"CELLTask.hpp"
 
 #include <iostream>
+#include <stdio.h>
 
 #ifndef RECV_BUFFER_SIZE
 

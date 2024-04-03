@@ -67,6 +67,17 @@ public:
 		}
 		break;
 		*/
+
+		case CMD_c2s_HEART:
+		{
+			pclient_sock->resetDTHeart();
+
+			s2c_Heart ret;
+
+			pCellServer->addSendTask(pclient_sock, &ret);
+		}
+		break;
+
 		default:
 		{
 			cout << "收到客户端<socket=" << pclient_sock->Get_m_client_sock() << ">未定义消息"

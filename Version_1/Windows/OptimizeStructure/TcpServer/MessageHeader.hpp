@@ -5,6 +5,8 @@ enum
 	CMD_LOGIN, CMD_LOGIN_RESULT,
 	CMD_LOGOUT, CMD_LOGOUT_RESULT,
 	CMD_NEW_USER_JOIN,
+	CMD_c2s_HEART,
+	CMD_s2c_HEART,
 	CMD_ERROR
 };
 
@@ -83,4 +85,22 @@ struct NewUserJoin :public DataHead
 	}
 
 	int sock;
+};
+
+struct c2s_Heart :public DataHead
+{
+	c2s_Heart()
+	{
+		datalength = sizeof(c2s_Heart);
+		cmd = CMD_c2s_HEART;
+	}
+};
+
+struct s2c_Heart :public DataHead
+{
+	s2c_Heart()
+	{
+		datalength = sizeof(s2c_Heart);
+		cmd = CMD_s2c_HEART;
+	}
 };

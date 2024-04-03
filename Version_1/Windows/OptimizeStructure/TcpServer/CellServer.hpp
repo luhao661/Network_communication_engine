@@ -271,80 +271,123 @@ public:
 
 			}
 
-			//以下写法查找待读取的套接字句柄时，时间复杂度为O(n)，可以优化
-			/*
-			for (int n = (int)vec_client.size() - 1; n >= 0; n--)
-			{
-				if (FD_ISSET(vec_client[n]->Get_m_client_sock(), &fdRead))
-				{
-					if (RecvData(vec_client[n]) == -1)
-					{
-						auto it = vec_client.begin() + n;
-						if (it != vec_client.end())
-						{
-							//调用EasyTcpServer类对象的OnLeave()方法
-							//EasyTcpServer类的vec_client元素得以减少
-							if (m_pNetEvent)
-								m_pNetEvent->NEOnNetLeave(vec_client[n]);
+			ReadData(fdRead);
+			CheckHearTTime();
+		}
+	}
 
-							delete* it;
-							vec_client.erase(it);
-						}
-					}
+	time_t OldTime= CellTime::getNowInMillisecond();
+	void CheckHearTTime()
+	{
+		auto NowTime=CellTime::getNowInMillisecond();
+
+		auto durationTime = NowTime - OldTime;
+
+		OldTime = NowTime;
+
+		for (auto iter = sock_pclient_pair.begin(); iter != sock_pclient_pair.end(); )
+		{
+			if (iter->second->IsDead(durationTime))
+			{
+				if (m_pNetEvent)
+					m_pNetEvent->NEOnNetLeave(iter->second);
+
+				//先删除new出来的ClientSocket类对象
+				delete iter->second;
+				//再删除map中的pair元素
+				//错误写法：
+				//iter = sock_pclient_pair.erase(iter->first);
+				//正确写法：
+				iter = sock_pclient_pair.erase(iter);
+				//理解：map的erase有两种重载函数：size_type erase( const Key& key ); 	iterator erase(iterator pos);
+
+				m_ClientsChange = true;
+			}
+			else
+				++iter;
+		}
+	}
+
+
+	//在bool OnRun()中分离业务
+	void ReadData(fd_set& fdRead)
+	{
+		//以下写法查找待读取的套接字句柄时，时间复杂度为O(n)，可以优化
+	/*
+	for (int n = (int)vec_client.size() - 1; n >= 0; n--)
+	{
+		if (FD_ISSET(vec_client[n]->Get_m_client_sock(), &fdRead))
+		{
+			if (RecvData(vec_client[n]) == -1)
+			{
+				auto it = vec_client.begin() + n;
+				if (it != vec_client.end())
+				{
+					//调用EasyTcpServer类对象的OnLeave()方法
+					//EasyTcpServer类的vec_client元素得以减少
+					if (m_pNetEvent)
+						m_pNetEvent->NEOnNetLeave(vec_client[n]);
+
+					delete* it;
+					vec_client.erase(it);
 				}
 			}
-			*/
+		}
+	}
+	*/
 #ifdef _WIN32
 
-			//Linux没有fd_count
-			for (int n = 0; n < fdRead.fd_count; ++n)
+		for (int n = 0; n < fdRead.fd_count; ++n)
+		{
+			//提升查询性能
+			auto iter = sock_pclient_pair.find(fdRead.fd_array[n]);
+			if (iter != sock_pclient_pair.end())
 			{
-				//提升查询性能
-				auto iter = sock_pclient_pair.find(fdRead.fd_array[n]);
-				if (iter != sock_pclient_pair.end())
+				if (-1 == RecvData(iter->second))
 				{
-					if (-1 == RecvData(iter->second))
-					{
-						if (m_pNetEvent)
-							m_pNetEvent->NEOnNetLeave(iter->second);
-						sock_pclient_pair.erase(iter->first);
+					if (m_pNetEvent)
+						m_pNetEvent->NEOnNetLeave(iter->second);
 
-						m_ClientsChange = true;
-					}
-				}
-				else
-				{
-					printf("error. if (iter != sock_pclient_pair.end())\n");
-				}
+					//先删除new出来的ClientSocket类对象
+					delete iter->second;
+					//再删除map中的pair元素
+					//sock_pclient_pair.erase(iter->first);
+					sock_pclient_pair.erase(iter);//效率更高
 
-			}
-#else
-
-			std::vector<ClientSocket*> temp;
-			for (auto pair : sock_pclient_pair)
-			{
-				if (FD_ISSET(pair.second->Get_m_client_sock(), &fdRead))
-				{
-					if (-1 == RecvData(pair.second))
-					{
-						if (m_pNetEvent)
-							m_pNetEvent->NEOnNetLeave(pair.second);
-
-						m_ClientsChange = true;
-
-						temp.push_back(pair.second);
-					}
+					m_ClientsChange = true;
 				}
 			}
-			for (auto pClient : temp)
+			else
 			{
-				sock_pclient_pair.erase(pClient->Get_m_client_sock());
-
-				delete pClient;
+				printf("error. if (iter != sock_pclient_pair.end())\n");
 			}
-#endif
 
 		}
+#else
+	    //Linux没有fd_count
+		std::vector<ClientSocket*> temp;
+		for (auto pair : sock_pclient_pair)
+		{
+			if (FD_ISSET(pair.second->Get_m_client_sock(), &fdRead))
+			{
+				if (-1 == RecvData(pair.second))
+				{
+					if (m_pNetEvent)
+						m_pNetEvent->NEOnNetLeave(pair.second);
+
+					m_ClientsChange = true;
+
+					temp.push_back(pair.second);
+				}
+			}
+		}
+		for (auto pClient : temp)
+		{
+			sock_pclient_pair.erase(pClient->Get_m_client_sock());
+
+			delete pClient;
+		}
+#endif
 	}
 
 
@@ -367,6 +410,10 @@ public:
 			//	<< ">已退出。\n";
 			return -1;
 		}
+
+		//检测到数据，视为心跳
+		//pClientSocket->resetDTHeart();
+		//也可以放到NEOnNetMsg()中，将特定心跳数据头视为心跳
 
 		//将【服务端的】自定义接收缓冲区m_Recv的数据
 		//拷贝到【某个客户端对应的】消息缓冲区
