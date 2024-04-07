@@ -178,16 +178,19 @@ public:
 				std::chrono::milliseconds t(1);
 				std::this_thread::sleep_for(t);
 
+				//旧的时间戳
+				time_t OldTime = CellTime::getNowInMillisecond();
+
 				continue;
 			}
 
 			// 4 创建timeval结构布局的结构变量timeout以作为select数的第五个实参
 			//为了防止陷入无限阻塞的状态，使用 timeout 传递超时信息。
-			//struct timeval timeout;
+			struct timeval timeout;
 
-			//设置5秒的超时时间
-			//timeout.tv_sec = 1;
-			//timeout.tv_usec = 0;
+			//设置1秒的超时时间
+			timeout.tv_sec = 0;
+			timeout.tv_usec = 1;
 			//或
 			//struct timeval timeout = { 5,0 };
 
@@ -259,7 +262,7 @@ public:
 			//select()第五个参数设为nullptr，因为CellServer只用来接收数据，
 			//不干别的事情，
 			// 所以只要阻塞在此处等待客户端传来数据就可以了
-			int fd_num = select(m_maxSocket + 1, &fdRead, nullptr, nullptr, nullptr);
+			int fd_num = select(m_maxSocket + 1, &fdRead, nullptr, nullptr, &timeout);
 			if (fd_num == -1)
 			{
 				cout << "select任务结束" << endl;
@@ -276,9 +279,11 @@ public:
 		}
 	}
 
+	//旧的时间戳
 	time_t OldTime= CellTime::getNowInMillisecond();
 	void CheckHearTTime()
 	{
+		//新的时间戳
 		auto NowTime=CellTime::getNowInMillisecond();
 
 		auto durationTime = NowTime - OldTime;
@@ -294,6 +299,9 @@ public:
 
 				//先删除new出来的ClientSocket类对象
 				delete iter->second;
+				//关闭客户端连接
+				closesocket(iter->first);
+
 				//再删除map中的pair元素
 				//错误写法：
 				//iter = sock_pclient_pair.erase(iter->first);
@@ -350,6 +358,10 @@ public:
 
 					//先删除new出来的ClientSocket类对象
 					delete iter->second;
+
+					//关闭客户端连接
+					closesocket(iter->first);
+
 					//再删除map中的pair元素
 					//sock_pclient_pair.erase(iter->first);
 					sock_pclient_pair.erase(iter);//效率更高
@@ -377,15 +389,18 @@ public:
 
 					m_ClientsChange = true;
 
+					//关闭客户端连接
+					close(pair.first);
+
 					temp.push_back(pair.second);
 				}
 			}
 		}
 		for (auto pClient : temp)
 		{
-			sock_pclient_pair.erase(pClient->Get_m_client_sock());
-
 			delete pClient;
+
+			sock_pclient_pair.erase(pClient->Get_m_client_sock());
 		}
 #endif
 	}

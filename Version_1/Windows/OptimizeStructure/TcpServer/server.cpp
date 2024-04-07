@@ -34,6 +34,8 @@ public:
 		{
 		case CMD_LOGIN:
 		{
+			//pclient_sock->resetDTHeart();
+
 			LogIn* login = reinterpret_cast<LogIn*>(pHead);
 
 			//忽略判断用户密码是否正确的过程
