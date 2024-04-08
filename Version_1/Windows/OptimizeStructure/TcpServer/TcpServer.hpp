@@ -88,38 +88,30 @@ public:
 
 	void Close()
 	{
+		cout << "EasyTcpServer close step 1\n";
+
 		if (m_serv_sock != INVALID_SOCKET)
 		{
-#ifdef _WIN32
-			//关闭全部的客户端套接字
-			//for (int n = vec_client.size() - 1; n >= 0; --n)
-			//{
-			//	closesocket(vec_client[n]->Get_m_client_sock());
-			//	delete vec_client[n];
-			//}
+			//关闭CellServer
+			for (auto x : CellServers)
+				delete x;
 
-			//  关闭套节字closesocket
+			// 关闭套节字
+#ifdef _WIN32
 			closesocket(m_serv_sock);
 
 			//注销
 			WSACleanup();
 #else
-
-			//关闭全部的客户端套接字
-			//for (int n = (int)vec_client.size() - 1; n >= 0; --n)
-			//{
-			//	close(vec_client[n]->Get_m_client_sock());
-			//	delete vec_client[n];
-			//}
-
-			//  关闭套节字closesocket
 			close(m_serv_sock);
 			m_serv_sock = INVALID_SOCKET;
-
 #endif
 
-			//vec_client.clear();
+			CellServers.clear();
+			m_serv_sock = INVALID_SOCKET;
 		}
+
+		cout << "EasyTcpServer close step 2\n";
 	}
 
 

@@ -21,6 +21,8 @@ private:
 	std::list<CellTask> m_tasks_buffer;
 	//改变任务数据缓冲区时需要加锁
 	std::mutex m_mutex;
+	
+	bool m_isRun = false;
 
 public:
 	CellTaskServer()
@@ -42,7 +44,14 @@ public:
 	void Start()
 	{
 		std::thread t(std::mem_fn(&CellTaskServer::OnRun), this);
+		m_isRun = true;
+
 		t.detach();
+	}
+
+	void Close()
+	{
+		m_isRun = false;
 	}
 
 protected://声明为protected使CellTaskServer对象无法访问OnRun()
@@ -50,7 +59,7 @@ protected://声明为protected使CellTaskServer对象无法访问OnRun()
 	//工作函数
 	void OnRun()
 	{
-		while (true)
+		while (m_isRun)
 		{
 			//从缓冲区中取出数据
 			if (!m_tasks_buffer.empty())

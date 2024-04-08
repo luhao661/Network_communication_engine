@@ -51,6 +51,9 @@ private:
 	//每个CellServer对应一个CellTaskServer类对象
 	CellTaskServer m_CellTaskServer;
 
+	//旧的时间戳
+	time_t OldTime = CellTime::getNowInMillisecond();
+
 public:
 	//每次运行CellServer::OnNetMsg()，m_cnt增加1
 	//被EasyTcpServer类内数据成员recvCnt使用，
@@ -73,42 +76,46 @@ public:
 	{
 		delete m_pThread;
 		Close();
-		m_serv_sock = INVALID_SOCKET;
+		//m_serv_sock = INVALID_SOCKET;
 	}
 
 	void Close(void)
 	{
+		cout << "CellServer close step 1\n";
+
+		//关闭执行任务的服务类对象
+		m_CellTaskServer.Close();
+
 		if (m_serv_sock != INVALID_SOCKET)
 		{
-#ifdef _WIN32
-			//关闭全部的客户端套接字
+			//关闭客户端套接字
 			for (auto pair : sock_pclient_pair)
 			{
-				closesocket(pair.second->Get_m_client_sock());
 				delete pair.second;
 			}
 
-			//  关闭套节字closesocket
-			closesocket(m_serv_sock);
-			m_serv_sock = INVALID_SOCKET;
+			//错误：
+			// 创建CellServer类对象时传入构造函数的实参是
+			// EasyTcpServer类创建的服务端套接字
+			// CellServer没有权利去关闭EasyTcpServer类创建的服务端套接字
+			//closesocket(m_serv_sock);
 
-			//注销
-			//WSACleanup();
-#else
+			//在该函数中也不再进行关闭客户端套接字的操作
+			//而是CellClient类中	~ClientSocket()方法来关闭客户端套接字
 
-			//关闭全部的客户端套接字
-			for (auto pair : sock_pclient_pair)
+			//清空缓冲区客户队列，关闭客户端套接字
+			for (auto x : vec_client_buffer)
 			{
-				close(pair.second->Get_m_client_sock());
-				delete pair.second;
+				delete x;
 			}
-
-			//  关闭套节字closesocket
-			close(m_serv_sock);
-			m_serv_sock = INVALID_SOCKET;
-#endif
 
 			sock_pclient_pair.clear();
+			vec_client_buffer.clear();
+
+			m_serv_sock = INVALID_SOCKET;
+			//***注***
+			//此处可以将m_serv_sock 设置为 INVALID_SOCKET
+			//因为该m_serv_sock是EasyTcpServer类创建的服务端套接字的拷贝
 		}
 	}
 
@@ -279,8 +286,7 @@ public:
 		}
 	}
 
-	//旧的时间戳
-	time_t OldTime= CellTime::getNowInMillisecond();
+
 	void CheckHearTTime()
 	{
 		//新的时间戳
@@ -292,6 +298,7 @@ public:
 
 		for (auto iter = sock_pclient_pair.begin(); iter != sock_pclient_pair.end(); )
 		{
+			//心跳检测
 			if (iter->second->IsDead(durationTime))
 			{
 				if (m_pNetEvent)
@@ -312,7 +319,10 @@ public:
 				m_ClientsChange = true;
 			}
 			else
+			{
+				iter->second->IsSend(durationTime);
 				++iter;
+			}
 		}
 	}
 
@@ -359,8 +369,9 @@ public:
 					//先删除new出来的ClientSocket类对象
 					delete iter->second;
 
-					//关闭客户端连接
-					closesocket(iter->first);
+					//这边不再关闭客户端连接
+					//closesocket(iter->first);
+					//因为delete iter->second;调用了析构函数，将调用closesocket()
 
 					//再删除map中的pair元素
 					//sock_pclient_pair.erase(iter->first);
@@ -390,7 +401,7 @@ public:
 					m_ClientsChange = true;
 
 					//关闭客户端连接
-					close(pair.first);
+					//close(pair.first);
 
 					temp.push_back(pair.second);
 				}
