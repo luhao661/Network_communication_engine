@@ -21,7 +21,13 @@ using std::cout,std::endl;
 class CellServer
 {
 private:
-	SOCKET m_serv_sock;
+	//SOCKET m_serv_sock;//m_serv_sock暂时是没有意义的，故注释掉
+	//要调试观察是哪个CellServer关闭了，每个CellServer对象就要有个专属的id值
+	int m_id = -1;
+
+	//是否在正常工作中
+	bool m_isRun = false;
+
 	//自定义的接收缓冲区
 	char m_Recv[RECV_BUFFER_SIZE] = {};
 	//正式客户队列
@@ -34,7 +40,7 @@ private:
 	//缓冲队列锁
 	mutex m_mutex;
 	//线程指针
-	thread* m_pThread;
+	//thread* m_pThread;
 	//指向网络事件对象的指针
 	//指向抽象基类的指针
 	//（指向的对象在EasyTcpServer::StartThread()函数中创建，
@@ -60,10 +66,11 @@ public:
 	//体现在每过一秒对线程的m_cnt的值进行使用后，置m_cnt为0
 	//atomic_int m_cnt;
 
-	CellServer(SOCKET serv_sock = INVALID_SOCKET)
+	CellServer(int id)
 	{
-		m_serv_sock = serv_sock;
-		m_pThread = nullptr;
+		m_id = id;
+		m_CellTaskServer.m_CellServer_id = id;
+		//m_pThread = nullptr;
 		//m_cnt = 0;
 		m_pNetEvent = nullptr;
 	}
@@ -74,93 +81,106 @@ public:
 	//而且一旦存在虚函数，就会有虚指针和虚表，在不同平台下数据结构会发生变化
 	~CellServer()
 	{
-		delete m_pThread;
+		printf("CellServer %d ~CellServer() begin\n", m_id);
+		//delete m_pThread;
 		Close();
 		//m_serv_sock = INVALID_SOCKET;
+		printf("CellServer %d ~CellServer() end\n", m_id);
 	}
 
 	void Close(void)
 	{
-		cout << "CellServer close step 1\n";
+		printf("CellServer %d Close() begin\n",m_id);
+
+		m_isRun = false;
 
 		//关闭执行任务的服务类对象
 		m_CellTaskServer.Close();
 
-		if (m_serv_sock != INVALID_SOCKET)
+
+		//关闭客户端套接字
+		for (auto pair : sock_pclient_pair)
 		{
-			//关闭客户端套接字
-			for (auto pair : sock_pclient_pair)
-			{
-				delete pair.second;
-			}
-
-			//错误：
-			// 创建CellServer类对象时传入构造函数的实参是
-			// EasyTcpServer类创建的服务端套接字
-			// CellServer没有权利去关闭EasyTcpServer类创建的服务端套接字
-			//closesocket(m_serv_sock);
-
-			//在该函数中也不再进行关闭客户端套接字的操作
-			//而是CellClient类中	~ClientSocket()方法来关闭客户端套接字
-
-			//清空缓冲区客户队列，关闭客户端套接字
-			for (auto x : vec_client_buffer)
-			{
-				delete x;
-			}
-
-			sock_pclient_pair.clear();
-			vec_client_buffer.clear();
-
-			m_serv_sock = INVALID_SOCKET;
-			//***注***
-			//此处可以将m_serv_sock 设置为 INVALID_SOCKET
-			//因为该m_serv_sock是EasyTcpServer类创建的服务端套接字的拷贝
+			delete pair.second;
 		}
+
+		//错误：
+		// 创建CellServer类对象时传入构造函数的实参是
+		// EasyTcpServer类创建的服务端套接字
+		// CellServer没有权利去关闭EasyTcpServer类创建的服务端套接字
+		//closesocket(m_serv_sock);
+
+		//在该函数中也不再进行关闭客户端套接字的操作
+		//而是CellClient类中	~ClientSocket()方法来关闭客户端套接字
+
+		//再次优化：直接不要m_serv_sock，因为CellServer目前没有对该变量有打印上的使用
+
+		//清空缓冲区客户队列，关闭客户端套接字
+		for (auto x : vec_client_buffer)
+		{
+			delete x;
+		}
+
+		sock_pclient_pair.clear();
+		vec_client_buffer.clear();
+
+		//m_serv_sock = INVALID_SOCKET;
+		//***注***
+		//此处可以将m_serv_sock 设置为 INVALID_SOCKET
+		//因为该m_serv_sock是EasyTcpServer类创建的服务端套接字的拷贝
+
+
+		printf("CellServer %d Close() end\n", m_id);
 	}
 
 	//被EasyTcpServer::StartThread()调用
 	void Start()
 	{
-		//或写成
-		//thread (&CellServer::OnRun,this);
+		if (!m_isRun)
+		{
+			m_isRun = true;
 
-		//函数适配器mem_fn
-		// 函数模板 std::mem_fn 生成指向成员指针的包装对象，
-		// 它可以存储、复制及调用指向成员指针。
-		// 到对象的引用和指针（含智能指针）
-		// 相当于进行一个更安全的转换
-		m_pThread = new thread(mem_fn(&CellServer::OnRun), this);
-		//***理解***
-		//mem_fn(&CellServer::OnRun)：mem_fn 是 C++ 标准库中的模板函数，用于
-		// 将【成员函数】存储为可调用对象。在这里，&CellServer::OnRun 是 CellServer 类
-		// 的成员函数 OnRun 的指针，通过 mem_fn 这个函数模板将其转换为可调用对象。
-		//thread t(...)：创建一个新的线程对象 t，并将括号内的参数作为线程的执行函数。
-		//这里传递了 mem_fn(&CellServer::OnRun)，因此线程将执行 CellServer 类的
-		//  OnRun 成员函数。
-		//this：表示当前对象的指针。在这个上下文中，它是指向 EasyTcpServer 对象的指针。
-		// 该指针作为参数传递给 CellServer::OnRun 成员函数，
-		// 在新线程中执行 CellServer::OnRun 时，
-		// 可以通过 this 指针访问 EasyTcpServer 对象的成员变量和方法。
+			//或写成
+			//thread (&CellServer::OnRun,this);
 
-		//调用CellTaskServer类对象的Start()方法，不断等待任务的到来，并添加具体任务到list容器
-		m_CellTaskServer.Start();
+			//函数适配器mem_fn
+			// 函数模板 std::mem_fn 生成指向成员指针的包装对象，
+			// 它可以存储、复制及调用指向成员指针。
+			// 到对象的引用和指针（含智能指针）
+			// 相当于进行一个更安全的转换
+			thread Thread = thread(mem_fn(&CellServer::OnRun), this);
+			Thread.detach();
+			//***理解***
+			//mem_fn(&CellServer::OnRun)：mem_fn 是 C++ 标准库中的模板函数，用于
+			// 将【成员函数】存储为可调用对象。在这里，&CellServer::OnRun 是 CellServer 类
+			// 的成员函数 OnRun 的指针，通过 mem_fn 这个函数模板将其转换为可调用对象。
+			//thread t(...)：创建一个新的线程对象 t，并将括号内的参数作为线程的执行函数。
+			//这里传递了 mem_fn(&CellServer::OnRun)，因此线程将执行 CellServer 类的
+			//  OnRun 成员函数。
+			//this：表示当前对象的指针。在这个上下文中，它是指向 EasyTcpServer 对象的指针。
+			// 该指针作为参数传递给 CellServer::OnRun 成员函数，
+			// 在新线程中执行 CellServer::OnRun 时，
+			// 可以通过 this 指针访问 EasyTcpServer 对象的成员变量和方法。
+
+			//调用CellTaskServer类对象的Start()方法，不断等待任务的到来，并添加具体任务到list容器
+			m_CellTaskServer.Start();		
+		}
 	}
 
 	//是否在正常工作中
-	bool isRun()
-	{
-		return m_serv_sock != INVALID_SOCKET;
-	}
+	//bool m_isRun()
+	//{
+	//	return m_serv_sock != INVALID_SOCKET;
+	//}
 
 	//处理网络数据
 	//查询是否有待读取的数据
 	bool OnRun()
 	{
-		//if (!isRun())
+		//if (!m_isRun())
 		//	return false;
 
-		while (isRun())
+		while (m_isRun)
 		{
 			//将缓冲客户队列内的新客户加入正式客户队列
 			//操作需要加锁解锁
@@ -169,8 +189,15 @@ public:
 				lock_guard<mutex>lg(m_mutex);
 
 				for (auto pClient : vec_client_buffer)
+				{
 					sock_pclient_pair.insert
 					(std::make_pair(pClient->Get_m_client_sock(), pClient));
+
+					pClient->m_CellServer_id = m_id;
+
+					if(m_pNetEvent)
+						m_pNetEvent->NEOnNetJoin(pClient);
+				}
 
 				vec_client_buffer.clear();
 
@@ -284,6 +311,8 @@ public:
 			ReadData(fdRead);
 			CheckHearTTime();
 		}
+
+		printf("CellServer %d OnRun() exit\n", m_id);
 	}
 
 

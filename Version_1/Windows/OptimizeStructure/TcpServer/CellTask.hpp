@@ -14,6 +14,9 @@ class CellTaskServer
 {
 	typedef std::function<void()>CellTask;
 
+public:
+	int m_CellServer_id = -1;
+
 private:
 	//任务数据
 	std::list<CellTask> m_tasks;
@@ -51,6 +54,7 @@ public:
 
 	void Close()
 	{
+		printf("CellTaskServer %d Close()\n", m_CellServer_id);
 		m_isRun = false;
 	}
 
@@ -86,6 +90,7 @@ protected://声明为protected使CellTaskServer对象无法访问OnRun()
 			//清空任务元素
 			m_tasks.clear();
 		}
+		printf("CellTaskServer %d OnRun() exit\n", m_CellServer_id);
 	}
 
 };

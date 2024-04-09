@@ -123,7 +123,10 @@ int main()
 	server.Close();
 
 	cout << "服务器端已退出，任务结束。\n";
-	cin.get();
+	while (true)
+	{
+		Sleep(1);
+	}
 
 	return 0;
 }

@@ -14,6 +14,10 @@
 //消息缓冲区还有指向消息缓冲区的数据尾部位置的变量
 class ClientSocket
 {
+public:
+	int m_id = -1;
+	int m_CellServer_id = -1;
+
 private:
 	SOCKET m_client_sock;
 
@@ -45,6 +49,9 @@ private:
 public:
 	ClientSocket(SOCKET sock = INVALID_SOCKET)
 	{
+		static int n = 1;
+		m_id = n++;
+
 		m_client_sock = sock;
 		memset(m_MsgBuf, 0, sizeof(m_MsgBuf));
 		memset(m_SendBuf, 0, sizeof(m_SendBuf));
@@ -55,6 +62,8 @@ public:
 
 	~ClientSocket()
 	{
+		printf("CellServer %d CellClient %d  ~ClientSocket()\n",m_CellServer_id,m_id);
+
 		if (INVALID_SOCKET != m_client_sock)
 		{
 #ifdef _WIN32
@@ -175,7 +184,7 @@ public:
 
 		if (m_DTSend >= SEND_BUFFER_REFRESH_TIME)
 		{
-			printf("timed transmission : sock=%d, time=%d\n",m_client_sock, m_DTSend);
+			//printf("timed transmission : sock=%d, time=%d\n",m_client_sock, m_DTSend);
 
 			//立即将发送缓冲区的数据发送出去
 			SendDataImmediately();
