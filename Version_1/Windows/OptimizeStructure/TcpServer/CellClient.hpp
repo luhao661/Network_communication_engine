@@ -217,7 +217,7 @@ public:
 	}
 
 	//提供给外部的立即发送数据给客户端的方法
-	int SendDataToClientImmediately(DataHead* pHead)
+	void SendDataToClientImmediately(DataHead* pHead)
 	{
 		SendData(pHead);
 		SendDataImmediately();

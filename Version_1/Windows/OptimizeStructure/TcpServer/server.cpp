@@ -7,8 +7,29 @@ using std::cout,std::endl;//C++17 结构化绑定
 using std::thread;
 using std::cin;
 
-bool g_bRun = true;
-void cmdThread(void);
+//bool g_bRun = true;
+//void cmdThread(void)
+//{
+//	char cmdBuf[256]{};
+//
+//	//cin 和 scanf 都是阻塞式函数，
+//	// 而main()中的select()非阻塞，这样会造成运行逻辑冲突，所以要使用多线程
+//
+//	while (1)
+//	{
+//		cin.getline(cmdBuf, 256);
+//
+//		// 处理请求
+//		if (!strcmp(cmdBuf, "exit"))
+//		{
+//			cout << "收到退出命令，退出cmdThread线程\n";
+//			g_bRun = false;
+//			break;
+//		}
+//		else
+//			cout << "未识别的命令，请重新输入！\n";
+//	}
+//}
 
 class MyServer :public EasyTcpServer
 {
@@ -112,15 +133,35 @@ int main()
 	//启动多线程
 	server.StartThread(4);
 
-	thread t1(cmdThread);//格式：函数名  参数
-	t1.detach();
+	//启动UI线程
+	//thread t1(cmdThread);//格式：函数名  参数
+	//t1.detach();
 
-	while (server.isRun() && g_bRun)
+	//while (server.isRun() && g_bRun)
+	//{
+	//	server.OnRun();
+	//}
+	//server.Close();
+
+	while (true)
 	{
-		server.OnRun();
-	}
+		char cmdBuf[256]{};
 
-	server.Close();
+		//cin 和 scanf 都是阻塞式函数，
+		// 而main()中的select()非阻塞，这样会造成运行逻辑冲突，所以要使用多线程
+
+		cin.getline(cmdBuf, 256);
+
+		// 处理请求
+		if (!strcmp(cmdBuf, "exit"))
+		{
+			server.Close();
+			cout << "收到退出命令，退出cmdThread线程\n";
+			break;
+		}
+		else
+			cout << "未识别的命令，请重新输入！\n";
+	}
 
 	cout << "服务器端已退出，任务结束。\n";
 	while (true)
@@ -129,27 +170,5 @@ int main()
 	}
 
 	return 0;
-}
-void cmdThread(void)
-{
-	char cmdBuf[256]{};
-
-	//cin 和 scanf 都是阻塞式函数，
-	// 而main()中的select()非阻塞，这样会造成运行逻辑冲突，所以要使用多线程
-
-	while (1)
-	{
-		cin.getline(cmdBuf, 256);
-
-		// 处理请求
-		if (!strcmp(cmdBuf, "exit"))
-		{
-			cout << "收到退出命令，退出cmdThread线程\n";
-			g_bRun = false;
-			break;
-		}
-		else
-			cout << "未识别的命令，请重新输入！\n";
-	}
 }
 #endif

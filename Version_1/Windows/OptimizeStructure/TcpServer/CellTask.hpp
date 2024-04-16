@@ -6,6 +6,8 @@
 #include <list>//适合快速安插和移除元素
 #include <functional>//mem_fn
 
+#include "CellThread.hpp"
+
 //执行任务的服务类型
 //该类型作用是
 //不断等待任务的到来，并添加具体任务到list容器（类似于EasyTcpServer类）
@@ -24,8 +26,9 @@ private:
 	std::list<CellTask> m_tasks_buffer;
 	//改变任务数据缓冲区时需要加锁
 	std::mutex m_mutex;
-	
-	bool m_isRun = false;
+
+	//创建线程管理类
+	CellThread m_thread;
 
 public:
 	CellTaskServer()
@@ -46,24 +49,37 @@ public:
 	//启动工作线程
 	void Start()
 	{
-		std::thread t(std::mem_fn(&CellTaskServer::OnRun), this);
-		m_isRun = true;
+		//std::thread t(std::mem_fn(&CellTaskServer::OnRun), this);
+		//m_isRun = true;
 
-		t.detach();
+		//t.detach();
+		
+		m_thread.Start(nullptr, [this](CellThread* pThread) {
+			//OnRun();可以直接这样写，但当创建多个线程时，容易调用了不同线程管理类的某方法，
+			// 从不易写错方面考虑，改为使用
+			OnRun(pThread);
+			},nullptr);
+
+		//pThread值？
+		//从调试中可以得知pThread = &m_thread
 	}
 
 	void Close()
 	{
-		printf("CellTaskServer %d Close()\n", m_CellServer_id);
-		m_isRun = false;
+		printf("CellTaskServer %d Close() begin\n", m_CellServer_id);
+
+		//关闭CellTaskServer开的线程
+		m_thread.Close();
+
+		printf("CellTaskServer %d Close() end\n", m_CellServer_id);
 	}
 
 protected://声明为protected使CellTaskServer对象无法访问OnRun()
 
 	//工作函数
-	void OnRun()
-	{
-		while (m_isRun)
+	void OnRun(CellThread *pThread)//被某个线程所启动的OnRun()一定是该线程所属的		
+	{									                  //线程管理类的方法来进行判断，避免混淆
+		while (pThread->isRun())
 		{
 			//从缓冲区中取出数据
 			if (!m_tasks_buffer.empty())
