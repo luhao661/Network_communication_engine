@@ -8,7 +8,7 @@
 
 #define FD_SETSIZE 2048
 //错误理解：
-//最大支持的客户端连接数量为FD_SETSIZE-1
+//最大支持的客户端连接数量为FD_SETSIZE-1 
 //***注***
 //最大支持的客户端数量为 
 //CELLSERVER_THREADS_COUNT * (FD_SETSIZE)
