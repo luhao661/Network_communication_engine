@@ -7,7 +7,7 @@ using namespace std::chrono;
 class Timestamp
 {
 private:
-	time_point<high_resolution_clock> m_begin;
+	time_point<high_resolution_clock> m_begin; 
 
 public:
 	Timestamp():m_begin(high_resolution_clock::now())
@@ -15,27 +15,27 @@ public:
 
 	void update()
 	{
-		//***×¢***
-		//ĞèÒª¸ß¾«¶ÈÊ±ÖÓÀ´²âÁ¿¶Ì³ÖĞøÊ±¼äÊ±£¬ÇëÊ¹ÓÃ high_resolution_clock £¬
-		//system_clock Ìá¹©µÄÊ±¼äµãºÍÊ±¼ä¼ä¸ôÍ¨³£ÓëÏÖÊµÊÀ½çµÄÊ±¼äÏà¹Ø,
-		//µ±ĞèÒª²âÁ¿ÏÖÊµÊÀ½çµÄÊ±¼ä¼ä¸ôÊ±£¬ÇëÊ¹ÓÃ system_clock
+		//***æ³¨***
+		//éœ€è¦é«˜ç²¾åº¦æ—¶é’Ÿæ¥æµ‹é‡çŸ­æŒç»­æ—¶é—´æ—¶ï¼Œè¯·ä½¿ç”¨ high_resolution_clock ï¼Œ
+		//system_clock æä¾›çš„æ—¶é—´ç‚¹å’Œæ—¶é—´é—´éš”é€šå¸¸ä¸ç°å®ä¸–ç•Œçš„æ—¶é—´ç›¸å…³,
+		//å½“éœ€è¦æµ‹é‡ç°å®ä¸–ç•Œçš„æ—¶é—´é—´éš”æ—¶ï¼Œè¯·ä½¿ç”¨ system_clock
 		m_begin = high_resolution_clock::now();
 	}
 
-	//»ñÈ¡Î¢Ãë¼¶Ê±¼ä
+	//è·å–å¾®ç§’çº§æ—¶é—´
 	long long getElapsedTimeInMicrosecond()
 	{
 		return duration_cast<microseconds>
 			(high_resolution_clock::now() - m_begin).count();
 	}
 
-	//»ñÈ¡ºÁÃë¼¶Ê±¼ä
+	//è·å–æ¯«ç§’çº§æ—¶é—´
 	double getElapsedTimeInMillisecond()
 	{
 		return getElapsedTimeInMicrosecond() * 0.001;
 	}
 
-	//»ñÈ¡Ãë¼¶Ê±¼ä
+	//è·å–ç§’çº§æ—¶é—´
 	double getElapsedTimeInSecond()
 	{
 		return getElapsedTimeInMicrosecond() * 0.000001;
