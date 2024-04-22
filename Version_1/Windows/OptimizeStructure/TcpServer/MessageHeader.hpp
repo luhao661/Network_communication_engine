@@ -22,8 +22,8 @@ struct DataHead
 		cmd = CMD_ERROR;
 	}
 
-	short datalength;
-	short cmd;
+	unsigned short datalength;
+	unsigned short cmd;
 };
 
 struct LogIn :public DataHead

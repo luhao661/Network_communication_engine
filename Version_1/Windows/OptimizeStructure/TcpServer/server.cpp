@@ -55,7 +55,7 @@ public:
 		{
 		case CMD_LOGIN:
 		{
-			//pclient_sock->resetDTHeart();
+			pclient_sock->resetDTHeart();
 
 			LogIn* login = reinterpret_cast<LogIn*>(pHead);
 
@@ -71,8 +71,23 @@ public:
 			//LogInResult* res = new LogInResult{};
 			//pclient_sock->SendData(res);
 
-			LogInResult* res = new LogInResult{};
-			pCellServer->addSendTask(pclient_sock, res);
+			LogInResult ret;
+
+			//***注***
+			//以下为select实现非阻塞发送数据的实现
+			//如果发送缓冲区满了，消息没发送出去
+			if (SOCKET_ERROR == pclient_sock->SendData(&ret))
+			{
+				printf("<socket=%d> 发送缓冲区已满！\n",pclient_sock->Get_m_client_sock());
+
+				//可以进行将数据暂存入磁盘等操作
+				//...
+			}
+
+
+			//***注***
+			//以下为阻塞发送数据，且使用CellTaskServer线程执行发送任务的实现
+			//pCellServer->addSendTask(pclient_sock, &res);
 		}
 		break;
 

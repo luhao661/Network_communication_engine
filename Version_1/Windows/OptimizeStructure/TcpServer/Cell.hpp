@@ -6,16 +6,9 @@
 //使inet_ntoa()可用
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 
-#define FD_SETSIZE 2048
-//错误理解：
-//最大支持的客户端连接数量为FD_SETSIZE-1 
-//***注***
-//最大支持的客户端数量为 
-//CELLSERVER_THREADS_COUNT * (FD_SETSIZE)
-//因为CellServer类中OnRun()中的FD_SET()注册的全是客户端
-
-//服务端线程数量
-//#define CELLSERVER_THREADS_COUNT 4
+#define FD_SETSIZE 10006
+//理解：
+//最大支持的客户端连接数量为FD_SETSIZE-1
 
 //包含windows下的API
 #include <windows.h>
@@ -54,7 +47,7 @@
 #ifndef RECV_BUFFER_SIZE
 
 #define RECV_BUFFER_SIZE 1024*10
-#define SEND_BUFFER_SIZE 1024*10
+#define SEND_BUFFER_SIZE 1024*1000
 
 #endif
 

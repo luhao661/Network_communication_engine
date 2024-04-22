@@ -46,6 +46,9 @@ private:
 	//上次发送消息数据的时间
 	time_t m_DTSend = 0;
 
+	//发送缓冲区遇到写满的情况计数
+	int m_SendBufFullCnt = 0;
+
 public:
 	ClientSocket(SOCKET sock = INVALID_SOCKET)
 	{
@@ -97,57 +100,45 @@ public:
 		m_lastPos = NewPos;
 	}
 
-	//定量发送
+	//缓冲区的控制根据业务需求的差异而调整
+	//定量发送（非阻塞模式下不使用）
 	int SendData(DataHead* pHead)
 	{
 		int ret = SOCKET_ERROR;
 
 		//存当前要发送的数据长度
-		int NowSendLen = pHead->datalength;
+		int SendLen = pHead->datalength;
 		//当前要发送的数据
 		const char* pSendData = reinterpret_cast<const char*>(pHead);
 
-		while (true)
+		if (m_lastSendPos + SendLen <= SEND_BUFFER_SIZE)
 		{
-			//若发送缓冲区中已有的数据量加上当前要发送数据的量大于等于SEND_BUFFER_SIZE
-			if (m_lastSendPos + NowSendLen >= SEND_BUFFER_SIZE)
+			//将要发送的数据拷贝到发送缓冲区尾部
+			memcpy(m_SendBuf + m_lastSendPos, pSendData, SendLen);
+
+			//更新数据尾部位置
+			m_lastSendPos += SendLen;
+
+			//如果数据总长度正好为缓冲区能存储的最大长度
+			if (m_lastSendPos== SEND_BUFFER_SIZE)
 			{
-				//计算可拷贝的数据长度
-				int CopyLen = SEND_BUFFER_SIZE - m_lastSendPos;
-
-				//拷贝数据
-				memcpy(m_SendBuf + m_lastSendPos, pSendData, CopyLen);
-
-				//当前要发送数据的剩余数据的起始位置
-				pSendData += CopyLen;
-				//当前要发送数据的剩余数据的长度
-				NowSendLen -= CopyLen;
-
-				ret = send(m_client_sock, (const char*)m_SendBuf,
-					SEND_BUFFER_SIZE, 0);
-
-				//发送完后，标记发送缓冲区中已有的数据量为0
-				m_lastSendPos = 0;
-
-				//发送完重置定时发送的计时时间
-				resetDTSend();
-
-				//如果发送错误
-				if (SOCKET_ERROR == ret)
-				{
-					return ret;
-				}
+				++m_SendBufFullCnt;
 			}
-			else//若发送缓冲区中已有的数据量加上当前要发送数据的量小于SEND_BUFFER_SIZE
-			{
-				//将当前要发送数据拷贝到发送缓冲区数组的标记的尾部
-				memcpy(m_SendBuf + m_lastSendPos, pSendData, NowSendLen);
 
-				m_lastSendPos += NowSendLen;
-
-				break;
-			}
+			return SendLen;
 		}
+		else//如果缓冲区放不下这条数据了
+		{
+			++m_SendBufFullCnt;
+		}
+
+		//非阻塞发送数据，不再使用定时发送
+		//发送完重置定时发送的计时时间
+		//resetDTSend();//其实可以注释掉
+
+		//***注***
+		//SendData()函数不再实现发送数据的业务，而是将该业务转交给select机制
+		//配合WriteData()
 
 		return ret;
 	}
@@ -177,7 +168,7 @@ public:
 		return false;
 	}
 
-	//定时发送数据检测
+	//定时发送数据检测（非阻塞模式下不使用）
 	bool IsSend(time_t dt)
 	{
 		m_DTSend += dt;
@@ -200,15 +191,19 @@ public:
 	//立即将发送缓冲区的数据发送给客户端
 	int SendDataImmediately()
 	{
-		int ret = SOCKET_ERROR;
+		int ret = 0;
 
-		if (m_lastSendPos > 0 &&SOCKET_ERROR==m_client_sock)
+		if (m_lastSendPos > 0 &&INVALID_SOCKET!=m_client_sock)
 		{
 			ret = send(m_client_sock, (const char*)m_SendBuf,
 				m_lastSendPos, 0);
 
 			//发送完后，标记发送缓冲区中已有的数据量为0
 			m_lastSendPos = 0;
+
+			//重置写满情况计数
+			m_SendBufFullCnt = 0;
+
 			//发送完重置定时发送的计时时间
 			resetDTSend();
 		}
@@ -216,10 +211,11 @@ public:
 		return ret;
 	}
 
+	//在使用select机制实现非阻塞式地发送数据，以下方法就不适用了
 	//提供给外部的立即发送数据给客户端的方法
-	void SendDataToClientImmediately(DataHead* pHead)
-	{
-		SendData(pHead);
-		SendDataImmediately();
-	}
+	//void SendDataToClientImmediately(DataHead* pHead)
+	//{
+	//	SendData(pHead);
+	//	SendDataImmediately();
+	//}
 };

@@ -237,8 +237,8 @@ public:
 
 			// 1 创建fd_set结构体将要监视的套接字句柄集中到一起，以监视这些套接字句柄
 			fd_set fdRead;//关注 是否存在待读取数据
-			//fd_set fdWrite;
-			//fd_set fdExp;
+			fd_set fdWrite;//关注 是否可写
+			//fd_set fdExp;//关注 是否发生异常
 
 			//***注***
 			// Windows的fd_set由成员 fd_count和fd_array构成， fd_count用于套接字句柄数，
@@ -249,7 +249,7 @@ public:
 
 			// 2 使用宏来完成对结构体中所有位都设置为0的操作
 			//清空fdRead句柄集合，fdWrite句柄集合，fdExp句柄集合
-			FD_ZERO(&fdRead);
+			//FD_ZERO(&fdRead);
 			//FD_ZERO(&fdWrite);
 			//FD_ZERO(&fdExp);
 
@@ -264,6 +264,9 @@ public:
 			if (m_ClientsChange)
 			{
 				m_ClientsChange = false;
+
+				//清理集合
+				FD_ZERO(&fdRead);
 
 				m_maxSocket = sock_pclient_pair.begin()->second->Get_m_client_sock();
 				//***注***
@@ -290,6 +293,9 @@ public:
 			else
 				memcpy(&fdRead, &m_fdReadBackUp, sizeof(fd_set));
 
+			//监视这些套接字的是否可写入
+			memcpy(&fdWrite, &m_fdReadBackUp, sizeof(fd_set));
+
 
 			// cout << "fdRead.fd_count = " << fdRead.fd_count << endl;
 
@@ -298,10 +304,7 @@ public:
 			// 而不是数量，是所有句柄的最大值+1，在windows中可以写0
 			// 要写为socket值【最大的一个socket值再加一】
 
-			//select()第五个参数设为nullptr，因为CellServer只用来接收数据，
-			//不干别的事情，
-			// 所以只要阻塞在此处等待客户端传来数据就可以了
-			int fd_num = select(m_maxSocket + 1, &fdRead, nullptr, nullptr, &timeout);
+			int fd_num = select(m_maxSocket + 1, &fdRead, &fdWrite, nullptr, &timeout);
 			if (fd_num == -1)
 			{
 				printf("CellServer %d OnRun().select error exit\n", m_id);
@@ -322,6 +325,9 @@ public:
 			}
 
 			ReadData(fdRead);
+			WriteData(fdWrite);
+			//WriteData(fdExp);
+
 			CheckHearTTime();
 		}
 
@@ -364,10 +370,75 @@ public:
 			}
 			else
 			{
-				iter->second->IsSend(durationTime);
+				//定时发送
+				//iter->second->IsSend(durationTime);
 				++iter;
 			}
 		}
+	}
+
+
+	//在bool OnRun()中分离业务
+	void WriteData(fd_set& fdWrite)
+	{
+
+#ifdef _WIN32
+
+		for (int n = 0; n < fdWrite.fd_count; ++n)
+		{
+			//提升查询性能
+			auto iter = sock_pclient_pair.find(fdWrite.fd_array[n]);
+			if (iter != sock_pclient_pair.end())
+			{
+				//如果可写，就将缓冲区数据发送
+				if (-1 == iter->second->SendDataImmediately())
+				{
+					if (m_pNetEvent)
+						m_pNetEvent->NEOnNetLeave(iter->second);
+
+					//先删除new出来的ClientSocket类对象
+					delete iter->second;
+
+					//这边不再关闭客户端连接
+					//closesocket(iter->first);
+					//因为delete iter->second;调用了析构函数，将调用closesocket()
+
+					//再删除map中的pair元素
+					//sock_pclient_pair.erase(iter->first);
+					sock_pclient_pair.erase(iter);//效率更高
+
+					m_ClientsChange = true;
+				}
+			}
+		}
+#else
+	//Linux没有fd_count
+		std::vector<ClientSocket*> temp;
+		for (auto pair : sock_pclient_pair)
+		{
+			if (FD_ISSET(pair.second->Get_m_client_sock(), &fdWrite))
+			{
+				if (-1 == RecvData(pair.second))
+				{
+					if (m_pNetEvent)
+						m_pNetEvent->NEOnNetLeave(pair.second);
+
+					m_ClientsChange = true;
+
+					//关闭客户端连接
+					//close(pair.first);
+
+					temp.push_back(pair.second);
+				}
+			}
+		}
+		for (auto pClient : temp)
+		{
+			delete pClient;
+
+			sock_pclient_pair.erase(pClient->Get_m_client_sock());
+		}
+#endif
 	}
 
 
