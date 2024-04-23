@@ -96,6 +96,21 @@ private:
 		//因为该m_serv_sock是EasyTcpServer类创建的服务端套接字的拷贝
 	}
 
+	void ClientLeaveOperation(ClientSocket* pCellClient)
+	{
+		if (m_pNetEvent)
+			m_pNetEvent->NEOnNetLeave(pCellClient);
+
+		//先删除new出来的ClientSocket类对象
+		delete pCellClient;
+
+		//这边不再关闭客户端连接
+		//closesocket(iter->first);
+		//因为delete iter->second;调用了析构函数，将调用closesocket()
+
+		m_ClientsChange = true;
+	}
+
 public:
 	//每次运行CellServer::OnNetMsg()，m_cnt增加1
 	//被EasyTcpServer类内数据成员recvCnt使用，
@@ -312,8 +327,8 @@ public:
 				//Close();
 				//***理解*** 
 				// 此处不能调用Close()，因为进行OnRun()的线程从OnRun()中的
-				// while()循环中跳出，去执行Close()，CellThread的m_Sem.WakeUp();被调用，
-				// 但是等不到m_Sem.Wait()被调用;
+				// while()循环中跳出，去执行Close()，CellThread的m_Sem.Wait();被调用，
+				// 但是等不到m_Sem.WakeUp()被调用;
 
 				pThread->Exit();//OnRun()运行结束，然后会运行m_OnDestory即ClearClients();
 
@@ -327,6 +342,9 @@ public:
 			ReadData(fdRead);
 			WriteData(fdWrite);
 			//WriteData(fdExp);
+
+			printf("CellServer %d. OnRun. select: fdRead=%d, fdWrite=%d\n",m_id, fdRead.fd_count, fdWrite.fd_count);
+
 
 			CheckHearTTime();
 		}
@@ -351,13 +369,7 @@ public:
 			//心跳检测
 			if (iter->second->IsDead(durationTime))
 			{
-				if (m_pNetEvent)
-					m_pNetEvent->NEOnNetLeave(iter->second);
-
-				//先删除new出来的ClientSocket类对象
-				delete iter->second;
-				//关闭客户端连接
-				closesocket(iter->first);
+				ClientLeaveOperation(iter->second);
 
 				//再删除map中的pair元素
 				//错误写法：
@@ -366,11 +378,10 @@ public:
 				iter = sock_pclient_pair.erase(iter);
 				//理解：map的erase有两种重载函数：size_type erase( const Key& key ); 	iterator erase(iterator pos);
 
-				m_ClientsChange = true;
 			}
 			else
 			{
-				//定时发送
+				//定时发送（非阻塞模式下不使用）
 				//iter->second->IsSend(durationTime);
 				++iter;
 			}
@@ -391,52 +402,39 @@ public:
 			if (iter != sock_pclient_pair.end())
 			{
 				//如果可写，就将缓冲区数据发送
+				//如果客户端不可写，就与该客户端断开连接
 				if (-1 == iter->second->SendDataImmediately())
 				{
-					if (m_pNetEvent)
-						m_pNetEvent->NEOnNetLeave(iter->second);
-
-					//先删除new出来的ClientSocket类对象
-					delete iter->second;
-
-					//这边不再关闭客户端连接
-					//closesocket(iter->first);
-					//因为delete iter->second;调用了析构函数，将调用closesocket()
-
+					ClientLeaveOperation(iter->second);
 					//再删除map中的pair元素
 					//sock_pclient_pair.erase(iter->first);
 					sock_pclient_pair.erase(iter);//效率更高
-
-					m_ClientsChange = true;
 				}
 			}
 		}
 #else
 	//Linux没有fd_count
-		std::vector<ClientSocket*> temp;
-		for (auto pair : sock_pclient_pair)
+		for (auto iter=sock_pclient_pair.begin();iter!= sock_pclient_pair.end(); )
 		{
-			if (FD_ISSET(pair.second->Get_m_client_sock(), &fdWrite))
+			if (FD_ISSET(iter->second->Get_m_client_sock(), &fdWrite))
 			{
-				if (-1 == RecvData(pair.second))
+				if (-1 == iter->second->SendDataImmediately())
 				{
-					if (m_pNetEvent)
-						m_pNetEvent->NEOnNetLeave(pair.second);
+					//if (m_pNetEvent)
+					//	m_pNetEvent->NEOnNetLeave(iter->second);
 
-					m_ClientsChange = true;
+					//m_ClientsChange = true;
 
 					//关闭客户端连接
-					//close(pair.first);
+					//close(iter->first);
 
-					temp.push_back(pair.second);
+					ClientLeaveOperation(iter->second);
+
+					iter = sock_pclient_pair.erase(iter);
 				}
+				else
+					++iter;
 			}
-		}
-		for (auto pClient : temp)
-		{
-			delete pClient;
-
-			sock_pclient_pair.erase(pClient->Get_m_client_sock());
 		}
 #endif
 	}
@@ -478,21 +476,11 @@ public:
 			{
 				if (-1 == RecvData(iter->second))
 				{
-					if (m_pNetEvent)
-						m_pNetEvent->NEOnNetLeave(iter->second);
-
-					//先删除new出来的ClientSocket类对象
-					delete iter->second;
-
-					//这边不再关闭客户端连接
-					//closesocket(iter->first);
-					//因为delete iter->second;调用了析构函数，将调用closesocket()
+					ClientLeaveOperation(iter->second);
 
 					//再删除map中的pair元素
 					//sock_pclient_pair.erase(iter->first);
 					sock_pclient_pair.erase(iter);//效率更高
-
-					m_ClientsChange = true;
 				}
 			}
 			else
@@ -503,30 +491,19 @@ public:
 		}
 #else
 	    //Linux没有fd_count
-		std::vector<ClientSocket*> temp;
-		for (auto pair : sock_pclient_pair)
+		for (auto iter = sock_pclient_pair.begin(); iter != sock_pclient_pair.end(); )
 		{
-			if (FD_ISSET(pair.second->Get_m_client_sock(), &fdRead))
+			if (FD_ISSET(iter->second->Get_m_client_sock(), &fdRead))
 			{
-				if (-1 == RecvData(pair.second))
+				if (-1 == RecvData(iter->second))
 				{
-					if (m_pNetEvent)
-						m_pNetEvent->NEOnNetLeave(pair.second);
+					ClientLeaveOperation(iter->second);
 
-					m_ClientsChange = true;
-
-					//关闭客户端连接
-					//close(pair.first);
-
-					temp.push_back(pair.second);
+					iter = sock_pclient_pair.erase(iter);
 				}
+				else
+					++iter;
 			}
-		}
-		for (auto pClient : temp)
-		{
-			delete pClient;
-
-			sock_pclient_pair.erase(pClient->Get_m_client_sock());
 		}
 #endif
 	}

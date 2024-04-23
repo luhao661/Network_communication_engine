@@ -29,7 +29,7 @@ private:
 	Timestamp m_time;
 
 	//自定义的接收缓冲区
-	char m_Recv[RECV_BUFFER_SIZE] = {};
+	//char m_Recv[RECV_BUFFER_SIZE] = {};
 
 protected:
 	//收到消息计数

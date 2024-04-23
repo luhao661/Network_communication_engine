@@ -78,7 +78,7 @@ public:
 			//如果发送缓冲区满了，消息没发送出去
 			if (SOCKET_ERROR == pclient_sock->SendData(&ret))
 			{
-				printf("<socket=%d> 发送缓冲区已满！\n",pclient_sock->Get_m_client_sock());
+				printf("<socket=%d> 发送缓冲区已满！当前消息未发送！\n",pclient_sock->Get_m_client_sock());
 
 				//可以进行将数据暂存入磁盘等操作
 				//...
@@ -146,7 +146,7 @@ int main()
 	//server.Accept();	   //在OnRun()中已经包含Accept()，这样能处理多客户端的通信请求
 
 	//启动多线程
-	server.StartThread(4);
+	server.StartThread(1);
 
 	//启动UI线程
 	//thread t1(cmdThread);//格式：函数名  参数

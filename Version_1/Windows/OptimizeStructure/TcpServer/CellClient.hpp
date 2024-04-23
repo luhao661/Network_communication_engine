@@ -137,8 +137,8 @@ public:
 		//resetDTSend();//其实可以注释掉
 
 		//***注***
-		//SendData()函数不再实现发送数据的业务，而是将该业务转交给select机制
-		//配合WriteData()
+		//SendData()函数不再实现发送数据的业务，
+		//而是将该业务转交给select机制配合WriteData()实现
 
 		return ret;
 	}
