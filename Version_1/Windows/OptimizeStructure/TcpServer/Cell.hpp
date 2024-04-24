@@ -4,7 +4,7 @@
 //解决windows.h和winsock2.h下宏定义冲突
 #define WIN32_LEAN_AND_MEAN
 //使inet_ntoa()可用
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
+#define _WINSOCK_DEPRECATED_NO_WARNINGS 
 
 #define FD_SETSIZE 10006
 //理解：
