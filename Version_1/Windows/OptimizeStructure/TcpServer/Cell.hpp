@@ -14,7 +14,7 @@
 #include <windows.h> 
 //包含windows下的socket的API
 #include <winsock2.h>
-
+ 
 //无法解析的外部符号 imp WSAStartup，函数 main 中引用了该符号
 //解决：要添加静态链接库文件
 #pragma comment(lib,"ws2_32.lib")
