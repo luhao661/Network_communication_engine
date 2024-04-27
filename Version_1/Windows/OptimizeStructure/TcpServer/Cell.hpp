@@ -44,7 +44,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#ifndef RECV_BUFFER_SIZE
+#ifndef RECV_BUFFER_SIZE 
 
 #define RECV_BUFFER_SIZE 1024*10
 #define SEND_BUFFER_SIZE 1024*100
