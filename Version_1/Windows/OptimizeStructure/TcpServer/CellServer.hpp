@@ -343,7 +343,7 @@ public:
 			WriteData(fdWrite);
 			//WriteData(fdExp);
 
-			printf("CellServer %d. OnRun. select: fdRead=%d, fdWrite=%d\n",m_id, fdRead.fd_count, fdWrite.fd_count);
+			//printf("CellServer %d. OnRun. select: fdRead=%d, fdWrite=%d\n",m_id, fdRead.fd_count, fdWrite.fd_count);
 
 
 			CheckHearTTime();
@@ -432,9 +432,9 @@ public:
 
 					iter = sock_pclient_pair.erase(iter);
 				}
-				else
-					++iter;
 			}
+			else
+				++iter;
 		}
 #endif
 	}
@@ -501,9 +501,9 @@ public:
 
 					iter = sock_pclient_pair.erase(iter);
 				}
-				else
-					++iter;
 			}
+			else
+				++iter;
 		}
 #endif
 	}
@@ -513,10 +513,11 @@ public:
 	//处理粘包 拆分包
 	int RecvData(ClientSocket* pClientSocket)
 	{
+		/*
 		//接收客户端数据
 		char* pRecv = pClientSocket->Get_m_MsgBuf() + pClientSocket->Get_m_lastPos();
 
-		//接收客户端数据存到【服务端的】自定义接收缓冲区m_Recv
+		//接收客户端数据存到【客户端的】自定义接收缓冲区m_Recv
 		int len = (int)recv(pClientSocket->Get_m_client_sock(),
 			pRecv, (RECV_BUFFER_SIZE)-pClientSocket->Get_m_lastPos(), 0);
 
@@ -528,45 +529,44 @@ public:
 			//	<< ">已退出。\n";
 			return -1;
 		}
+		*/
+
+		int len=pClientSocket->RecvData();
+		if (len <= 0)
+			return -1;
+
+		//除法接收网络数据事件，接收数据计数
+		m_pNetEvent->NERecv(pClientSocket);
 
 		//检测到数据，视为心跳
 		//pClientSocket->resetDTHeart();
 		//也可以放到NEOnNetMsg()中，将特定心跳数据头视为心跳
 
-		//将【服务端的】自定义接收缓冲区m_Recv的数据
-		//拷贝到【某个客户端对应的】消息缓冲区
-		//memcpy(pClientSocket->Get_m_MsgBuf() + pClientSocket->Get_m_lastPos(),m_Recv, len);
-		//表示消息缓冲区的数据尾部的位置的变量m_lastPos后移
-		pClientSocket->Set_m_lastPos(pClientSocket->Get_m_lastPos() + len);
-
 		//判断消息缓冲区的数据长度是否大于消息头的长度
 		//用while循环，解决【粘包】
-		while (pClientSocket->Get_m_lastPos() >= sizeof(DataHead))
+		while (pClientSocket->hasMsg())//hasMsg()解决【少包】
 		{
-			//指向某个客户端对应的m_MsgBuf的指针解释为DataHead*类型的指针，
-			//用于访问DataHead的数据成员
-			DataHead* pHead = reinterpret_cast<DataHead*>(pClientSocket->Get_m_MsgBuf());
+			/*
+			//处理网络消息
+			OnNetMsg(pClientSocket, pHead);
 
-			//判断消息缓冲区的数据长度是否大于消息长度
-			//解决【少包】的问题
-			if (pClientSocket->Get_m_lastPos() >= pHead->datalength)
-			{
-				//处理网络消息
-				OnNetMsg(pClientSocket, pHead);
+			//暂存表示自定义的消息缓冲区中剩余未处理的数据的长度的变量
+			int unprocessed = pClientSocket->Get_m_lastPos() - pHead->datalength;
 
-				//暂存表示自定义的消息缓冲区中剩余未处理的数据的长度的变量
-				int unprocessed = pClientSocket->Get_m_lastPos() - pHead->datalength;
+			//将m_MsgBuf中已经处理过的消息数据用其后面的未处理的数据进行
+			//数据覆盖
+			memcpy(pClientSocket->Get_m_MsgBuf(),
+				pClientSocket->Get_m_MsgBuf() + pHead->datalength, unprocessed);
 
-				//将m_MsgBuf中已经处理过的消息数据用其后面的未处理的数据进行
-				//数据覆盖
-				memcpy(pClientSocket->Get_m_MsgBuf(),
-					pClientSocket->Get_m_MsgBuf() + pHead->datalength, unprocessed);
+			//更新m_MsgBuf中数据尾部的位置
+			pClientSocket->Set_m_lastPos(unprocessed);
+			*/
 
-				//更新m_MsgBuf中数据尾部的位置
-				pClientSocket->Set_m_lastPos(unprocessed);
-			}
-			else
-				break;
+			//以上逻辑可以用STL思想改写，数据是个队列，
+			// 将上述操作改为读取首元素和弹出首元素操作
+			OnNetMsg(pClientSocket, pClientSocket->frontMsg());
+
+			pClientSocket->popMsg();
 		}
 
 		return 0;

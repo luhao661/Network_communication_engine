@@ -146,7 +146,7 @@ int main()
 	//server.Accept();	   //在OnRun()中已经包含Accept()，这样能处理多客户端的通信请求
 
 	//启动多线程
-	server.StartThread(1);
+	server.StartThread(4);
 
 	//启动UI线程
 	//thread t1(cmdThread);//格式：函数名  参数

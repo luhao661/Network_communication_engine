@@ -4,17 +4,17 @@
 //解决windows.h和winsock2.h下宏定义冲突
 #define WIN32_LEAN_AND_MEAN
 //使inet_ntoa()可用
-#define _WINSOCK_DEPRECATED_NO_WARNINGS 
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 #define FD_SETSIZE 10006
 //理解：
-//最大支持的客户端连接数量为FD_SETSIZE-1
+//最大支持的客户端连接数量为CellServer线程数*(FD_SETSIZE-1)
 
-//包含windows下的API 
-#include <windows.h> 
+//包含windows下的API
+#include <windows.h>
 //包含windows下的socket的API
 #include <winsock2.h>
- 
+
 //无法解析的外部符号 imp WSAStartup，函数 main 中引用了该符号
 //解决：要添加静态链接库文件
 #pragma comment(lib,"ws2_32.lib")
@@ -39,12 +39,12 @@
 //自定义
 #include "MessageHeader.hpp"//改为100字节的数据包
 #include "Timestamp.hpp"
-#include"CELLTask.hpp"
+#include"CellTask.hpp"
 
 #include <iostream>
 #include <stdio.h>
 
-#ifndef RECV_BUFFER_SIZE 
+#ifndef RECV_BUFFER_SIZE
 
 #define RECV_BUFFER_SIZE 1024*10
 #define SEND_BUFFER_SIZE 1024*100
