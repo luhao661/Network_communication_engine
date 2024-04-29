@@ -132,23 +132,23 @@ public:
 	//而且一旦存在虚函数，就会有虚指针和虚表，在不同平台下数据结构会发生变化
 	~CellServer()
 	{
-		printf("CellServer %d ~CellServer() begin\n", m_id);
+		CellLog::Info("CellServer %d ~CellServer() begin\n", m_id);
 		//delete m_pThread;
 		Close();
 		//m_serv_sock = INVALID_SOCKET;
-		printf("CellServer %d ~CellServer() end\n", m_id);
+		CellLog::Info("CellServer %d ~CellServer() end\n", m_id);
 	}
 
 	void Close(void)
 	{
-		printf("CellServer %d Close() begin\n", m_id);
+		CellLog::Info("CellServer %d Close() begin\n", m_id);
 
 		//关闭执行任务的服务类对象
 		m_CellTaskServer.Close();
 		//关闭CellServer开的线程
 		m_thread.Close();
 
-		printf("CellServer %d Close() end\n", m_id);
+		CellLog::Info("CellServer %d Close() end\n", m_id);
 	}
 
 	//被EasyTcpServer::StartThread()调用
@@ -322,7 +322,7 @@ public:
 			int fd_num = select(m_maxSocket + 1, &fdRead, &fdWrite, nullptr, &timeout);
 			if (fd_num == -1)
 			{
-				printf("CellServer %d OnRun().select error exit\n", m_id);
+				CellLog::Info("CellServer %d OnRun().select error exit\n", m_id);
 
 				//Close();
 				//***理解*** 
@@ -349,7 +349,7 @@ public:
 			CheckHearTTime();
 		}
 
-		printf("CellServer %d OnRun() exit\n", m_id);
+		CellLog::Info("CellServer %d OnRun() exit\n", m_id);
 
 		//ClearClients();
 	}
@@ -485,7 +485,7 @@ public:
 			}
 			else
 			{
-				printf("error. if (iter != sock_pclient_pair.end())\n");
+				CellLog::Info("error. if (iter != sock_pclient_pair.end())\n");
 			}
 
 		}

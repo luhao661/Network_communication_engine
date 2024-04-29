@@ -238,7 +238,7 @@ public:
 
 			//解决：
 			//使用std::atomic<T>::load()方法，返回原子变量的当前值。
-			printf("线程数<%d>, 持续时间<%lf>, 服务端套接字<%d>, \
+			CellLog::Info("线程数<%d>, 持续时间<%lf>, 服务端套接字<%d>, \
 客户端连接数<%d>, 所有线程每秒运行RecvData()次数=%d, 所有线程每秒处理包数量=%d\n",
 (int)CellServers.size(), t, m_serv_sock, m_clients_cnt.load(),
 static_cast<int>(m_RecvCnt.load() / t), static_cast<int>(m_MsgCnt.load() / t));

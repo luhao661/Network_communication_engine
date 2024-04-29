@@ -31,6 +31,27 @@ public:
 
 	bool AddMsgToBuf(const char* pData,int Len)
 	{
+		//***可选的拓展***
+#if 0
+		if (m_lastPos + Len > m_BufferSize)
+		{
+			//计算还需要多少空间
+			int n = m_lastPos + Len - m_BufferSize;
+
+			if (n < 8192)
+				n = 8192;
+
+			//在原来的空间大小基础上再申请一个比原先大8k的空间
+			char* pBuf = new char[m_BufferSize+n];
+			//将原来的m_pBuf中存的内容拷贝到新申请的空间中
+			memcpy(pBuf,m_pBuf, m_lastPos);
+			//释放掉原申请的空间
+			delete[]m_pBuf;
+			//新申请的空间再由m_pBuf所指向
+			m_pBuf = pBuf;
+		}
+#endif
+
 		if (m_lastPos + Len <= m_BufferSize)
 		{
 			//将要发送的数据拷贝到发送缓冲区尾部

@@ -76,7 +76,7 @@ public:
 
 	~ClientSocket()
 	{
-		printf("CellServer %d CellClient %d  ~ClientSocket()\n",m_CellServer_id,m_id);
+		CellLog::Info("CellServer %d CellClient %d  ~ClientSocket()\n",m_CellServer_id,m_id);
 
 		if (INVALID_SOCKET != m_client_sock)
 		{
@@ -163,7 +163,7 @@ public:
 
 		if (m_DTHeart >= CLIENT_HEART_DEAD_TIME)
 		{
-			printf("Heart dead : sock=%d, time=%d\n",m_client_sock,m_DTHeart);
+			CellLog::Info("Heart dead : sock=%d, time=%d\n",m_client_sock,m_DTHeart);
 
 			return true;
 		}

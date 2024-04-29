@@ -7,6 +7,7 @@
 #include <functional>//mem_fn
 
 #include "CellThread.hpp"
+//#include "CellLog.hpp"
 
 //执行任务的服务类型
 //该类型作用是
@@ -66,12 +67,12 @@ public:
 
 	void Close()
 	{
-		printf("CellTaskServer %d Close() begin\n", m_CellServer_id);
+		//CellLog::Info("CellTaskServer %d Close() begin\n", m_CellServer_id);
 
 		//关闭CellTaskServer开的线程
 		m_thread.Close();
 
-		printf("CellTaskServer %d Close() end\n", m_CellServer_id);
+		//CellLog::Info("CellTaskServer %d Close() end\n", m_CellServer_id);
 	}
 
 protected://声明为protected使CellTaskServer对象无法访问OnRun()
@@ -106,7 +107,7 @@ protected://声明为protected使CellTaskServer对象无法访问OnRun()
 			//清空任务元素
 			m_tasks.clear();
 		}
-		printf("CellTaskServer %d OnRun() exit\n", m_CellServer_id);
+		//CellLog::Info("CellTaskServer %d OnRun() exit\n", m_CellServer_id);
 	}
 
 };

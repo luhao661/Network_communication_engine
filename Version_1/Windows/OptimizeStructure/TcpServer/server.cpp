@@ -78,7 +78,7 @@ public:
 			//如果发送缓冲区满了，消息没发送出去
 			if (SOCKET_ERROR == pclient_sock->SendData(&ret))
 			{
-				printf("<socket=%d> 发送缓冲区已满！当前消息未发送！\n",pclient_sock->Get_m_client_sock());
+				CellLog::Info("<socket=%d> 发送缓冲区已满！当前消息未发送！\n", pclient_sock->Get_m_client_sock());
 
 				//可以进行将数据暂存入磁盘等操作
 				//...
