@@ -7,30 +7,6 @@ using std::cout,std::endl;//C++17 结构化绑定
 using std::thread;
 using std::cin;
 
-//bool g_bRun = true;
-//void cmdThread(void)
-//{
-//	char cmdBuf[256]{};
-//
-//	//cin 和 scanf 都是阻塞式函数，
-//	// 而main()中的select()非阻塞，这样会造成运行逻辑冲突，所以要使用多线程
-//
-//	while (1)
-//	{
-//		cin.getline(cmdBuf, 256);
-//
-//		// 处理请求
-//		if (!strcmp(cmdBuf, "exit"))
-//		{
-//			cout << "收到退出命令，退出cmdThread线程\n";
-//			g_bRun = false;
-//			break;
-//		}
-//		else
-//			cout << "未识别的命令，请重新输入！\n";
-//	}
-//}
-
 class MyServer :public EasyTcpServer
 {
 public:
@@ -43,7 +19,7 @@ public:
 	virtual void NEOnNetLeave(ClientSocket* pClient)
 	{
 		EasyTcpServer::NEOnNetLeave(pClient);
-		cout << "Clinet<" << pClient->Get_m_client_sock() << "> 退出\n";
+		CellLog::Info("Clinet<%d>退出\n", pClient->Get_m_client_sock());
 	}
 
 	virtual void NEOnNetMsg(CellServer* pCellServer, ClientSocket* pclient_sock, DataHead* pHead)
@@ -138,6 +114,7 @@ public:
 
 int main()
 {
+	CellLog::Instance().setLogPath("ServerLog.txt","w");
 	MyServer server;
 
 	server.initSocket();
@@ -147,16 +124,6 @@ int main()
 
 	//启动多线程
 	server.StartThread(4);
-
-	//启动UI线程
-	//thread t1(cmdThread);//格式：函数名  参数
-	//t1.detach();
-
-	//while (server.isRun() && g_bRun)
-	//{
-	//	server.OnRun();
-	//}
-	//server.Close();
 
 	while (true)
 	{
@@ -171,14 +138,14 @@ int main()
 		if (!strcmp(cmdBuf, "exit"))
 		{
 			server.Close();
-			cout << "收到退出命令，退出cmdThread线程\n";
+			CellLog::Info("收到退出命令，退出cmdThread线程\n");
 			break;
 		}
 		else
-			cout << "未识别的命令，请重新输入！\n";
+			CellLog::Info("未识别的命令，请重新输入！\n");
 	}
 
-	cout << "服务器端已退出，任务结束。\n";
+	CellLog::Info("服务器端已退出，任务结束。\n");
 	while (true)
 	{
 		Sleep(1);

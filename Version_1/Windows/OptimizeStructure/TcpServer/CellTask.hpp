@@ -101,13 +101,21 @@ protected://声明为protected使CellTaskServer对象无法访问OnRun()
 			//处理任务(消费任务)
 			for (auto Task : m_tasks)
 			{
-				Task;
+				Task();
+				//***注***
+				//不能写为Task;
 			}
 
 			//清空任务元素
 			m_tasks.clear();
 		}
 		//CellLog::Info("CellTaskServer %d OnRun() exit\n", m_CellServer_id);
+
+		//处理缓冲队列中的任务
+		for (auto Task : m_tasks_buffer)
+		{
+			Task();
+		}
 	}
 
 };

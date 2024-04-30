@@ -64,11 +64,16 @@ public:
 		WSAStartup(ver, &dat);
 #endif
 
+#ifndef _WIN32
+		//忽略异常信号
+		signal(SIGPIPE,SIG_IGN);
+#endif
+
 		//如果当前对象的套接字已经创建了，不允许重复创建套接字
 		//那就关闭了，再重新创建一个
 		if (m_serv_sock != INVALID_SOCKET)
 		{
-			cout << "<socket=" << m_serv_sock << ">关闭旧连接\n";
+			CellLog::Info("<socket=%d>关闭旧连接\n",m_serv_sock);
 			Close();
 		}
 
@@ -81,17 +86,16 @@ public:
 		// 而且在大多数情况下，它们是相等的。
 
 		if (m_serv_sock == INVALID_SOCKET)
-			cout << "建立socket失败\n";
+			CellLog::Info("建立socket失败\n");
 		else
-			cout << "建立服务端socket=<" << m_serv_sock << ">成功...\n";
-
+			CellLog::Info("建立服务端socket=<%d>成功...\n", m_serv_sock);
 
 		return m_serv_sock;
 	}
 
 	void Close()
 	{
-		cout << "EasyTcpServer Close() begin\n";
+		CellLog::Info("EasyTcpServer Close() begin\n");
 
 		m_thread.Close();
 
@@ -116,7 +120,7 @@ public:
 			m_serv_sock = INVALID_SOCKET;
 		}
 
-		cout << "EasyTcpServer Close() end\n";
+		CellLog::Info("EasyTcpServer Close() end\n");
 	}
 
 
@@ -153,9 +157,9 @@ public:
 		//Mac环境下将bind调用限定为使用全局命名空间中的函数
 		int res = ::bind(m_serv_sock, (sockaddr*)&serv_adr, sizeof(serv_adr));
 		if (res == SOCKET_ERROR)
-			cout << "bind() ERROR，绑定网络端口<" << port << ">失败...\n";
+			CellLog::Info("bind() ERROR，绑定网络端口<%d>失败...\n", port);
 		else
-			cout << "绑定网络端口<" << port << ">成功...\n";
+			CellLog::Info("绑定网络端口<%d>成功...\n", port);
 
 		return res;
 	}
@@ -167,9 +171,9 @@ public:
 		int res = listen(m_serv_sock, backlog);
 
 		if (res == SOCKET_ERROR)
-			cout << "listen() ERROR，socket=<" << m_serv_sock << ">监听网络端口失败\n";
+			CellLog::Info("listen() ERROR，socket=<%d>监听网络端口失败\n",m_serv_sock);
 		else
-			cout << "socket=<" << m_serv_sock << ">监听网络端口成功...\n";
+			CellLog::Info("socket=<%d>监听网络端口成功...\n",m_serv_sock);
 
 		return res;
 	}
@@ -326,7 +330,7 @@ static_cast<int>(m_RecvCnt.load() / t), static_cast<int>(m_MsgCnt.load() / t));
 			int fd_num = select(m_serv_sock + 1, &fdRead, nullptr, nullptr, &timeout);
 			if (fd_num == -1)
 			{
-				cout << "EasyTcpServer.OnRun select error exit\n";
+				CellLog::Info("EasyTcpServer.OnRun select error exit\n");
 				pThread->Exit();
 				break;
 			}
@@ -387,7 +391,7 @@ static_cast<int>(m_RecvCnt.load() / t), static_cast<int>(m_MsgCnt.load() / t));
 #endif
 
 		if (client_sock == INVALID_SOCKET)
-			cout << "socket=<" << m_serv_sock << ">错误，接受到无效客户端SOCKET";
+			CellLog::Info("socket=<%d>错误，接受到无效客户端SOCKET", m_serv_sock);
 		else
 		{
 			//inet_ntoa()将网络字节序的整数型 IP 地址转换为字符串形式
