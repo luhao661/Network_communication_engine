@@ -15,7 +15,7 @@ public:
 		//以类名+作用域解析运算符的形式来调用基类的同名方法
 		EasyTcpServer::NEOnNetJoin(pClient);
 	}
-
+  
 	virtual void NEOnNetLeave(ClientSocket* pClient)
 	{
 		EasyTcpServer::NEOnNetLeave(pClient);
