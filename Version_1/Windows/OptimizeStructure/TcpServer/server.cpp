@@ -3,7 +3,8 @@
 #include <iostream>
 #include <thread>
 
-using std::cout,std::endl;//C++17 结构化绑定
+using std::cout;
+using std::endl;
 using std::thread;
 using std::cin;
 
@@ -15,7 +16,7 @@ public:
 		//以类名+作用域解析运算符的形式来调用基类的同名方法
 		EasyTcpServer::NEOnNetJoin(pClient);
 	}
-  
+
 	virtual void NEOnNetLeave(ClientSocket* pClient)
 	{
 		EasyTcpServer::NEOnNetLeave(pClient);
@@ -31,6 +32,7 @@ public:
 		{
 		case CMD_LOGIN:
 		{
+			//将该消息视为心跳包
 			pclient_sock->resetDTHeart();
 
 			LogIn* login = reinterpret_cast<LogIn*>(pHead);
@@ -146,10 +148,10 @@ int main()
 	}
 
 	CellLog::Info("服务器端已退出，任务结束。\n");
-	while (true)
-	{
-		Sleep(1);
-	}
+	//while (true)
+	//{
+	//	Sleep(1);
+	//}
 
 	return 0;
 }

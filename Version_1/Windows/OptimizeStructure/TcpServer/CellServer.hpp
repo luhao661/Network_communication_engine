@@ -10,9 +10,14 @@
 
 #include "CellThread.hpp"
 
-using std::mutex, std::vector, std::map, std::mem_fn, std::lock_guard;
+using std::mutex;
+using std::vector;
+using std::map;
+using std::mem_fn;
+using std::lock_guard;
 using std::thread;
-using std::cout,std::endl;
+using std::cout;
+using std::endl;
 
 
 //作用：
@@ -240,7 +245,7 @@ public:
 
 			// 4 创建timeval结构布局的结构变量timeout以作为select数的第五个实参
 			//为了防止陷入无限阻塞的状态，使用 timeout 传递超时信息。
-			struct timeval timeout;
+			timeval timeout;
 
 			//设置1秒的超时时间
 			timeout.tv_sec = 0;

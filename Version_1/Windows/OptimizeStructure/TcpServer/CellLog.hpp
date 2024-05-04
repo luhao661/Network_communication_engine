@@ -96,6 +96,7 @@ public:
 	}
 
 	//可变参模板
+	//用于支持格式化字符串中的若干个转换说明需要的若干个待打印的值
 	template<typename ...Args>
 	static void Info(const char* format, Args ...args)
 	{

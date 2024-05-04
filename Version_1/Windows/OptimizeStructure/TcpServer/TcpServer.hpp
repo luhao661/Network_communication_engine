@@ -5,10 +5,12 @@
 #include<thread>
 #include<mutex>
 #include <atomic>//原子操作
+#include "CellNetWork.hpp"
 
 using std::vector;
 using std::atomic_int;
-using std::cout, std::endl;
+using std::cout;
+using std::endl;
 
 //作用：
 //服务端socket的创建，分配套接字地址、进入等待连接请求状态
@@ -54,20 +56,7 @@ public:
 
 	SOCKET initSocket()
 	{
-#ifdef _WIN32
-		//初始化
-
-		//创建版本号
-		WORD ver = MAKEWORD(2, 2);
-		//创建Windows Sockets API数据
-		WSADATA dat;
-		WSAStartup(ver, &dat);
-#endif
-
-#ifndef _WIN32
-		//忽略异常信号
-		signal(SIGPIPE,SIG_IGN);
-#endif
+		CellNetWork::Init();
 
 		//如果当前对象的套接字已经创建了，不允许重复创建套接字
 		//那就关闭了，再重新创建一个
@@ -101,22 +90,20 @@ public:
 
 		if (m_serv_sock != INVALID_SOCKET)
 		{
-			//关闭CellServer
+			//释放每个CellServer占用的内存空间
 			for (auto x : CellServers)
 				delete x;
+			//容器元素清空
+			CellServers.clear();
 
 			// 关闭套节字
 #ifdef _WIN32
 			closesocket(m_serv_sock);
-
-			//注销
-			WSACleanup();
+			//WSACleanup();    不再使用，而是交给~CellNetWork()
 #else
 			close(m_serv_sock);
-			m_serv_sock = INVALID_SOCKET;
 #endif
 
-			CellServers.clear();
 			m_serv_sock = INVALID_SOCKET;
 		}
 
@@ -263,11 +250,11 @@ static_cast<int>(m_RecvCnt.load() / t), static_cast<int>(m_MsgCnt.load() / t));
 
 			// 4 创建timeval结构布局的结构变量timeout以作为select数的第五个实参
 			//为了防止陷入无限阻塞的状态，使用 timeout 传递超时信息。
-			struct timeval timeout;
+			timeval timeout;
 
 			//设置超时时间
 			timeout.tv_sec = 0;
-			timeout.tv_usec = 10;
+			timeout.tv_usec = 1;
 			//或
 			//struct timeval timeout = { 5,0 };
 
