@@ -4,13 +4,72 @@
 #include <vector>
 #include <atomic>
 
+class MyClient:public EasyTcpClient
+{
+public:
+	//响应网络消息
+	virtual void OnNetMsg(DataHead* pHead)
+	{
+		SOCKET client_sock = m_pClient->Get_m_client_sock();
+
+		switch (pHead->cmd)
+		{
+		case CMD_LOGIN_RESULT:
+		{
+			LogInResult* loginresult = reinterpret_cast<LogInResult*>(pHead);
+
+			//cout << "<socket=" << m_client_sock <<
+			//	">收到服务端消息：CMD_LOGIN_RESULT"
+			//	<< " 数据长度：" << loginresult->datalength << endl;
+		}
+		break;
+
+		case CMD_LOGOUT_RESULT:
+		{
+			LogOutResult* logoutresult = reinterpret_cast<LogOutResult*>(pHead);
+
+			cout << "<socket=" << client_sock <<
+				">收到服务端消息：CMD_LOGOUT_RESULT"
+				<< " 数据长度：" << logoutresult->datalength << endl;
+		}
+		break;
+
+		case CMD_NEW_USER_JOIN:
+		{
+			//NewUserJoin* newuserjoin = reinterpret_cast<NewUserJoin*>(pHead);
+			//cout << "\n<socket=" << m_client_sock <<
+			//	">收到服务端消息：CMD_NEW_USER_JOIN"
+			//	<< " 数据长度：" << newuserjoin->datalength << endl;
+		}
+		break;
+
+		case CMD_s2c_HEART:
+		{
+
+		}
+		break;
+
+		case CMD_ERROR:
+		{
+			CellLog::Info("<socket=%d>收到消息：CMD_ERROR 数据长度：%hd\n", (int)client_sock, pHead->datalength);
+		}
+		break;
+
+		default:
+		{
+			CellLog::Info("error, <socket=%d>收到未定义消息\n",(int)client_sock);
+		}
+		}
+	}
+
+};
+
 bool g_bRun = true;
 void cmdThread(void);
 void SendThread(int id);
 void RecvThread(int theBegin, int theEnd);
 
 //全局变量存放在数据段的全局变量区域
-
 //所有线程的客户端总量
 const int Num_clients = 100;
 //发送线程数量
@@ -23,6 +82,8 @@ atomic_int SendCnt = 0;
 
 int main()
 {
+	CellLog::Instance().setLogPath("ClientLog.txt", "w");
+
 	//启动UI线程
 	thread uiThread(cmdThread);//格式：函数名  参数
 	uiThread.detach();
@@ -44,7 +105,7 @@ int main()
 
 		if (t >= 1.0)
 		{
-			printf("线程数<%d>,客户端数<%d>,持续时间<%lf>, \
+			CellLog::Info("线程数<%d>,客户端数<%d>,持续时间<%lf>, \
 运行SendData()次数=%d\n", T_cnt, Num_clients, t,
 static_cast<int>(SendCnt.load() / t));
 
@@ -55,7 +116,7 @@ static_cast<int>(SendCnt.load() / t));
 		Sleep(1);
 	}
 
-	cout << "客户端已退出，任务结束。\n";
+	CellLog::Info("客户端已退出，任务结束。\n");
 
 	return 0;
 }
@@ -74,12 +135,12 @@ void cmdThread(void)
 		// 处理请求
 		if (!strcmp(cmdBuf, "exit"))
 		{
-			cout << "收到退出命令，退出cmdThread线程\n";
+			CellLog::Info("收到退出命令，退出cmdThread线程\n");
 			g_bRun = false;
 			break;
 		}
 		else
-			cout << "未识别的命令，请重新输入！\n";
+			CellLog::Info("未识别的命令，请重新输入！\n");
 	}
 }
 
@@ -89,7 +150,7 @@ void cmdThread(void)
 #if 1
 void SendThread(int id)
 {
-	printf("线程<%d>开始\n", id);
+	CellLog::Info("线程<%d>开始\n", id);
 
 	//计算每个线程要承担创建的客户端数量
 	int clients_per_thread = Num_clients / T_cnt;
@@ -104,7 +165,7 @@ void SendThread(int id)
 
 	for (int i = theBegin; i < theEnd; ++i)
 	{
-		pClientArray[i] = new EasyTcpClient();
+		pClientArray[i] = new MyClient();
 	}
 
 	for (int i = theBegin; i < theEnd; ++i)
@@ -133,7 +194,7 @@ void SendThread(int id)
 		//	id, i);
 	}
 
-	printf("线程号<%d>, 客户端编号<begin=%d,  end=%d>连接成功...\n",
+	CellLog::Info("线程号<%d>, 客户端编号<begin=%d,  end=%d>连接成功...\n",
 		id, theBegin, theEnd);
 
 	//使用标准库提供的休眠
@@ -190,7 +251,7 @@ void SendThread(int id)
 		delete pClientArray[i];
 	}
 
-	printf("线程<%d>退出\n", id);
+	CellLog::Info("线程<%d>退出\n", id);
 
 	return;
 }
