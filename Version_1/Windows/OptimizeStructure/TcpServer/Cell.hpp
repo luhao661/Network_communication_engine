@@ -6,7 +6,7 @@
 //使inet_ntoa()可用
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 
-#define FD_SETSIZE 10006
+#define FD_SETSIZE 10006 
 //理解：
 //最大支持的客户端连接数量为CellServer线程数*(FD_SETSIZE-1)
 
