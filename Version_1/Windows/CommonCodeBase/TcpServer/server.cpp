@@ -22,7 +22,7 @@ public:
 		EasyTcpServer::NEOnNetLeave(pClient);
 		CellLog::Info("Clinet<%d>退出\n", pClient->Get_m_client_sock());
 	}
-
+ 
 	virtual void NEOnNetMsg(CellServer* pCellServer, ClientSocket* pclient_sock, DataHead* pHead)
 	{
 		EasyTcpServer::NEOnNetMsg(pCellServer, pclient_sock, pHead);
