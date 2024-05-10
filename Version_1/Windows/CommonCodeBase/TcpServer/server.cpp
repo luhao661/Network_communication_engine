@@ -30,7 +30,7 @@ public:
 		//  处理请求
 		switch (pHead->cmd)
 		{
-		case CMD_LOGIN:
+		case CMD_LOGIN: 
 		{
 			//将该消息视为心跳包
 			pclient_sock->resetDTHeart();
