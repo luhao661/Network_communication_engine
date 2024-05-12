@@ -17,7 +17,7 @@ public:
 		EasyTcpServer::NEOnNetJoin(pClient);
 	}
 
-	virtual void NEOnNetLeave(ClientSocket* pClient)
+	virtual void NEOnNetLeave(ClientSocket* pClient) 
 	{
 		EasyTcpServer::NEOnNetLeave(pClient);
 		CellLog::Info("Clinet<%d>退出\n", pClient->Get_m_client_sock());
