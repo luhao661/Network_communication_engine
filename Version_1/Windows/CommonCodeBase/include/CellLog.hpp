@@ -67,7 +67,7 @@ public:
 			fflush(pLog->m_logFile);
 		}
 		printf(pStr);
-#endif
+#endif 
 
 		//使用CellTaskServer类新开一个线程来记录日志
 		pLog->m_CellTaskServer.addTask(
