@@ -129,7 +129,7 @@ public:
 
 			fclose(m_logFile);
 			m_logFile = nullptr;
-		}
+		} 
 
 		m_logFile = fopen(logPath,mode);
 		if (m_logFile)
