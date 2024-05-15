@@ -67,7 +67,7 @@ public:
 			//以下为阻塞发送数据，且使用CellTaskServer线程执行发送任务的实现
 			//pCellServer->addSendTask(pclient_sock, &res);
 		}
-		break;
+		break; 
 
 		/*
 		case CMD_LOGOUT:
