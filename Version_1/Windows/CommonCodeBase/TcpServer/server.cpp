@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::thread;
 using std::cin;
-
+ 
 class MyServer :public EasyTcpServer
 {
 public:
