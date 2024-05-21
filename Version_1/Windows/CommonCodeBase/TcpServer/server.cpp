@@ -88,7 +88,7 @@ public:
 		{
 			pclient_sock->resetDTHeart();
 
-			s2c_Heart ret;
+			s2c_Heart ret; 
 
 			pCellServer->addSendTask(pclient_sock, &ret);
 		}
