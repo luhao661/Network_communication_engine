@@ -16,7 +16,7 @@ private:
 
 	FILE* m_logFile = nullptr;
 
-	CellLog()
+	CellLog() 
 	{
 		m_CellTaskServer.Start();
 	}
