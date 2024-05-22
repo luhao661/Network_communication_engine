@@ -29,7 +29,7 @@ private:
 		{
 			Info("CellLog::~CellLog()  fclose\n");
 
-			fclose(m_logFile);
+			fclose(m_logFile); 
 			m_logFile = nullptr;
 		}
 	}
