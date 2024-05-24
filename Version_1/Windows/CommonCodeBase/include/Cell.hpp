@@ -17,7 +17,7 @@
 
 //无法解析的外部符号 imp WSAStartup，函数 main 中引用了该符号
 //解决：要添加静态链接库文件
-#pragma comment(lib,"ws2_32.lib")
+#pragma comment(lib,"ws2_32.lib") 
 //#pragma comment(lib, "library_name")
 //#pragma 是一个编译器指令，用于向编译器传达特定的指令或控制信息
 //在编译时指示链接器引入特定的库文件。
