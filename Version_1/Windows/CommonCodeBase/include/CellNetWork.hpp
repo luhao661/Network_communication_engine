@@ -18,7 +18,7 @@ private:
 		WSADATA dat;
 		WSAStartup(ver, &dat);
 #endif
-
+ 
 #ifndef _WIN32
 		//if (signal(SIGPIPE, SIG_IGN) == SIG_ERR)
 		//	return (1);
