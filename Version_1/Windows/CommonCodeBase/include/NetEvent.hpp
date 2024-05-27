@@ -17,7 +17,7 @@ public:
 
 	//客户端离开事件
 	virtual void NEOnNetLeave(ClientSocket* pClient) = 0;
-
+ 
 	virtual void NEOnNetMsg(CellServer* pCellServer, ClientSocket* client_sock, DataHead* pHead) = 0;
 
 	//recv事件
