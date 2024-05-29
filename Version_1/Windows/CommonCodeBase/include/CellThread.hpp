@@ -53,7 +53,7 @@ public:
 	}
 
 	//关闭线程
-	void Close()
+	void Close() 
 	{
 		std::lock_guard<std::mutex>lg(m_mutex);
 
