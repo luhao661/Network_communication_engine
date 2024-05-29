@@ -85,7 +85,7 @@ protected:
 		在线程的不同生命周期阶段调用设置的回调函数。
 		每个 if 语句检查相应的回调函数是否已被设置（即，它不是 nullptr），
 		如果是，那么调用该函数并传入 this 指针作为参数。
-		这使得调用的函数能够访问当前 CellThread 实例的成员。
+		这使得调用的函数能够访问当前 CellThread 实例的成员。 
 		*/
 		if (m_OnCreate)
 			m_OnCreate(this);
