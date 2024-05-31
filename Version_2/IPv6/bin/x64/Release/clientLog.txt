@@ -1,0 +1,24 @@
+Info [2024-5-23 10:48:32]Log::setLogPath success,<clientLog.txt,w>
+Info [2024-5-23 10:48:32]Config::getStr strIP=fe80::8302:7ad7:543b:e00d
+Info [2024-5-23 10:48:32]Config::getInt nPort=4567
+Info [2024-5-23 10:48:32]Config::getInt nThread=1
+Info [2024-5-23 10:48:32]Config::getInt nClient=1
+Info [2024-5-23 10:48:32]Config::getInt nMsg=1
+Info [2024-5-23 10:48:32]Config::getInt nSendSleep=10
+Error [2024-5-23 10:48:32]Config::getStr not find <nWorkSleep>
+Info [2024-5-23 10:48:32]Config::getInt nWorkSleep=1
+Info [2024-5-23 10:48:32]Config::getInt nSendBuffSize=10240
+Info [2024-5-23 10:48:32]Config::getInt nRecvBuffSize=10240
+Info [2024-5-23 10:48:32]thread<1>,start
+Info [2024-5-23 10:48:32]-ipv6
+Info [2024-5-23 10:48:32]Config::getStr scope_id_name=no_scope_id_name
+Info [2024-5-23 10:48:32]thread<1>,Connect<begin=0, end=1 ,nConnect=1>
+Info [2024-5-23 10:48:33]thread<1>,clients<1>,connect<1>,time<1.000235>,send<32>
+Info [2024-5-23 10:48:34]thread<1>,clients<1>,connect<1>,time<1.007421>,send<34>
+Info [2024-5-23 10:48:35]thread<1>,clients<1>,connect<1>,time<1.005185>,send<33>
+Info [2024-5-23 10:48:36]thread<1>,clients<1>,connect<1>,time<1.008850>,send<34>
+Info [2024-5-23 10:48:37]thread<1>,clients<1>,connect<1>,time<1.009321>,send<33>
+Info [2024-5-23 10:48:38]thread<1>,clients<1>,connect<1>,time<1.010825>,send<34>
+Info [2024-5-23 10:48:39]thread<1>,clients<1>,connect<1>,time<1.008135>,send<33>
+Info [2024-5-23 10:48:40]thread<1>,clients<1>,connect<1>,time<1.007973>,send<34>
+Info [2024-5-23 10:48:41]thread<1>,clients<1>,connect<1>,time<1.006515>,send<33>
