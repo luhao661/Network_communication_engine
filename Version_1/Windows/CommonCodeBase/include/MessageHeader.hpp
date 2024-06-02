@@ -14,7 +14,7 @@ enum
 //不再将包头和包体分开用结构体声明
 //而是通过继承，只传一次结构体（或类对象）就同时得到包头与包体
 
-struct DataHead
+struct DataHead 
 {
 	DataHead()
 	{
