@@ -18,7 +18,7 @@ namespace doyou {
 		public:
 			int id = -1;
 			//所属serverid
-			int serverId = -1;
+			int serverId = -1; 
 			//测试接收发逻辑用
 			//用于server检测接收到的消息ID是否连续
 			int nRecvMsgID = 1;
