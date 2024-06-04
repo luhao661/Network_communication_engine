@@ -94,7 +94,7 @@ namespace doyou {
 		private:
 			fd_set * _pfdset = nullptr;
 			size_t _nfdSize = 0;
-			int _MAX_SOCK_FD = 0;
+			int _MAX_SOCK_FD = 0; 
 		};
 	}
 }
