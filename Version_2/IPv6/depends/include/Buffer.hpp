@@ -19,7 +19,7 @@ namespace doyou {
 			}
 
 			~Buffer()
-			{
+			{ 
 				if (_pBuff)
 				{
 					delete[] _pBuff;
