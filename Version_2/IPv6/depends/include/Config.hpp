@@ -17,7 +17,7 @@ namespace doyou {
 			{
 
 			}
-
+ 
 			~Config()
 			{
 
