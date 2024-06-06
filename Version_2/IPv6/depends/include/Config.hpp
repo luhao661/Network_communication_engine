@@ -23,7 +23,7 @@ namespace doyou {
 
 			}
 		public:
-			static Config& Instance()
+			static Config& Instance() 
 			{
 				static  Config obj;
 				return obj;
