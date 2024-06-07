@@ -44,7 +44,7 @@ namespace doyou {
 				//CELLLog_Info("~Client[sId=%d id=%d socket=%d]", serverId, id, (int)_sockfd);
 				destory();
 			}
-
+ 
 			void destory()
 			{
 				if (INVALID_SOCKET != _sockfd)
