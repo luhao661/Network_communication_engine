@@ -159,7 +159,7 @@ namespace doyou {
 			}
 #ifdef CELL_USE_IOCP
 			IO_DATA_BASE* makeRecvIoData()
-			{
+			{ 
 				if (_isPostRecv)
 					return nullptr;
 				_isPostRecv = true;
