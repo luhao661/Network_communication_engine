@@ -21,7 +21,7 @@ namespace doyou {
 			int serverId = -1; 
 			//测试接收发逻辑用
 			//用于server检测接收到的消息ID是否连续
-			int nRecvMsgID = 1;
+			int nRecvMsgID = 1; 
 			//测试接收发逻辑用
 			//用于client检测接收到的消息ID是否连续
 			int nSendMsgID = 1;
