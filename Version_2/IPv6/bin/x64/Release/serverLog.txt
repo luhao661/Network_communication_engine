@@ -7,7 +7,7 @@ Info [2024-5-23 10:48:22]Config::getInt nRecvBuffSize=81920
 Info [2024-5-23 10:48:22]Config::getInt nMaxClient=10240
 Info [2024-5-23 10:48:22]create socket<216> success...
 Info [2024-5-23 10:48:22]bind port<4567> success...
-Info [2024-5-23 10:48:22]listen port<216> success...
+Info [2024-5-23 10:48:22]listen port<216> success... 
 Info [2024-5-23 10:48:23]thread<4>,time<1.000430>,socket<216>,Accept<0>,Join<0>,recv<0>,msg<0>
 Info [2024-5-23 10:48:24]thread<4>,time<1.006304>,socket<216>,Accept<0>,Join<0>,recv<0>,msg<0>
 Info [2024-5-23 10:48:25]thread<4>,time<1.005040>,socket<216>,Accept<0>,Join<0>,recv<0>,msg<0>
@@ -28,6 +28,7 @@ Info [2024-5-23 10:48:38]thread<4>,time<1.010635>,socket<216>,Accept<1>,Join<1>,
 Info [2024-5-23 10:48:40]thread<4>,time<1.008019>,socket<216>,Accept<1>,Join<1>,recv<34>,msg<34>
 Info [2024-5-23 10:48:40]thread<4>,time<1.007178>,socket<216>,Accept<1>,Join<1>,recv<33>,msg<33>
 PError [2024-5-23 10:48:41]read4socket:sockfd<212> nSize<81920> nLast<0> nLen<-1>
-PError [2024-5-23 10:48:41]errno=10054,errmsg=Ô¶³ÌÖ÷»úÇ¿ÆÈ¹Ø±ÕÁËÒ»¸öÏÖÓÐµÄÁ¬½Ó¡£
+PError [2024-5-23 10:48:41]errno=10054,errmsg=è¿œç¨‹ä¸»æœºå¼ºè¿«å…³é—­äº†ä¸€ä¸ªçŽ°æœ‰çš„è¿žæŽ¥ã€‚
+
 Info [2024-5-23 10:48:41]thread<4>,time<1.006175>,socket<216>,Accept<0>,Join<0>,recv<31>,msg<30>
 Info [2024-5-23 10:48:43]thread<4>,time<1.006534>,socket<216>,Accept<0>,Join<0>,recv<0>,msg<0>
