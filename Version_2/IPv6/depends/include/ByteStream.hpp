@@ -87,5 +87,5 @@ namespace doyou {
 	}
 }
 
-#endif // !_CELL_STREAM_HPP_
+#endif //  !_CELL_STREAM_HPP_
 
