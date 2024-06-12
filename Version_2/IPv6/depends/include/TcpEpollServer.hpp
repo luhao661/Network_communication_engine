@@ -23,7 +23,7 @@ namespace doyou {
 				ep.ctl(EPOLL_CTL_ADD, sockfd(), EPOLLIN);
 				while (pThread->isRun())
 				{
-					time4msg();
+					time4msg(); 
 					//---
 					int ret = ep.wait(1);
 					if (ret < 0)
