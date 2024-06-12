@@ -31,7 +31,7 @@ namespace doyou {
 						CELLLog_Error("EasyEpollServer.OnRun ep.wait exit.");
 						pThread->Exit();
 						break;
-					}
+					} 
 					//---
 					auto events = ep.events();
 					for (int i = 0; i < ret; i++)
