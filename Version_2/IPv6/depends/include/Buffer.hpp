@@ -18,7 +18,7 @@ namespace doyou {
 				_pBuff = new char[_nSize];
 			}
 
-			~Buffer()
+			~Buffer() 
 			{ 
 				if (_pBuff)
 				{
