@@ -27,8 +27,7 @@ public:
 	{
 		TcpServer::OnNetLeave(pClient);
 	}
-	//cellServer 4 多个线程触发 不安全
-	//如果只开启1个cellServer就是安全的
+
 	virtual void OnNetMsg(Server* pServer, Client* pClient, netmsg_DataHeader* header)
 	{
 		TcpServer::OnNetMsg(pServer, pClient, header);
