@@ -21,7 +21,7 @@ set cmd=%cmd% nSendSleep=1000
 
 ::客户端发送缓冲区大小(字节)
 set cmd=%cmd% nSendBuffSize=10240
-
+ 
 ::客户端接收缓冲区大小(字节) 
 set cmd=%cmd% nRecvBuffSize=10240
 
