@@ -22,7 +22,7 @@ public:
 	{
 		TcpServer::OnNetLeave(pClient);
 	}
-
+  
 	virtual void OnNetMsg(Server* pServer, Client* pClient, netmsg_DataHeader* header)
 	{
 		TcpServer::OnNetMsg(pServer, pClient, header);
