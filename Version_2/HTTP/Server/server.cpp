@@ -34,7 +34,7 @@ public:
 			netmsg_Login* login = (netmsg_Login*)header;
 			//检查消息ID
 			if (_bCheckMsgID)
-			{
+			{ 
 				if (login->msgID != pClient->nRecvMsgID)
 				{
 					//若当前消息ID和本地收消息次数不匹配
