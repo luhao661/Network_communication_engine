@@ -20,7 +20,7 @@ namespace doyou {
 
 
 			ByteStream(int nSize = 1024)
-			{
+			{ 
 				_nSize = nSize;
 				_pBuff = new char[_nSize];
 				_bDelete = true;
