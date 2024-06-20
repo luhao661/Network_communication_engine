@@ -14,8 +14,8 @@ namespace doyou {
 		//客户端数据类型
 		class Client
 		{
-			////////用于调试的成员变量
-		public:
+			///////用于调试的成员变量
+		public: 
 			int id = -1;
 			//所属serverid
 			int serverId = -1; 
