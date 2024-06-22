@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#ifndef RECV_BUFFER_SIZE
+#ifndef RECV_BUFFER_SIZE 
 #define RECV_BUFFER_SIZE 10240
 #endif
 
