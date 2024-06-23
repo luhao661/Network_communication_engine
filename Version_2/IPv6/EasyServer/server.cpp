@@ -6,7 +6,7 @@
 
 using namespace doyou::io;
 
-class MyServer : public TcpSelectServer
+class MyServer : public TcpSelectServer 
 {
 public:
 	MyServer()
