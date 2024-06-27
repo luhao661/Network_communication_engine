@@ -19,7 +19,7 @@ namespace doyou {
 				destory();
 			}
 			//Linux下表示socket fd的最大值
-			//Windows下表示socket fd的数量
+			//Windows下表示socket fd的数量 
 			void create(int MaxFds)
 			{
 				int nSocketNum = MaxFds;
