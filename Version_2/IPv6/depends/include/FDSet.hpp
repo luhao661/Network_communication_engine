@@ -29,7 +29,7 @@ namespace doyou {
 				_nfdSize = sizeof(u_int) + (sizeof(SOCKET)*nSocketNum);
 #else
 				//Linux下没有fd_count
-				//用8KB存储65535个sockfd 8192byte*8 = 65536
+         			//用8KB存储65535个sockfd 8192byte*8 = 65536
 				if (nSocketNum < 65535)
 					nSocketNum = 65535;
 				_nfdSize = nSocketNum / (8 * sizeof(char)) + 1;
