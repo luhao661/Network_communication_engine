@@ -44,8 +44,8 @@ namespace doyou {
 
 			bool push(const char* pData, int nLen)
 			{
-				////写入大量数据不一定要放到内存中
-				////也可以存储到数据库或者磁盘等存储器中
+				///写入大量数据不一定要放到内存中
+				///也可以存储到数据库或者磁盘等存储器中
 				//if (_nLast + nLen > _nSize)
 				//{
 				//	//需要写入的数据大于可用空间
