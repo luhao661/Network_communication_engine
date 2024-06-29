@@ -18,7 +18,7 @@ namespace doyou {
 				_bDelete = bDelete;
 			}
 
-
+ 
 			ByteStream(int nSize = 1024)
 			{ 
 				_nSize = nSize;
