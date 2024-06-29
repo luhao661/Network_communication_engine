@@ -124,7 +124,7 @@ namespace doyou
 				return _headerLen;
 			}
 
-			//应该在确定消息接收完整时调用此函数
+			//应该在确定消息接收完整时调用此函数 
 			bool fetch_http_info() {
 				std::string request(_recvBuff.data(), _headerLen);
 				CELLLog_Info(request.c_str());
