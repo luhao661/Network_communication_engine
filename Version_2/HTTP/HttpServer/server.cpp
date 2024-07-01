@@ -71,7 +71,7 @@ public:
 		rewind(file);
 
 		//发送缓冲区是否能写入这么多数据
-		if (!pHttpClient->canWrite(bytesize))
+		if (!pHttpClient->canWrite(bytesize)) 
 		{
 			CELLLog_Warring("!pHttpClient->canWrite(bytesize), url=%s", filePath.c_str());
 			fclose(file);
