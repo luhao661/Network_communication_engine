@@ -123,7 +123,7 @@ public:
 	}
 public:
 	//发送时间计数
-	time_t _tRestTime = 0;
+	time_t _tRestTime = 0; 
 private:
 	//接收消息id计数
 	int _nRecvMsgID = 1;
