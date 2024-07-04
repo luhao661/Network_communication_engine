@@ -17,7 +17,7 @@ set cmd=%cmd% nClient=1000
 ::最大可写入nMsg条Login消息
 ::每条消息100字节(Login)
 set cmd=%cmd% nMsg=100
-set cmd=%cmd% nSendSleep=1000
+set cmd=%cmd% nSendSleep=1000 
 
 ::客户端发送缓冲区大小(字节)
 set cmd=%cmd% nSendBuffSize=10240
