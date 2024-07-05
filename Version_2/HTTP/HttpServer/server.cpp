@@ -15,7 +15,7 @@ public:
 			return;
 
 		if (!pHttpClient->getRequestInfo()) 
-			return;
+			return; 
 
 		if (pHttpClient->url_compre("/add"))
 		{
