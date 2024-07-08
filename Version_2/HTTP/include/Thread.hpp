@@ -16,7 +16,7 @@ namespace engine {
 		public:
 			//启动线程
 			void Start(
-				EventCall onCreate = nullptr,
+				EventCall onCreate = nullptr, 
 				EventCall onRun = nullptr,
 				EventCall onDestory = nullptr)
 			{
