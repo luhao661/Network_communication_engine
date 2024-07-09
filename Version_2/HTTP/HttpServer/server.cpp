@@ -109,7 +109,7 @@ public:
 	void indexPage(const char* index)
 	{
 		_indexPage = index;
-	}
+	} 
 private:
 	std::string _wwwRoot;
 	std::string _indexPage;
