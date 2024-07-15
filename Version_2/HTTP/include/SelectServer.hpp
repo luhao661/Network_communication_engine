@@ -151,7 +151,7 @@ namespace engine {
 						if (SOCKET_ERROR == RecvData(iter->second))
 						{
 							OnClientLeave(iter->second);
-							auto iterOld = iter;
+							auto iterOld = iter; 
 							iter++;
 							_clients.erase(iterOld);
 							continue;
