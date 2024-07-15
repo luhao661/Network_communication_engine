@@ -25,7 +25,7 @@ namespace doyou {
 			//测试接收发逻辑用
 			//用于client检测接收到的消息ID是否连续
 			int nSendMsgID = 1;
-			//////////////////////////////////
+			/////////////////////////////////
 		public:
 			Client(SOCKET sockfd = INVALID_SOCKET, int sendSize = SEND_BUFF_SZIE, int recvSize = RECV_BUFF_SZIE) :
 				_sendBuff(sendSize),
