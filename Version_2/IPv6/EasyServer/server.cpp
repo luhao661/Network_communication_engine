@@ -72,7 +72,7 @@ public:
 			//CELLLog_Info("recv <Socket=%d> msgType：CMD_LOGIN, dataLen：%d,userName=%s PassWord=%s", cSock, login->dataLength, login->userName, login->PassWord);
 		}//接收 消息---处理 发送   生产者 数据缓冲区  消费者 
 		break;
-		case CMD_LOGOUT:
+		case CMD_LOGOUT: 
 		{
 			pClient->resetDTHeart();
 			ReadByteStream r(header);
