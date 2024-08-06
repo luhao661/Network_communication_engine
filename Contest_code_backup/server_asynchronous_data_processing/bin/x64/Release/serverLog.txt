@@ -1,0 +1,102 @@
+Info [2024-6-17 21:48:31]Log::setLogPath success,<serverLog.txt,w>
+Error [2024-6-17 21:48:31]Config::getStr not find <strIP>
+Info [2024-6-17 21:48:31]Config::getStr strIP=any
+Error [2024-6-17 21:48:31]Config::getStr not find <nPort>
+Info [2024-6-17 21:48:31]Config::getInt nPort=9190
+Error [2024-6-17 21:48:31]Config::getStr not find <nThread>
+Info [2024-6-17 21:48:31]Config::getInt nThread=1
+Error [2024-6-17 21:48:31]Config::getStr not find <nSendBuffSize>
+Info [2024-6-17 21:48:31]Config::getInt nSendBuffSize=10240
+Error [2024-6-17 21:48:31]Config::getStr not find <nRecvBuffSize>
+Info [2024-6-17 21:48:31]Config::getInt nRecvBuffSize=8192
+Error [2024-6-17 21:48:31]Config::getStr not find <nMaxClient>
+Info [2024-6-17 21:48:31]Config::getInt nMaxClient=65535
+Info [2024-6-17 21:48:31]-ipv4
+Info [2024-6-17 21:48:31]create socket<168> success...
+Error [2024-6-17 21:48:31]Config::getStr not find <wwwroot>
+Info [2024-6-17 21:48:31]Config::getStr wwwroot=D:/CODE/test/www
+Error [2024-6-17 21:48:31]Config::getStr not find <indexpage>
+Info [2024-6-17 21:48:31]Config::getStr indexpage=hello.html
+Info [2024-6-17 21:48:31]bind port<9190> success...
+Info [2024-6-17 21:48:31]listen port<168> success...
+Info [2024-6-17 21:48:32]thread<1>,time<1.007580>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:33]thread<1>,time<1.009573>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:34]thread<1>,time<1.004908>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:35]thread<1>,time<1.003195>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:36]thread<1>,time<1.013068>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:37]thread<1>,time<1.002380>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:38]thread<1>,time<1.009104>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:39]thread<1>,time<1.006447>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:40]thread<1>,time<1.007942>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:41]thread<1>,time<1.005694>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:42]thread<1>,time<1.011245>,socket<168>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-17 21:48:42]Accept_IP: 127.0.0.1, 224
+Info [2024-6-17 21:48:42]GET / HTTP/1.1
+Host: 127.0.0.1:9190
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Microsoft Edge";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,ko;q=0.5
+
+
+Info [2024-6-17 21:48:43]thread<1>,time<1.005665>,socket<168>,Accept<1>,Join<1>,recv<1>,msg<1>
+Info [2024-6-17 21:48:44]thread<1>,time<1.006643>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:45]thread<1>,time<1.005791>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:46]thread<1>,time<1.009409>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:47]thread<1>,time<1.009459>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:48]thread<1>,time<1.004694>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:49]thread<1>,time<1.005190>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:50]thread<1>,time<1.006310>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:51]thread<1>,time<1.004744>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:52]thread<1>,time<1.007932>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:53]thread<1>,time<1.005091>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:54]thread<1>,time<1.006319>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:55]thread<1>,time<1.005889>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:56]thread<1>,time<1.004812>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:57]GET /http_text.html HTTP/1.1
+Host: 127.0.0.1:9190
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Microsoft Edge";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,ko;q=0.5
+
+
+Info [2024-6-17 21:48:57]thread<1>,time<1.005815>,socket<168>,Accept<1>,Join<1>,recv<1>,msg<1>
+Info [2024-6-17 21:48:58]thread<1>,time<1.006726>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:48:59]thread<1>,time<1.005282>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:0]thread<1>,time<1.004932>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:1]thread<1>,time<1.006832>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:2]thread<1>,time<1.006210>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:3]thread<1>,time<1.005811>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:4]thread<1>,time<1.006960>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:5]thread<1>,time<1.004591>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:6]thread<1>,time<1.005587>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:7]thread<1>,time<1.005592>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:8]thread<1>,time<1.006420>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:9]thread<1>,time<1.004641>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:10]thread<1>,time<1.006375>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:11]thread<1>,time<1.004432>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:12]thread<1>,time<1.006497>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:13]thread<1>,time<1.004365>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:14]thread<1>,time<1.004975>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:15]thread<1>,time<1.006054>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:16]thread<1>,time<1.005813>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>
+Info [2024-6-17 21:49:17]thread<1>,time<1.003833>,socket<168>,Accept<1>,Join<1>,recv<0>,msg<0>

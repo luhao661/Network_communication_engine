@@ -1,0 +1,22 @@
+Info [2024-6-5 15:9:30]Log::setLogPath success,<serverLog.txt,w>
+Error [2024-6-5 15:9:30]Config::getStr not find <strIP>
+Info [2024-6-5 15:9:30]Config::getStr strIP=any
+Error [2024-6-5 15:9:30]Config::getStr not find <nPort>
+Info [2024-6-5 15:9:30]Config::getInt nPort=4567
+Error [2024-6-5 15:9:30]Config::getStr not find <nThread>
+Info [2024-6-5 15:9:30]Config::getInt nThread=1
+Error [2024-6-5 15:9:30]Config::getStr not find <nSendBuffSize>
+Info [2024-6-5 15:9:30]Config::getInt nSendBuffSize=10240
+Error [2024-6-5 15:9:30]Config::getStr not find <nRecvBuffSize>
+Info [2024-6-5 15:9:30]Config::getInt nRecvBuffSize=8192
+Error [2024-6-5 15:9:30]Config::getStr not find <nMaxClient>
+Info [2024-6-5 15:9:30]Config::getInt nMaxClient=65535
+Info [2024-6-5 15:9:30]create socket<236> success...
+Info [2024-6-5 15:9:30]bind port<4567> success...
+Info [2024-6-5 15:9:30]listen port<236> success...
+Info [2024-6-5 15:9:31]thread<1>,time<1.003345>,socket<236>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-5 15:9:32]thread<1>,time<1.006130>,socket<236>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-5 15:9:33]thread<1>,time<1.002683>,socket<236>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-5 15:9:35]thread<1>,time<1.012482>,socket<236>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-5 15:9:36]thread<1>,time<1.006064>,socket<236>,Accept<0>,Join<0>,recv<0>,msg<0>
+Info [2024-6-5 15:9:37]thread<1>,time<1.009104>,socket<236>,Accept<0>,Join<0>,recv<0>,msg<0>
