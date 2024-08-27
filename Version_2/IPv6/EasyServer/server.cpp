@@ -13,7 +13,7 @@ public:
 	{
 		_bSendBack = Config::Instance().hasKey("-sendback");
 		_bSendFull = Config::Instance().hasKey("-sendfull");
-		_bCheckMsgID = Config::Instance().hasKey("-checkMsgID");
+		_bCheckMsgID = Config::Instance().hasKey("-checkMsgID");//
 	}
 	//cellServer 4 多个线程触发 不安全
 	//如果只开启1个cellServer就是安全的
